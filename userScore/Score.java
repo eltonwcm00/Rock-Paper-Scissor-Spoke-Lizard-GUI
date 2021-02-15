@@ -1,15 +1,13 @@
 package userScore;
 
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
-
-public class Score extends JFrame{
+public class Score extends JFrame implements ActionListener {
     
     private JPanel p1, p2, p3, p4, p5, button, button2;
     private JLabel empty, rounds, picture1, picture2, player1name, player2name;
@@ -21,11 +19,9 @@ public class Score extends JFrame{
     private String total;
     
     
-    
-    public Score (String title) {
+    public Score () {
 
         // panel 1
-        setTitle(title); //set the title
         p1 = new JPanel(); //create panel for title
         empty = new JLabel("");
         JLabel gametitle = new JLabel("Rock-Paper-Scissors-Lizard-Spock"); //Title
@@ -34,14 +30,14 @@ public class Score extends JFrame{
         gametitle.setFont(new Font("Verdana",Font.BOLD,15));
         p1.setBackground(Color.orange); //set background for the title to orange
    
-        // panel 2
+        // panel 2 /
         p2 = new JPanel(); //create panel for rounds text
         rounds = new JLabel("Round 1"); // text for rounds
         rounds.setHorizontalAlignment(SwingConstants.CENTER);
         rounds.setFont(new Font("Verdana",Font.BOLD,20));
         p2.add(rounds);
 
-        // panel 3
+        // panel 3 /
         p3 = new JPanel();//create panel for player 1 name,button and image
         player1name = new JLabel ("Player 1");//Name for player 1
         player1name.setHorizontalAlignment(SwingConstants.CENTER);
@@ -80,6 +76,7 @@ public class Score extends JFrame{
         
         // panel 5
         p5 = new JPanel();
+        //p5.setBackground(Color.RED);
         JLabel scissors = new JLabel(image[0]); //scissors image
         JLabel paper = new JLabel (image[1]); // paper image
         JLabel rock = new JLabel (image[2]); // rock image
@@ -104,6 +101,20 @@ public class Score extends JFrame{
         add(p4,BorderLayout.EAST);
         add(p5,BorderLayout.SOUTH);
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+      // TODO Auto-generated method stub
+
+    }
+
+    public JPanel getScoreP1() {return p1;} 
+    public JPanel getScoreP2() {return p2;}
+    public JPanel getScoreP3() {return p3;}
+    public JPanel getScoreP4() {return p4;}
+    public JPanel getScoreP5() {return p5;}
+
+
 
     //later will then revoke
     

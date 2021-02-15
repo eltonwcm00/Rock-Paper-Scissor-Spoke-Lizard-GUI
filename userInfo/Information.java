@@ -12,14 +12,16 @@ public class Information extends JFrame implements ActionListener {
     
     private JTextField tfPlayer1,tfPlayer2,tfPlayer3,tfPlayer4;
     private JButton btEnter,btEnter1;
-    
+    private JPanel p1, p2, p3, p4;
+
     
     public Information() {
 
-        JPanel p1 = new JPanel();
-        JPanel p2 = new JPanel(new GridLayout(4,3));
-        JPanel p3 = new JPanel(new GridLayout(4,3));
-        JPanel p4 = new JPanel();
+         p1 = new JPanel();
+         p2 = new JPanel(new GridLayout(4,3));
+         p3 = new JPanel(new GridLayout(4,3));
+         p4 = new JPanel();
+
     
         JLabel Information = new JLabel("Rock-Paper-Scissors-Lizard-Spock"); //Title
         p1.add(Information);
@@ -35,7 +37,6 @@ public class Information extends JFrame implements ActionListener {
         Team2.setHorizontalAlignment(SwingConstants.CENTER);
         JLabel Player2 = new JLabel("Enter player names:");
         Player2.setHorizontalAlignment(SwingConstants.CENTER);
-      
        
         p2.setLayout(new GridLayout(5,3));
         p2.add(new JLabel(""));p2.add(Team); p2.add(new JLabel(""));
@@ -48,8 +49,7 @@ public class Information extends JFrame implements ActionListener {
         
         p2.add(new JLabel("Player 2 :"));
         p2.add(tfPlayer2 = new JTextField(15));
-        p2.add(new JLabel(""));
-        
+        p2.add(new JLabel(""));      
         
         p3.setLayout(new GridLayout(5,3));
         p3.add(new JLabel("")); p3.add(Team2);p3.add(new JLabel(""));
@@ -61,7 +61,6 @@ public class Information extends JFrame implements ActionListener {
         p3.add(tfPlayer4 = new JTextField(15));
         p3.add(new JLabel(""));
         
-  
         p4.setLayout(new GridLayout(1,6));
         
         p4.add(new JLabel(""));
@@ -69,7 +68,6 @@ public class Information extends JFrame implements ActionListener {
       
         p4.add(new JLabel("")); p4.add(btEnter1 = new JButton("Enter")); p4.add(new JLabel(""));
        
-        
         setLayout(new BorderLayout());
         add(p1,BorderLayout.NORTH);
         add(p2,BorderLayout.WEST);
@@ -86,13 +84,22 @@ public class Information extends JFrame implements ActionListener {
 		
 		if(e.getSource() == btEnter || e.getSource() == btEnter1) {
 			
-            Score GM = new Score("Assigment Sample");
+            Score GM = new Score();
             GM.setBounds(100,100,200,500);
+            GM.setTitle("Assignment");
             GM.setSize(900,600);
             GM.setVisible(true);
             GM.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		}
+            //GM.getContentPane().setBackground(Color.CYAN);
+            /*GM.setBackground(Color.yellow);*/
 
-	}
+
+		}
+	}  
+    
+    public JPanel getInfoP2() {return p2;}
+    public JPanel getInfoP3() {return p3;}
+    public JPanel getInfoP4() {return p4;}
+
 }
 

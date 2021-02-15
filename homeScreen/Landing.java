@@ -9,11 +9,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import userInfo.Information;
+import userScore.Score;
+//import userResult.FinalResult
 
 public class Landing extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
-	private JButton btnNewButton;;
+	private JButton btnNewButton;
+	private JComboBox comboBox;
+
+	Information frameInfo = new Information();
+	Score GM = new Score();
 
 	public Landing()  {
 		
@@ -24,30 +30,9 @@ public class Landing extends JFrame implements ActionListener {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.addItemListener(new ItemListener() {
-			public void itemStateChanged(ItemEvent e) {
-				if(e.getStateChange()==ItemEvent.SELECTED) {
-					if(comboBox.getSelectedItem().toString().equals("Red")) {
-						getContentPane().setBackground(Color.RED);
-					}
-					else if(comboBox.getSelectedItem().toString().equals("Green")) {
-						getContentPane().setBackground(Color.GREEN);
-					}
-					else if(comboBox.getSelectedItem().toString().equals("Blue")) {
-						getContentPane().setBackground(Color.BLUE);
-					}
-					else if(comboBox.getSelectedItem().toString().equals("Yellow")) {
-						getContentPane().setBackground(Color.YELLOW);
-					}
-					else if(comboBox.getSelectedItem().toString().equals("Grey")) {
-						getContentPane().setBackground(Color.GRAY);
-					}
-				}
-			}
-		});
-		
+			
+		comboBox = new JComboBox();
+
 		JLabel lblNewLabel = new JLabel("Rock-Paper-Scissors-Lizard-Spock");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(1, 11, 781, 14);
@@ -82,18 +67,53 @@ public class Landing extends JFrame implements ActionListener {
 		contentPane.add(panel);
 
 		btnNewButton.addActionListener(this);
+		comboBox.addItemListener(new ItemListener() {
+
+			public void itemStateChanged(ItemEvent e) {
+				
+				if(e.getStateChange()==ItemEvent.SELECTED) {
+					
+					if(comboBox.getSelectedItem().toString().equals("Red")) {
+						getContentPane().setBackground(Color.RED);
+						frameInfo.getInfoP2().setBackground(Color.RED); frameInfo.getInfoP3().setBackground(Color.RED); frameInfo.getInfoP4().setBackground(Color.RED);
+						GM.getScoreP1().setBackground(Color.RED);GM.getScoreP2().setBackground(Color.RED); GM.getScoreP3().setBackground(Color.RED); GM.getScoreP4().setBackground(Color.RED); GM.getScoreP5().setBackground(Color.RED);
+
+					} else if (comboBox.getSelectedItem().toString().equals("Green")) {
+						getContentPane().setBackground(Color.GREEN);
+						frameInfo.getInfoP2().setBackground(Color.GREEN); frameInfo.getInfoP3().setBackground(Color.GREEN); frameInfo.getInfoP4().setBackground(Color.GREEN);
+						GM.getScoreP1().setBackground(Color.GREEN); GM.getScoreP2().setBackground(Color.GREEN); GM.getScoreP3().setBackground(Color.GREEN); GM.getScoreP4().setBackground(Color.GREEN); GM.getScoreP5().setBackground(Color.GREEN);
+
+					} else if (comboBox.getSelectedItem().toString().equals("Blue")) {
+						getContentPane().setBackground(Color.BLUE);
+						frameInfo.getInfoP2().setBackground(Color.BLUE); frameInfo.getInfoP3().setBackground(Color.BLUE); frameInfo.getInfoP4().setBackground(Color.BLUE);
+						GM.getScoreP1().setBackground(Color.BLUE); GM.getScoreP2().setBackground(Color.BLUE); GM.getScoreP3().setBackground(Color.BLUE); GM.getScoreP4().setBackground(Color.BLUE); GM.getScoreP5().setBackground(Color.BLUE);
+
+					} else if (comboBox.getSelectedItem().toString().equals("Yellow")) {
+						getContentPane().setBackground(Color.YELLOW);
+						frameInfo.getInfoP2().setBackground(Color.YELLOW); frameInfo.getInfoP3().setBackground(Color.YELLOW); frameInfo.getInfoP4().setBackground(Color.YELLOW);
+						GM.getScoreP1().setBackground(Color.YELLOW); GM.getScoreP2().setBackground(Color.YELLOW); GM.getScoreP3().setBackground(Color.YELLOW); GM.getScoreP4().setBackground(Color.YELLOW); GM.getScoreP5().setBackground(Color.YELLOW);
+
+					} else if (comboBox.getSelectedItem().toString().equals("Grey")) {
+						getContentPane().setBackground(Color.GRAY);
+						frameInfo.getInfoP2().setBackground(Color.GRAY); frameInfo.getInfoP3().setBackground(Color.GRAY); frameInfo.getInfoP4().setBackground(Color.GRAY);
+						GM.getScoreP1().setBackground(Color.GRAY); GM.getScoreP2().setBackground(Color.GRAY); GM.getScoreP3().setBackground(Color.GRAY); GM.getScoreP4().setBackground(Color.GRAY); GM.getScoreP5().setBackground(Color.GRAY);
+					}	
+				}
+			}
+		});
 	}
 
 	// call Information.java
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource() == btnNewButton) {
+
+        	frameInfo.setSize(900,600);
+        	frameInfo.setTitle("Assignment");
+        	frameInfo.setVisible(true);
+        	frameInfo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			//frame.getContentPane().setBackground(Color.yellow);
 			
-			Information frame = new Information();
-        	frame.setSize(900,600);
-        	frame.setTitle("Assignment");
-        	frame.setVisible(true);
-        	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		}
 
 	}
