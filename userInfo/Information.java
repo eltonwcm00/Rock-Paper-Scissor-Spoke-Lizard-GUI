@@ -104,6 +104,8 @@ public class Information extends JFrame implements ActionListener {
     
                 GM.getNameLabel().setText(player1nameLabel);
                 GM.getNameLabel2().setText(player2nameLabel);
+                GM.getTablePlayerName().setValueAt("Player 1: "+player1nameLabel, 0, 0);
+                GM.getTablePlayerName().setValueAt("Player 2: "+player2nameLabel, 1, 0);
 
             } catch(Exception err) {
                  

@@ -2,6 +2,7 @@ package userScore;
 
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,6 +16,7 @@ public class Score extends JFrame implements ActionListener {
                                   new ImageIcon(new ImageIcon("image/lizard.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT)) };
     private JTable table;
     private String score[] = {"0","1"};
+    private DefaultTableModel model;
 
     public Score () {
 
@@ -81,9 +83,10 @@ public class Score extends JFrame implements ActionListener {
         JLabel lizard = new JLabel (image[4]);// lizard image
         
         JPanel tablepanel = new JPanel();
-        String [][] playername  = { {"Team 1: Syed",""+score[1],""+score[1],""+score[1],""+score[1]},{"Team 2: Elton",""+score[0],""+score[0],""+score[0],""+score[0]} };//create row for table
+        String [][] playername  = { {"Team 1: ",""+score[1],""+score[1],""+score[1],""+score[1]},{"Team 2: ",""+score[0],""+score[0],""+score[0],""+score[0]} };//create row for table
         String [] column = {"Player","Round 1","Round 2","Round 3","Total"}; //create column for table
-        table = new JTable(playername,column); //set the table with row and column variables
+        model = new DefaultTableModel(playername, column);
+        table = new JTable(model); //set the table with row and column variables
         table.setRowHeight(60);
         JScrollPane sp = new JScrollPane(table);
         sp.setPreferredSize(new Dimension(600,143));
@@ -108,4 +111,6 @@ public class Score extends JFrame implements ActionListener {
 
     public JLabel getNameLabel() { return player1name; }
     public JLabel getNameLabel2() { return player2name; }
+
+    public DefaultTableModel getTablePlayerName() { return model; }
 }
