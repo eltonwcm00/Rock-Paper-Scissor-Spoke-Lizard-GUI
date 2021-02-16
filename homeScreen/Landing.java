@@ -20,14 +20,11 @@ public class Landing extends JFrame implements ActionListener {
 	Information frameInfo = new Information();
 
 	public Landing()  {
-		
-		setTitle("Assignment");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 500);
+
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
 			
 		comboBox = new JComboBox();
 
@@ -102,14 +99,21 @@ public class Landing extends JFrame implements ActionListener {
 		
 		if(e.getSource() == btnNewButton) {
 
-        	frameInfo.setSize(900,600);
-        	frameInfo.setTitle("Assignment");
-        	frameInfo.setVisible(true);
-        	frameInfo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        	try {
 
-			frameInfo.getInfoP2().setBackground(returnBackground); 
-			frameInfo.getInfoP3().setBackground(returnBackground); 
-			frameInfo.getInfoP4().setBackground(returnBackground);
+				frameInfo.setSize(900,600);
+        		frameInfo.setTitle("Assignment");
+        		frameInfo.setVisible(true);
+        		frameInfo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+				frameInfo.getInfoP2().setBackground(returnBackground); 
+				frameInfo.getInfoP3().setBackground(returnBackground); 
+				frameInfo.getInfoP4().setBackground(returnBackground);
+
+			} catch(Exception err) {
+
+				err.printStackTrace();
+			}
         }
 	}
 

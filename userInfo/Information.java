@@ -76,25 +76,32 @@ public class Information extends JFrame implements ActionListener {
         btEnter1.addActionListener(this);
     }
 
+    public JPanel getInfoP2() {return p2;}
+    public JPanel getInfoP3() {return p3;}
+    public JPanel getInfoP4() {return p4;}
+    
     // call Score.java
     public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource() == btEnter || e.getSource() == btEnter1) {
 			
-            GM.setBounds(100,100,200,500);
-            GM.setTitle("Assignment");
-            GM.setSize(900,600);
-            GM.setVisible(true);
-            GM.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            try {
 
-            GM.getScoreP2().setBackground(p2.getBackground()); GM.getScoreP3().setBackground(p2.getBackground()); 
-            GM.getScoreP4().setBackground(p2.getBackground()); GM.getScoreP5().setBackground(p2.getBackground());
-            GM.getButtonPanel().setBackground(p2.getBackground()); GM.getButtonPanel2().setBackground(p2.getBackground()); 
+                GM.setBounds(100,100,200,500);
+                GM.setTitle("Assignment");
+                GM.setSize(900,600);
+                GM.setVisible(true);
+                GM.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    
+                GM.getScoreP2().setBackground(p2.getBackground()); GM.getScoreP3().setBackground(p2.getBackground()); 
+                GM.getScoreP4().setBackground(p2.getBackground()); GM.getScoreP5().setBackground(p2.getBackground());
+                GM.getButtonPanel().setBackground(p2.getBackground()); GM.getButtonPanel2().setBackground(p2.getBackground()); 
+
+            } catch(Exception err) {
+                 
+                err.printStackTrace();
+            }  
         }
 	}  
-
-    public JPanel getInfoP2() {return p2;}
-    public JPanel getInfoP3() {return p3;}
-    public JPanel getInfoP4() {return p4;}
 }
 
