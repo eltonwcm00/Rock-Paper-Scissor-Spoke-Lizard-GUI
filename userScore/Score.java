@@ -10,8 +10,8 @@ public class Score extends JFrame implements ActionListener {
     private JPanel p1, p2, p3, p4, p5, button, button2;
     private JLabel empty, rounds, picture1, picture2, player1name, player2name;
     private JButton boom1,boom2;
-    private ImageIcon image[] = { new ImageIcon("image/scissors.png"),new ImageIcon("image/paper.png"),
-                                  new ImageIcon("image/rock.png"),new ImageIcon("image/spock.png"),new ImageIcon("image/lizard.png") };
+    private ImageIcon image[] = { new ImageIcon("userScore/image/scissors.png"),new ImageIcon("userScore/image/paper.png"),
+                                  new ImageIcon("userScore/image/rock.png"),new ImageIcon("userScore/image/spock.png"),new ImageIcon("image/lizard.png") };
     private JTable table;
     private String score[] = {"0","1"};
     //private String total;
@@ -39,7 +39,7 @@ public class Score extends JFrame implements ActionListener {
         player1name = new JLabel ("Player 1");//Name for player 1
         player1name.setHorizontalAlignment(SwingConstants.CENTER);
         player1name.setFont(new Font("Verdana",Font.BOLD,30));
-        p3.add(empty);p3.add(player1name);
+        p3.add(empty); p3.add(player1name);
         picture1 = new JLabel(image[0]); //Image for player 1
         p3.add(picture1);
         
@@ -53,7 +53,7 @@ public class Score extends JFrame implements ActionListener {
         
         // panel 4
         p4 = new JPanel(); //create panel for player 2 name,button and image
-        picture2 = new JLabel(image[3]);//Image for player 2
+        picture2 = new JLabel(image[0]);//Image for player 2
         picture2.setHorizontalAlignment(SwingConstants.CENTER);
         picture2.setBounds(400,250,400,200);
         p4.add(empty); p4.add(empty); p4.add(picture2);

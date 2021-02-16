@@ -101,7 +101,8 @@ public class Landing extends JFrame implements ActionListener {
 
         	try {
 
-				frameInfo.setSize(900,600);
+				//frameInfo.setSize(960,600);
+				frameInfo.setBounds(100, 100, 937, 500);
         		frameInfo.setTitle("Assignment");
         		frameInfo.setVisible(true);
         		frameInfo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

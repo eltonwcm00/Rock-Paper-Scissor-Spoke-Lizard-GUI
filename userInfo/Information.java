@@ -60,12 +60,12 @@ public class Information extends JFrame implements ActionListener {
         p3.add(new JLabel(""));
         
         p4.setLayout(new GridLayout(1,6));
-        
+        btEnter = new JButton("Enter");
+        btEnter1 = new JButton("Enter");
         p4.add(new JLabel(""));
-        p4.add(btEnter = new JButton("Enter")); p4.add(new JLabel(""));
-      
-        p4.add(new JLabel("")); p4.add(btEnter1 = new JButton("Enter")); p4.add(new JLabel(""));
-       
+        p4.add(btEnter); p4.add(new JLabel(""));
+        p4.add(new JLabel("")); p4.add(btEnter1); p4.add(new JLabel(""));
+
         setLayout(new BorderLayout());
         add(p1,BorderLayout.NORTH);
         add(p2,BorderLayout.WEST);
