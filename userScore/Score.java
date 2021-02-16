@@ -10,8 +10,8 @@ public class Score extends JFrame implements ActionListener {
     private JPanel p1, p2, p3, p4, p5, button, button2;
     private JLabel empty, rounds, picture1, picture2, player1name, player2name;
     private JButton boom1,boom2;
-    private ImageIcon image[] = { new ImageIcon("build/image/scissors.png"),new ImageIcon("build/image/paper.png"),
-                                  new ImageIcon("build/image/rock.png"),new ImageIcon("build/image/spock.png"),new ImageIcon("build/image/lizard.png") };
+    private ImageIcon image[] = { new ImageIcon("image/scissors.png"),new ImageIcon("image/paper.png"),
+                                  new ImageIcon("image/rock.png"),new ImageIcon("image/spock.png"),new ImageIcon("image/lizard.png") };
     private JTable table;
     private String score[] = {"0","1"};
     //private String total;
