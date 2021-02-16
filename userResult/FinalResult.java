@@ -7,14 +7,14 @@ public class FinalResult extends JFrame {
     
     private JButton btExit;
     private JLabel lb1;
-    private ImageIcon image = new ImageIcon("build/image/smile.png");
+    private ImageIcon image = new ImageIcon(new ImageIcon("userResult/image/1f3892.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
     private String score[] = {"0","1"};
     private JTable table, table1;
     public static void main(String[] args)
                        
 {
     FinalResult as1 = new FinalResult();
-    as1.setBounds(100, 100, 937, 500);
+    as1.setBounds(100, 100, 1000, 500);
     as1.setTitle("Assignment Sample");
     as1.setVisible(true);
     as1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
