@@ -7,7 +7,7 @@ public class FinalResult extends JFrame {
     
     private JButton btExit;
     private JLabel lb1;
-    private ImageIcon image = new ImageIcon(new ImageIcon("userResult/image/1f3892.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+    private ImageIcon image = new ImageIcon(new ImageIcon("userResult/image/Celebrate.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
     private String score[] = {"0","1"};
     private JTable table, table1;
     public static void main(String[] args)

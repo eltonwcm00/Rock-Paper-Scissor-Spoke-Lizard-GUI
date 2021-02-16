@@ -13,9 +13,11 @@ public class Information extends JFrame implements ActionListener {
     private JButton btEnter,btEnter1;
     private JPanel p1, p2, p3, p4;
 
-   //Landing frameInfo2 = new Landing();
+    private String player1nameLabel;
+    private String player2nameLabel;
+
     Score GM = new Score();
-    
+  
     public Information() {
 
          p1 = new JPanel();
@@ -79,13 +81,16 @@ public class Information extends JFrame implements ActionListener {
     public JPanel getInfoP2() {return p2;}
     public JPanel getInfoP3() {return p3;}
     public JPanel getInfoP4() {return p4;}
-    
+
     // call Score.java
     public void actionPerformed(ActionEvent e) {
 		
-		if(e.getSource() == btEnter || e.getSource() == btEnter1) {
+		if(e.getSource() == btEnter /*|| e.getSource() == btEnter1*/) {
 			
             try {
+
+                player1nameLabel = tfPlayer1.getText();
+                player2nameLabel = tfPlayer2.getText();
 
                 GM.setBounds(100,100,200,500);
                 GM.setTitle("Assignment");
@@ -95,7 +100,10 @@ public class Information extends JFrame implements ActionListener {
     
                 GM.getScoreP2().setBackground(p2.getBackground()); GM.getScoreP3().setBackground(p2.getBackground()); 
                 GM.getScoreP4().setBackground(p2.getBackground()); GM.getScoreP5().setBackground(p2.getBackground());
-                GM.getButtonPanel().setBackground(p2.getBackground()); GM.getButtonPanel2().setBackground(p2.getBackground()); 
+                GM.getButtonPanel().setBackground(p2.getBackground()); GM.getButtonPanel2().setBackground(p2.getBackground());
+    
+                GM.getNameLabel().setText(player1nameLabel);
+                GM.getNameLabel2().setText(player2nameLabel);
 
             } catch(Exception err) {
                  

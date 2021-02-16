@@ -81,7 +81,7 @@ public class Score extends JFrame implements ActionListener {
         JLabel lizard = new JLabel (image[4]);// lizard image
         
         JPanel tablepanel = new JPanel();
-        String [][] playername  = {{"Team 1: Syed",""+score[1],"","",""},{"Team 2: Elton",""+score[0],"","",""}};//create row for table
+        String [][] playername  = { {"Team 1: Syed",""+score[1],""+score[1],""+score[1],""+score[1]},{"Team 2: Elton",""+score[0],""+score[0],""+score[0],""+score[0]} };//create row for table
         String [] column = {"Player","Round 1","Round 2","Round 3","Total"}; //create column for table
         table = new JTable(playername,column); //set the table with row and column variables
         table.setRowHeight(60);
@@ -97,34 +97,15 @@ public class Score extends JFrame implements ActionListener {
         add(p3,BorderLayout.WEST);
         add(p4,BorderLayout.EAST);
         add(p5,BorderLayout.SOUTH);
-
-       // p1.set
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-      // TODO Auto-generated method stub
+    public JPanel getScoreP2() { return p2; }
+    public JPanel getScoreP3() { return p3; }
+    public JPanel getScoreP4() { return p4; }
+    public JPanel getScoreP5() { return p5; }
+    public JPanel getButtonPanel() { return button; }
+    public JPanel getButtonPanel2() { return button2; }
 
-    }
-
-    public JPanel getScoreP2() {return p2;}
-    public JPanel getScoreP3() {return p3;}
-    public JPanel getScoreP4() {return p4;}
-    public JPanel getScoreP5() {return p5;}
-    public JPanel getButtonPanel() {return button;}
-    public JPanel getButtonPanel2() {return button2;}
-
-    //later will then revoke
-
-    //later return text field and so on back to information.java
-    
-  /*public static void callFinalResult() {
-    
-    //FinalResult as1 = new FinalResult();
-    as1.setSize(900,900);
-    as1.setTitle("Assignment Sample");
-    as1.setVisible(true);
-    as1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-  }*/
-
+    public JLabel getNameLabel() { return player1name; }
+    public JLabel getNameLabel2() { return player2name; }
 }
