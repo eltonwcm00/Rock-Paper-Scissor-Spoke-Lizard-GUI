@@ -14,7 +14,7 @@ public class FinalResult extends JFrame {
                        
 {
     FinalResult as1 = new FinalResult();
-    as1.setSize(900,900);
+    as1.setBounds(100, 100, 937, 500);
     as1.setTitle("Assignment Sample");
     as1.setVisible(true);
     as1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,10 +31,10 @@ public class FinalResult extends JFrame {
         JLabel imagelabel = new JLabel(image);
         JLabel team1=new JLabel("Team 1:    4");
         JLabel team2=new JLabel("Team 2:    2");
-        team1.setFont(new Font("Verdana",Font.BOLD,20));
-        team2.setFont(new Font("Verdana",Font.BOLD,20));
-        JLabel congrat=new JLabel("Congratulation!!");
-        congrat.setFont(new Font("Verdana",Font.BOLD,25));
+        team1.setFont(new Font("Verdana",Font.BOLD,19));
+        team2.setFont(new Font("Verdana",Font.BOLD,19));
+        JLabel congrat=new JLabel("Congratulation !! Team 1");
+        congrat.setFont(new Font("Verdana",Font.BOLD,19));
         JLabel scoreteam1=new JLabel("ScoreTeam1:4");
         JLabel scoreteam2=new JLabel("ScoreTeam2:2");
         

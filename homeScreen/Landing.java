@@ -100,7 +100,7 @@ public class Landing extends JFrame implements ActionListener {
 		if(e.getSource() == btnNewButton) {
 
         	try {
-
+				
 				//frameInfo.setSize(960,600);
 				frameInfo.setBounds(100, 100, 937, 500);
         		frameInfo.setTitle("Assignment");
