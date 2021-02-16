@@ -5,8 +5,6 @@ import javax.swing.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-
 public class Score extends JFrame implements ActionListener {
     
     private JPanel p1, p2, p3, p4, p5, button, button2;
@@ -16,9 +14,8 @@ public class Score extends JFrame implements ActionListener {
                                   new ImageIcon("build/image/rock.png"),new ImageIcon("build/image/spock.png"),new ImageIcon("build/image/lizard.png") };
     private JTable table;
     private String score[] = {"0","1"};
-    private String total;
-    
-    
+    //private String total;
+
     public Score () {
 
         // panel 1
@@ -100,6 +97,8 @@ public class Score extends JFrame implements ActionListener {
         add(p3,BorderLayout.WEST);
         add(p4,BorderLayout.EAST);
         add(p5,BorderLayout.SOUTH);
+
+       // p1.set
     }
 
     @Override
@@ -108,13 +107,12 @@ public class Score extends JFrame implements ActionListener {
 
     }
 
-    public JPanel getScoreP1() {return p1;} 
     public JPanel getScoreP2() {return p2;}
     public JPanel getScoreP3() {return p3;}
     public JPanel getScoreP4() {return p4;}
     public JPanel getScoreP5() {return p5;}
-
-
+    public JPanel getButtonPanel() {return button;}
+    public JPanel getButtonPanel2() {return button2;}
 
     //later will then revoke
     

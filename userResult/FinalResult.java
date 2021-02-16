@@ -1,13 +1,8 @@
 package userResult;
 
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import javax.swing.JTable; 
-
 public class FinalResult extends JFrame {
     
     private JButton btExit;
@@ -44,8 +39,6 @@ public class FinalResult extends JFrame {
         JLabel scoreteam2=new JLabel("ScoreTeam2:2");
         
        
-        
-        
         p4.setLayout(new GridLayout(2,5,1,1));
         p4.add(team1);p4.add(new JLabel(""));p4.add(team2);
         p4.add(new JLabel(""));p4.add(congrat);

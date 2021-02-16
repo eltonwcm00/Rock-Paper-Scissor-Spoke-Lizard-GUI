@@ -7,13 +7,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import userScore.Score;
-
 public class Information extends JFrame implements ActionListener {
     
     private JTextField tfPlayer1,tfPlayer2,tfPlayer3,tfPlayer4;
     private JButton btEnter,btEnter1;
     private JPanel p1, p2, p3, p4;
 
+   //Landing frameInfo2 = new Landing();
+    Score GM = new Score();
     
     public Information() {
 
@@ -22,12 +23,10 @@ public class Information extends JFrame implements ActionListener {
          p3 = new JPanel(new GridLayout(4,3));
          p4 = new JPanel();
 
-    
         JLabel Information = new JLabel("Rock-Paper-Scissors-Lizard-Spock"); //Title
         p1.add(Information);
         Information.setFont(new Font("Verdana",Font.BOLD,15));
         p1.setBackground(Color.orange);
-    
         
         JLabel Team = new JLabel("Team 1"); 
         Team.setHorizontalAlignment(SwingConstants.CENTER);
@@ -45,7 +44,6 @@ public class Information extends JFrame implements ActionListener {
         p2.add(new JLabel("Player 1 :"));
         p2.add(tfPlayer1= new JTextField(15));
         p2.add(new JLabel(""));
-        
         
         p2.add(new JLabel("Player 2 :"));
         p2.add(tfPlayer2 = new JTextField(15));
@@ -76,7 +74,6 @@ public class Information extends JFrame implements ActionListener {
 
         btEnter.addActionListener(this);
         btEnter1.addActionListener(this);
-        
     }
 
     // call Score.java
@@ -84,22 +81,20 @@ public class Information extends JFrame implements ActionListener {
 		
 		if(e.getSource() == btEnter || e.getSource() == btEnter1) {
 			
-            Score GM = new Score();
             GM.setBounds(100,100,200,500);
             GM.setTitle("Assignment");
             GM.setSize(900,600);
             GM.setVisible(true);
             GM.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            //GM.getContentPane().setBackground(Color.CYAN);
-            /*GM.setBackground(Color.yellow);*/
 
-
-		}
+            GM.getScoreP2().setBackground(p2.getBackground()); GM.getScoreP3().setBackground(p2.getBackground()); 
+            GM.getScoreP4().setBackground(p2.getBackground()); GM.getScoreP5().setBackground(p2.getBackground());
+            GM.getButtonPanel().setBackground(p2.getBackground()); GM.getButtonPanel2().setBackground(p2.getBackground()); 
+        }
 	}  
-    
+
     public JPanel getInfoP2() {return p2;}
     public JPanel getInfoP3() {return p3;}
     public JPanel getInfoP4() {return p4;}
-
 }
 

@@ -1,12 +1,12 @@
 import homeScreen.Landing;
 import java.awt.*;
-  
+
 public class MainClass {  
   
   static Landing frame = new Landing();
-  
   public static void main(String args[]) {
-      callLanding();
+      
+    callLanding();
   }
 
   public static void callLanding() {
