@@ -6,14 +6,15 @@ import javax.swing.table.DefaultTableModel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.Math;
 public class Score extends JFrame implements ActionListener {
     
     private JPanel p1, p2, p3, p4, p5, button, button2;
-    private JLabel empty, rounds, picture1, picture2, player1name, player2name;
+    private JLabel empty, rounds, picture1, picture2, player1name, player2name, randImg;
     private JButton boom1,boom2;
     private ImageIcon image[] = { new ImageIcon(new ImageIcon("userScore/image/scissors.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT)), new ImageIcon(new ImageIcon("userScore/image/paper.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT)),
                                   new ImageIcon(new ImageIcon("userScore/image/rock.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT)), new ImageIcon(new ImageIcon("userScore/image/spock.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT)),
-                                  new ImageIcon(new ImageIcon("image/lizard.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT)) };
+                                  new ImageIcon(new ImageIcon("userScore/image/lizard.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT)) };
     private JTable table;
     private String score[] = {"0","1"};
     private DefaultTableModel model;
@@ -43,7 +44,6 @@ public class Score extends JFrame implements ActionListener {
         player1name.setFont(new Font("Verdana",Font.BOLD,15));
         p3.add(empty); p3.add(player1name);
         picture1 = new JLabel(image[0]); //Image for player 1
-        p3.add(picture1);
         
         button = new JPanel();
         boom1 = new JButton("BOOM!"); //Boom Button for player 1
@@ -99,6 +99,9 @@ public class Score extends JFrame implements ActionListener {
         add(p3,BorderLayout.WEST);
         add(p4,BorderLayout.EAST);
         add(p5,BorderLayout.SOUTH);
+
+        boom1.addActionListener(this);
+        boom2.addActionListener(this);
     }
 
     public JPanel getScoreP2() { return p2; }
@@ -112,4 +115,36 @@ public class Score extends JFrame implements ActionListener {
     public JLabel getNameLabel2() { return player2name; }
 
     public DefaultTableModel getTablePlayerName() { return model; }
+
+    public void actionPerformed(ActionEvent e) {
+
+            if(e.getSource() == boom1) {
+                
+                try {
+
+                    int index = (int) (Math.random() * (image.length - 1));
+                    picture1.setIcon(image[index]);
+
+                } catch(Exception err) {
+                 
+                    err.printStackTrace();
+                }
+            }
+
+            if(e.getSource() == boom2) {
+                
+                try {
+
+                    int index = (int) (Math.random() * (image.length - 1));
+                    picture2.setIcon(image[index]);
+
+                } catch(Exception err) {
+                 
+                    err.printStackTrace();
+                }
+            }
+
+            
+    }
+
 }

@@ -121,15 +121,15 @@ public class Information extends JFrame implements ActionListener {
         btEnter1.addActionListener(this);
     }
 
-    public JPanel getInfoP2() {return p2;}
-    public JPanel getInfoP3() {return p3;}
-    public JPanel getInfoP4() {return p4;}
-    public JPanel getInfoAddPlayer1Team1() {return addPlayer1Team1;}
-    public JPanel getInfoAddPlayer1Team2() {return addPlayer1Team2;}
-    public JPanel getInfoAddPlayer2Team1() {return addPlayer2Team1;}
-    public JPanel getInfoAddPlayer2Team2() {return addPlayer2Team2;}
-    public JPanel getInfoButtonSize1() {return buttonSize1;};
-    public JPanel getInfoButtonSize2() {return buttonSize2;};
+    public JPanel getInfoP2() { return p2; }
+    public JPanel getInfoP3() { return p3; }
+    public JPanel getInfoP4() { return p4; }
+    public JPanel getInfoAddPlayer1Team1() { return addPlayer1Team1; }
+    public JPanel getInfoAddPlayer1Team2() { return addPlayer1Team2; }
+    public JPanel getInfoAddPlayer2Team1() { return addPlayer2Team1; }
+    public JPanel getInfoAddPlayer2Team2() { return addPlayer2Team2; }
+    public JPanel getInfoButtonSize1() { return buttonSize1; };
+    public JPanel getInfoButtonSize2() { return buttonSize2; };
 
     // call Score.java
     public void actionPerformed(ActionEvent e) {
