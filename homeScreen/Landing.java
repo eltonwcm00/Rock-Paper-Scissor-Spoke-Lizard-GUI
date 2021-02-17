@@ -27,7 +27,6 @@ public class Landing extends JFrame implements ActionListener {
         contentPane.setLayout(null);
 			
 		comboBox = new JComboBox();
-
 		JLabel lblNewLabel = new JLabel("Rock-Paper-Scissors-Lizard-Spock");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(1, 11, 781, 14);
@@ -101,7 +100,7 @@ public class Landing extends JFrame implements ActionListener {
 
         	try {
 				
-				frameInfo.setBounds(100, 100, 937, 500);
+				frameInfo.setBounds(100, 100, 757, 500);
         		frameInfo.setTitle("Assignment");
         		frameInfo.setVisible(true);
         		frameInfo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -109,6 +108,13 @@ public class Landing extends JFrame implements ActionListener {
 				frameInfo.getInfoP2().setBackground(returnBackground); 
 				frameInfo.getInfoP3().setBackground(returnBackground); 
 				frameInfo.getInfoP4().setBackground(returnBackground);
+
+				frameInfo.getInfoAddPlayer1Team1().setBackground(returnBackground); 
+				frameInfo.getInfoAddPlayer1Team2().setBackground(returnBackground); 
+				frameInfo.getInfoAddPlayer2Team1().setBackground(returnBackground);
+				frameInfo.getInfoAddPlayer2Team2().setBackground(returnBackground); 
+				frameInfo.getInfoButtonSize1().setBackground(returnBackground); 
+				frameInfo.getInfoButtonSize2().setBackground(returnBackground);
 
 			} catch(Exception err) {
 

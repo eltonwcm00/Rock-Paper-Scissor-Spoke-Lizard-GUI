@@ -29,14 +29,14 @@ public class Score extends JFrame implements ActionListener {
         gametitle.setFont(new Font("Verdana",Font.BOLD,15));
         p1.setBackground(Color.orange); //set background for the title to orange
    
-        // panel 2 /
+        ////////// panel 2 ///////////
         p2 = new JPanel(); //create panel for rounds text
         rounds = new JLabel("Round 1"); // text for rounds
         rounds.setHorizontalAlignment(SwingConstants.CENTER);
         rounds.setFont(new Font("Verdana",Font.BOLD,20));
         p2.add(rounds);
 
-        // panel 3 /
+        ////////// panel 3 //////////
         p3 = new JPanel();//create panel for player 1 name,button and image
         player1name = new JLabel ("Player 1");//Name for player 1
         player1name.setHorizontalAlignment(SwingConstants.CENTER);
@@ -53,7 +53,7 @@ public class Score extends JFrame implements ActionListener {
         button.add(boom1);
         p3.add(button);
         
-        // panel 4
+        ////////// panel 4 //////////
         p4 = new JPanel(); //create panel for player 2 name,button and image
         picture2 = new JLabel(image[1]);//Image for player 2
         picture2.setHorizontalAlignment(SwingConstants.CENTER);
@@ -73,9 +73,8 @@ public class Score extends JFrame implements ActionListener {
         p4.add(empty); p4.add(button2);
         p4.setLayout(new GridLayout(2,2,1,1));
         
-        // panel 5
+        ////////// panel 5 //////////
         p5 = new JPanel();
-        //p5.setBackground(Color.RED);
         JLabel scissors = new JLabel(image[0]); //scissors image
         JLabel paper = new JLabel (image[1]); // paper image
         JLabel rock = new JLabel (image[2]); // rock image

@@ -10,23 +10,23 @@ public class FinalResult extends JFrame {
     private ImageIcon image = new ImageIcon(new ImageIcon("userResult/image/Celebrate.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
     private String score[] = {"0","1"};
     private JTable table, table1;
-    public static void main(String[] args)
-                       
-{
-    FinalResult as1 = new FinalResult();
-    as1.setBounds(100, 100, 1000, 500);
-    as1.setTitle("Assignment Sample");
-    as1.setVisible(true);
-    as1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    
-}
+    public static void main(String[] args) {
+        
+        FinalResult as1 = new FinalResult();
+        as1.setBounds(100, 100, 1000, 500);
+        as1.setTitle("Assignment Sample");
+        as1.setVisible(true);
+        as1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
     public FinalResult() {
+
         JPanel p1=new JPanel ();
         JPanel p2=new JPanel ();
         JPanel p3=new JPanel ();
         JPanel p4=new JPanel ();
         JPanel p5=new JPanel ();
         btExit=new JButton("Exit");
+        
         JLabel gametitle = new JLabel("Rock-Paper-Scissors-Lizard-Spock");
         JLabel imagelabel = new JLabel(image);
         JLabel team1=new JLabel("Team 1:    4");
@@ -37,8 +37,7 @@ public class FinalResult extends JFrame {
         congrat.setFont(new Font("Verdana",Font.BOLD,19));
         JLabel scoreteam1=new JLabel("ScoreTeam1:4");
         JLabel scoreteam2=new JLabel("ScoreTeam2:2");
-        
-       
+    
         p4.setLayout(new GridLayout(2,5,1,1));
         p4.add(team1);p4.add(new JLabel(""));p4.add(team2);
         p4.add(new JLabel(""));p4.add(congrat);
