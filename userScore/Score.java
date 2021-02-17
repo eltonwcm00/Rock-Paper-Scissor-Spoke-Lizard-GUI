@@ -57,7 +57,7 @@ public class Score extends JFrame implements ActionListener {
         
         ////////// panel 4 //////////
         p4 = new JPanel(); //create panel for player 2 name,button and image
-        picture2 = new JLabel(image[1]);//Image for player 2
+        picture2 = new JLabel(image[4]);//Image for player 2
         picture2.setHorizontalAlignment(SwingConstants.CENTER);
         picture2.setBounds(400,250,400,200);
         p4.add(empty); p4.add(empty); p4.add(picture2);
@@ -118,27 +118,13 @@ public class Score extends JFrame implements ActionListener {
                 
                 try {
 
-                    int index = (int) (Math.random() * (image.length - 1));
+                    int index = (int) (Math.random() * (image.length));
                     picture1.setIcon(image[index]);
 
                     iconfilename = picture1.getIcon().toString();
                     fileName = iconfilename.substring(iconfilename.lastIndexOf("/"  ) + 1);
 
-                    if("rock.png".equals(fileName) ) {
-                        System.out.println("is rock");
-
-                    } else if("scissors.png".equals(fileName) ) {
-                        System.out.println("is scissors");
-
-                    } else if("paper.png".equals(fileName) ) {
-                        System.out.println("is paper");
-
-                    } else if("spock.png".equals(fileName) ) {
-                        System.out.println("is spock"); 
-
-                    } else {
-                        System.out.println("is lizard");
-                    }
+                    returnMatch();
 
                 } catch(Exception err) {
                  
@@ -150,27 +136,13 @@ public class Score extends JFrame implements ActionListener {
                 
                 try {
 
-                    int index = (int) (Math.random() * (image.length - 1));
+                    int index = (int) (Math.random() * (image.length));
                     picture2.setIcon(image[index]);
 
                     iconfilename2 = picture2.getIcon().toString();
                     fileName2 = iconfilename2.substring(iconfilename2.lastIndexOf("/"  ) + 1);
 
-                    if("rock.png".equals(fileName2) ) {
-                        System.out.println("is rock");
-
-                    } else if("scissors.png".equals(fileName2) ) {
-                        System.out.println("is scissors");
-
-                    } else if("paper.png".equals(fileName2) ) {
-                        System.out.println("is paper");
-
-                    } else if("spock.png".equals(fileName2) ) {
-                        System.out.println("is spock"); 
-
-                    } else {
-                        System.out.println("is lizard");
-                    }
+                    returnMatch();
                                        
                 } catch(Exception err) {
                  
@@ -178,6 +150,66 @@ public class Score extends JFrame implements ActionListener {
                 }
             }
     
+    }
+
+    public void returnMatch() {
+
+                    // for player1 win
+                    if("scissors.png".equals(fileName) && "paper.png".equals(fileName2)) {
+                      System.out.println("Scissors cuts Paper");
+
+                    } else if("paper.png".equals(fileName) && "rock.png".equals(fileName2)) {
+                        System.out.println("Paper covers Rock");
+
+                    } else if("rock.png".equals(fileName) && "lizard.png".equals(fileName2)) {
+                        System.out.println("Rock crushes Lizard");
+
+                    } else if("lizard.png".equals(fileName) && "spoke.png".equals(fileName2)) {
+                        System.out.println("Lizard poisons Spock");
+
+                    } else if("spoke.png".equals(fileName) && "scissors.png".equals(fileName2)) {
+                        System.out.println("Spock smashes Scissors");
+
+                    } else if("scissors.png".equals(fileName) && "lizard.png".equals(fileName2)) {
+                        System.out.println("Scissors decapitates Lizard");
+
+                    } else if("lizard.png".equals(fileName) && "paper.png".equals(fileName2)) {
+                        System.out.println("Lizard eats Paper");
+
+                    } else if("paper.png".equals(fileName) && "spock.png".equals(fileName2)) {
+                        System.out.println("Paper disproves Spock");
+
+                    } else if("spock.png".equals(fileName) && "rock.png".equals(fileName2)) {
+                        System.out.println("Spock vaporizes Rock");
+  
+                    } else if("scissors.png".equals(fileName2) && "paper.png".equals(fileName)) {
+                        System.out.println("Scissors cuts Paper");
+  
+                      } else if("paper.png".equals(fileName2) && "rock.png".equals(fileName)) {
+                          System.out.println("Paper covers Rock");
+  
+                      } else if("rock.png".equals(fileName2) && "lizard.png".equals(fileName)) {
+                          System.out.println("Rock crushes Lizard");
+  
+                      } else if("lizard.png".equals(fileName2) && "spoke.png".equals(fileName)) {
+                          System.out.println("Lizard poisons Spock");
+  
+                      } else if("spoke.png".equals(fileName2) && "scissors.png".equals(fileName)) {
+                          System.out.println("Spock smashes Scissors");
+  
+                      } else if("scissors.png".equals(fileName2) && "lizard.png".equals(fileName)) {
+                          System.out.println("Scissors decapitates Lizard");
+  
+                      } else if("lizard.png".equals(fileName2) && "paper.png".equals(fileName)) {
+                          System.out.println("Lizard eats Paper");
+  
+                      } else if("paper.png".equals(fileName2) && "spock.png".equals(fileName)) {
+                          System.out.println("Paper disproves Spock");
+  
+                      } else if("spock.png".equals(fileName2) && "rock.png".equals(fileName)) {
+                          System.out.println("Spock vaporizes Rock");
+    
+                      } 
     }
 
 }
