@@ -10,13 +10,14 @@ import java.lang.Math;
 public class Score extends JFrame implements ActionListener {
     
     private JPanel p1, p2, p3, p4, p5, button, button2;
-    private JLabel empty, rounds, picture1, picture2, player1name, player2name, randImg;
+    private JLabel empty, rounds, picture1, picture2, player1name, player2name;
     private JButton boom1,boom2;
-    private ImageIcon image[] = { new ImageIcon(new ImageIcon("userScore/image/scissors.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT)), new ImageIcon(new ImageIcon("userScore/image/paper.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT)),
-                                  new ImageIcon(new ImageIcon("userScore/image/rock.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT)), new ImageIcon(new ImageIcon("userScore/image/spock.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT)),
-                                  new ImageIcon(new ImageIcon("userScore/image/lizard.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT)) };
+
+    private ImageIcon image[] = {new ImageIcon(getClass().getResource("image/scissors.png")), new ImageIcon(this.getClass().getResource("image/paper.png")), new ImageIcon(this.getClass().getResource("image/rock.png")),
+                                 new ImageIcon(this.getClass().getResource("image/spock.png")), new ImageIcon(this.getClass().getResource("image/lizard.png"))};    
     private JTable table;
     private String score[] = {"0","1"};
+    private String iconfilename, iconfilename2, fileName, fileName2; 
     private DefaultTableModel model;
 
     public Score () {
@@ -43,7 +44,8 @@ public class Score extends JFrame implements ActionListener {
         player1name.setHorizontalAlignment(SwingConstants.CENTER);
         player1name.setFont(new Font("Verdana",Font.BOLD,15));
         p3.add(empty); p3.add(player1name);
-        picture1 = new JLabel(image[0]); //Image for player 1
+        picture1 = new JLabel(image[0]); //Image for player 1////////////////////////////////
+        p3.add(picture1);
         
         button = new JPanel();
         boom1 = new JButton("BOOM!"); //Boom Button for player 1
@@ -75,12 +77,6 @@ public class Score extends JFrame implements ActionListener {
         
         ////////// panel 5 //////////
         p5 = new JPanel();
-        JLabel scissors = new JLabel(image[0]); //scissors image
-        JLabel paper = new JLabel (image[1]); // paper image
-        JLabel rock = new JLabel (image[2]); // rock image
-        JLabel spock = new JLabel (image[3]);// spock image
-        JLabel lizard = new JLabel (image[4]);// lizard image
-        
         JPanel tablepanel = new JPanel();
         String [][] playername  = { {"Team 1: ",""+score[1],""+score[1],""+score[1],""+score[1]},{"Team 2: ",""+score[0],""+score[0],""+score[0],""+score[0]} };//create row for table
         String [] column = {"Player","Round 1","Round 2","Round 3","Total"}; //create column for table
@@ -125,6 +121,25 @@ public class Score extends JFrame implements ActionListener {
                     int index = (int) (Math.random() * (image.length - 1));
                     picture1.setIcon(image[index]);
 
+                    iconfilename = picture1.getIcon().toString();
+                    fileName = iconfilename.substring(iconfilename.lastIndexOf("/"  ) + 1);
+
+                    if("rock.png".equals(fileName) ) {
+                        System.out.println("is rock");
+
+                    } else if("scissors.png".equals(fileName) ) {
+                        System.out.println("is scissors");
+
+                    } else if("paper.png".equals(fileName) ) {
+                        System.out.println("is paper");
+
+                    } else if("spock.png".equals(fileName) ) {
+                        System.out.println("is spock"); 
+
+                    } else {
+                        System.out.println("is lizard");
+                    }
+
                 } catch(Exception err) {
                  
                     err.printStackTrace();
@@ -138,13 +153,31 @@ public class Score extends JFrame implements ActionListener {
                     int index = (int) (Math.random() * (image.length - 1));
                     picture2.setIcon(image[index]);
 
+                    iconfilename2 = picture2.getIcon().toString();
+                    fileName2 = iconfilename2.substring(iconfilename2.lastIndexOf("/"  ) + 1);
+
+                    if("rock.png".equals(fileName2) ) {
+                        System.out.println("is rock");
+
+                    } else if("scissors.png".equals(fileName2) ) {
+                        System.out.println("is scissors");
+
+                    } else if("paper.png".equals(fileName2) ) {
+                        System.out.println("is paper");
+
+                    } else if("spock.png".equals(fileName2) ) {
+                        System.out.println("is spock"); 
+
+                    } else {
+                        System.out.println("is lizard");
+                    }
+                                       
                 } catch(Exception err) {
                  
                     err.printStackTrace();
                 }
             }
-
-            
+    
     }
 
 }

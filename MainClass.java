@@ -20,6 +20,7 @@ public class MainClass {
           frame.setTitle("Assignment");
 		      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
           frame.setBounds(100, 100, 800, 500);
+          
 
         } catch (Exception e) {
           
