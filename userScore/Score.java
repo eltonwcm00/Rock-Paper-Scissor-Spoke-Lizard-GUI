@@ -7,6 +7,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.Math;
+import java.util.Random;
 public class Score extends JFrame implements ActionListener {
     
     private JPanel p1, p2, p3, p4, p5, button, button2;
@@ -119,7 +120,9 @@ public class Score extends JFrame implements ActionListener {
                 
                 try {
 
-                    int index = (int) (Math.random() * (image.length));
+                    //int index = (int) (Math.random() * (image.length));
+                    Random rand = new Random();
+                    int index = rand.nextInt(image.length);
                     picture1.setIcon(image[index]);
                     
                     iconfilename = picture1.getIcon().toString();
@@ -134,7 +137,8 @@ public class Score extends JFrame implements ActionListener {
                 
                 try {
 
-                    int index2 = (int) (Math.random() * (image.length));
+                    Random rand = new Random();
+                    int index2 = rand.nextInt(image.length);
                     picture2.setIcon(image[index2]);
 
                     iconfilename2 = picture2.getIcon().toString();
@@ -152,12 +156,27 @@ public class Score extends JFrame implements ActionListener {
 
                     convertScorePlayer = returnMatch();
 
+                    if(convertScorePlayer == 1) {
+                        
+                        /*for(int row=1; row>0; row++) {
+
+                            for(int column=0; column>0; column++) {
+
+                                model.setValueAt(score[1], row,column);
+                            }
+                        }*/
+
+                        //model.setValueAt(score[1], 0,1);
+
+                        /*System.out.println(model.getValueAt(0, 0));*/
+                    }
+
                     System.out.println(convertScorePlayer);
             }
     }
 
     public int returnMatch() {
-                     //bringScorePlayer = 1 -> player 1 won, bringScorePlayer = 2 -> player 2 won
+                     //bringScorePlayer = 1 -> player 1 won, bringScorePlayer = 0 -> player 2 won
         if("scissors.png".equals(fileName) && "paper.png".equals(fileName2)) { System.out.println("P1 win : Scissors cuts Paper");  bringScorePlayer = 1;}
             else if("paper.png".equals(fileName) && "rock.png".equals(fileName2)) { System.out.println("P1 win : Paper covers Rock"); bringScorePlayer = 1;} 
             else if("rock.png".equals(fileName) && "lizard.png".equals(fileName2)) { System.out.println("P1 win : Rock crushes Lizard"); bringScorePlayer = 1;} 
