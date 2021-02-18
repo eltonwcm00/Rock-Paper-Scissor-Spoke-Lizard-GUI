@@ -21,7 +21,7 @@ public class Score extends JFrame implements ActionListener {
     private String iconfilename, iconfilename2, fileName, fileName2; 
     private DefaultTableModel model;
     private int bringScorePlayer;
-
+  
     public Score () {
 
         // panel 1
@@ -80,7 +80,8 @@ public class Score extends JFrame implements ActionListener {
         ////////// panel 5 //////////
         p5 = new JPanel();
         JPanel tablepanel = new JPanel();
-        String [][] playername  = { {"Team 1: ",""+score[1],""+score[1],""+score[1],""+score[1]},{"Team 2: ",""+score[0],""+score[0],""+score[0],""+score[0]} };//create row for table
+        //String [][] playername  = { {"Team 1: ",""+score[0],""+score[0],""+score[0],""+score[0]},{"Team 2: ",""+score[0],""+score[0],""+score[0],""+score[0]} };//create row for table
+        String [][] playername  = { {"Team 1: ","","","",""},{"Team 2: ","","","",""} };
         String [] column = {"Player","Round 1","Round 2","Round 3","Total"}; //create column for table
         model = new DefaultTableModel(playername, column);
         table = new JTable(model); //set the table with row and column variables
@@ -120,9 +121,9 @@ public class Score extends JFrame implements ActionListener {
                 
                 try {
 
-                    //int index = (int) (Math.random() * (image.length));
                     Random rand = new Random();
-                    int index = rand.nextInt(image.length);
+                    int index = -1;
+                    index = rand.nextInt(image.length);
                     picture1.setIcon(image[index]);
                     
                     iconfilename = picture1.getIcon().toString();
@@ -138,7 +139,8 @@ public class Score extends JFrame implements ActionListener {
                 try {
 
                     Random rand = new Random();
-                    int index2 = rand.nextInt(image.length);
+                    int index2 = -1;
+                    index2 = rand.nextInt(image.length);
                     picture2.setIcon(image[index2]);
 
                     iconfilename2 = picture2.getIcon().toString();
@@ -156,22 +158,30 @@ public class Score extends JFrame implements ActionListener {
 
                     convertScorePlayer = returnMatch();
 
-                    if(convertScorePlayer == 1) {
-                        
-                        /*for(int row=1; row>0; row++) {
+                    if (table.getValueAt(0,1).equals("") || table.getValueAt(1,1).equals("")) {
+                        //System.out.println("is empty");
+                                
+                        if(convertScorePlayer == 1) {
+                            model.setValueAt(score[1], 0, 1);
 
-                            for(int column=0; column>0; column++) {
+                        } else if(convertScorePlayer == 0) {
+            
+                            model.setValueAt(score[1], 1, 1);
+                        }
 
-                                model.setValueAt(score[1], row,column);
-                            }
-                        }*/
-
-                        //model.setValueAt(score[1], 0,1);
-
-                        /*System.out.println(model.getValueAt(0, 0));*/
+                    } else if (table.getValueAt(0,2).equals("") || table.getValueAt(1,2).equals("")) {
+                        //System.out.println("is empty");
+                                
+                        if(convertScorePlayer == 1) {
+                            model.setValueAt(score[1], 0, 2);
+            
+                        } else if(convertScorePlayer == 0) {
+                            model.setValueAt(score[1], 1, 2);
+            
+                        }
+                                
                     }
-
-                    System.out.println(convertScorePlayer);
+                   
             }
     }
 

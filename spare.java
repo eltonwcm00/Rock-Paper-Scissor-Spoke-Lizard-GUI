@@ -210,3 +210,39 @@
         return bringScorePlayer2;
     }
  */
+
+ /* 
+    //for (int i = 0; i < nRow; i++) {
+                        //each row loop its columns 
+                        //for (int j = 0; j < nCol; j++) {
+                            //check if your value is not empty or null then change to 0
+                            if (table.getValueAt(0,1).equals("") || table.getValueAt(1,1).equals("")) {
+                                System.out.println("is empty");
+                                
+                                if(convertScorePlayer == 1) {
+
+                                    model.setValueAt(score[1], 0, 1); //score[1]
+            
+                                } else if(convertScorePlayer == 0) {
+            
+                                    model.setValueAt(score[1], 1, 1);
+            
+                                }
+
+                            } else if (table.getValueAt(0,2).equals("") || table.getValueAt(1,2).equals("")) {
+                                //System.out.println("is empty");
+                                
+                                if(convertScorePlayer == 1) {
+
+                                    model.setValueAt(score[1], 0, 2); //score[1]
+            
+                                } else if(convertScorePlayer == 0) {
+            
+                                    model.setValueAt(score[1], 1, 2);
+            
+                                }
+                                
+                            }
+                        //}
+                    //}
+ */
