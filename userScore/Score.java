@@ -20,7 +20,8 @@ public class Score extends JFrame implements ActionListener {
     private String score[] = {"0","1"};
     private String iconfilename, iconfilename2, fileName, fileName2; 
     private DefaultTableModel model;
-    private int bringScorePlayer;
+    private int [] bringScorePlayer = new int[4];
+    private int [] convertScorePlayer = new int[4];
   
     public Score () {
 
@@ -129,6 +130,20 @@ public class Score extends JFrame implements ActionListener {
                     iconfilename = picture1.getIcon().toString();
                     fileName = iconfilename.substring(iconfilename.lastIndexOf("/"  ) + 1);
 
+                    convertScorePlayer = returnPlayerMatch();
+                                       
+                    if (table.getValueAt(0,1).equals("") || table.getValueAt(1,1).equals("")) {
+                        //System.out.println("is empty");
+                                
+                        if(convertScorePlayer[0] == 1) {
+                            model.setValueAt(score[1], 0, 1);
+
+                        } else if(convertScorePlayer[1] == 0) {
+                            model.setValueAt(score[0], 0, 1);
+
+                        }  
+                    }
+
                 } catch(Exception err) {
                  
                     err.printStackTrace();
@@ -146,67 +161,56 @@ public class Score extends JFrame implements ActionListener {
                     iconfilename2 = picture2.getIcon().toString();
                     fileName2 = iconfilename2.substring(iconfilename2.lastIndexOf("/"  ) + 1);
 
+                    int [] convertScorePlayer = new int[4];
+
+                    convertScorePlayer = returnPlayerMatch();
+
+                    if (table.getValueAt(0,1).equals("") || table.getValueAt(1,1).equals("")) {
+                        //System.out.println("is empty");
+                        
+                        if(convertScorePlayer[2] == 1) {
+            
+                            model.setValueAt(score[1], 1, 1);
+
+                        } else if(convertScorePlayer[3] == 0){
+
+                            model.setValueAt(score[0], 1, 1);
+                        }
+
+
+                    }
+
                 } catch(Exception err) {
                  
                     err.printStackTrace();
                 }
             }
 
-            if(e.getSource() == boom1 || e.getSource() == boom2) {
-                    
-                    int convertScorePlayer;
-
-                    convertScorePlayer = returnMatch();
-
-                    if (table.getValueAt(0,1).equals("") || table.getValueAt(1,1).equals("")) {
-                        //System.out.println("is empty");
-                                
-                        if(convertScorePlayer == 1) {
-                            model.setValueAt(score[1], 0, 1);
-
-                        } else if(convertScorePlayer == 0) {
-            
-                            model.setValueAt(score[1], 1, 1);
-                        }
-
-                    } else if (table.getValueAt(0,2).equals("") || table.getValueAt(1,2).equals("")) {
-                        //System.out.println("is empty");
-                                
-                        if(convertScorePlayer == 1) {
-                            model.setValueAt(score[1], 0, 2);
-            
-                        } else if(convertScorePlayer == 0) {
-                            model.setValueAt(score[1], 1, 2);
-            
-                        }
-                                
-                    }
-                   
-            }
+          
     }
 
-    public int returnMatch() {
+    public int[] returnPlayerMatch() {
                      //bringScorePlayer = 1 -> player 1 won, bringScorePlayer = 0 -> player 2 won
-        if("scissors.png".equals(fileName) && "paper.png".equals(fileName2)) { System.out.println("P1 win : Scissors cuts Paper");  bringScorePlayer = 1;}
-            else if("paper.png".equals(fileName) && "rock.png".equals(fileName2)) { System.out.println("P1 win : Paper covers Rock"); bringScorePlayer = 1;} 
-            else if("rock.png".equals(fileName) && "lizard.png".equals(fileName2)) { System.out.println("P1 win : Rock crushes Lizard"); bringScorePlayer = 1;} 
-            else if("lizard.png".equals(fileName) && "spoke.png".equals(fileName2)) { System.out.println("P1 win : Lizard poisons Spock"); bringScorePlayer = 1;} 
-            else if("spoke.png".equals(fileName) && "scissors.png".equals(fileName2)) { System.out.println("P1 win : Spock smashes Scissors"); bringScorePlayer = 1;} 
-            else if("scissors.png".equals(fileName) && "lizard.png".equals(fileName2)) { System.out.println("P1 win : Scissors decapitates Lizard"); bringScorePlayer = 1;} 
-            else if("lizard.png".equals(fileName) && "paper.png".equals(fileName2)) { System.out.println("P1 win : Lizard eats Paper"); bringScorePlayer = 1;} 
-            else if("paper.png".equals(fileName) && "spock.png".equals(fileName2)) { System.out.println("P1 win : Paper disproves Spock"); bringScorePlayer = 1;} 
-            else if("spock.png".equals(fileName) && "rock.png".equals(fileName2)) { System.out.println("P1 win : Spock vaporizes Rock"); bringScorePlayer = 1;}
-            else if("rock.png".equals(fileName) && "scissors.png".equals(fileName2)) { System.out.println("P1 win : Rock crushes Scissors"); bringScorePlayer = 1;}  
+        if("scissors.png".equals(fileName) && "paper.png".equals(fileName2)) { System.out.println("P1 win : Scissors cuts Paper");  bringScorePlayer[0] = 1; bringScorePlayer[1] = 0;} // player1 [0]=1 score (win) and vice versa
+            else if("paper.png".equals(fileName) && "rock.png".equals(fileName2)) { System.out.println("P1 win : Paper covers Rock"); bringScorePlayer[0] = 1; bringScorePlayer[1] = 0;} 
+            else if("rock.png".equals(fileName) && "lizard.png".equals(fileName2)) { System.out.println("P1 win : Rock crushes Lizard"); bringScorePlayer[0] = 1; bringScorePlayer[1] = 0;} 
+            else if("lizard.png".equals(fileName) && "spoke.png".equals(fileName2)) { System.out.println("P1 win : Lizard poisons Spock"); bringScorePlayer[0] = 1; bringScorePlayer[1] = 0;} 
+            else if("spoke.png".equals(fileName) && "scissors.png".equals(fileName2)) { System.out.println("P1 win : Spock smashes Scissors"); bringScorePlayer[0] = 1; bringScorePlayer[1] = 0;} 
+            else if("scissors.png".equals(fileName) && "lizard.png".equals(fileName2)) { System.out.println("P1 win : Scissors decapitates Lizard"); bringScorePlayer[0] = 1; bringScorePlayer[1] = 0;} 
+            else if("lizard.png".equals(fileName) && "paper.png".equals(fileName2)) { System.out.println("P1 win : Lizard eats Paper"); bringScorePlayer[0] = 1; bringScorePlayer[1] = 0;} 
+            else if("paper.png".equals(fileName) && "spock.png".equals(fileName2)) { System.out.println("P1 win : Paper disproves Spock"); bringScorePlayer[0] = 1; bringScorePlayer[1] = 0;} 
+            else if("spock.png".equals(fileName) && "rock.png".equals(fileName2)) { System.out.println("P1 win : Spock vaporizes Rock"); bringScorePlayer[0] = 1; bringScorePlayer[1] = 0;}
+            else if("rock.png".equals(fileName) && "scissors.png".equals(fileName2)) { System.out.println("P1 win : Rock crushes Scissors"); bringScorePlayer[0] = 1; bringScorePlayer[1] = 0;}  
             
-            else if("scissors.png".equals(fileName2) && "paper.png".equals(fileName)) { System.out.println("P2 win : Scissors cuts Paper"); bringScorePlayer = 0;} 
-            else if("paper.png".equals(fileName2) && "rock.png".equals(fileName)) { System.out.println("P2 win : Paper covers Rock"); bringScorePlayer = 0;} 
-            else if("rock.png".equals(fileName2) && "lizard.png".equals(fileName)) { System.out.println("P2 win : Rock crushes Lizard"); bringScorePlayer = 0;} 
-            else if("lizard.png".equals(fileName2) && "spoke.png".equals(fileName)) { System.out.println("P2 win : Lizard poisons Spock"); bringScorePlayer = 0;} 
-            else if("spoke.png".equals(fileName2) && "scissors.png".equals(fileName)) { System.out.println("P2 win : Spock smashes Scissors"); bringScorePlayer = 0; } 
-            else if("scissors.png".equals(fileName2) && "lizard.png".equals(fileName)) { System.out.println("P2 win : Scissors decapitates Lizard"); bringScorePlayer = 0; } 
-            else if("lizard.png".equals(fileName2) && "paper.png".equals(fileName)) { System.out.println("P2 win : Lizard eats Paper"); bringScorePlayer = 0; } 
-            else if("paper.png".equals(fileName2) && "spock.png".equals(fileName)) { System.out.println("P2 win : Paper disproves Spock"); bringScorePlayer = 0; } 
-            else if("rock.png".equals(fileName2) && "scissors.png".equals(fileName)) { System.out.println("P2 win : Rock crushes Scissors"); bringScorePlayer = 0; }
+            else if("scissors.png".equals(fileName2) && "paper.png".equals(fileName)) { System.out.println("P2 win : Scissors cuts Paper"); bringScorePlayer[2] = 1; bringScorePlayer[3] = 0;} // player2 [0]=1 score (win) and vice versa
+            else if("paper.png".equals(fileName2) && "rock.png".equals(fileName)) { System.out.println("P2 win : Paper covers Rock"); bringScorePlayer[2] = 1; bringScorePlayer[3] = 0;} 
+            else if("rock.png".equals(fileName2) && "lizard.png".equals(fileName)) { System.out.println("P2 win : Rock crushes Lizard"); bringScorePlayer[2] = 1; bringScorePlayer[3] = 0;} 
+            else if("lizard.png".equals(fileName2) && "spoke.png".equals(fileName)) { System.out.println("P2 win : Lizard poisons Spock"); bringScorePlayer[2] = 1; bringScorePlayer[3] = 0;} 
+            else if("spoke.png".equals(fileName2) && "scissors.png".equals(fileName)) { System.out.println("P2 win : Spock smashes Scissors"); bringScorePlayer[2] = 1; bringScorePlayer[3] = 0; } 
+            else if("scissors.png".equals(fileName2) && "lizard.png".equals(fileName)) { System.out.println("P2 win : Scissors decapitates Lizard"); bringScorePlayer[2] = 1; bringScorePlayer[3] = 0; } 
+            else if("lizard.png".equals(fileName2) && "paper.png".equals(fileName)) { System.out.println("P2 win : Lizard eats Paper"); bringScorePlayer[2] = 1; bringScorePlayer[3] = 0; } 
+            else if("paper.png".equals(fileName2) && "spock.png".equals(fileName)) { System.out.println("P2 win : Paper disproves Spock"); bringScorePlayer[2] = 1; bringScorePlayer[3] = 0; } 
+            else if("rock.png".equals(fileName2) && "scissors.png".equals(fileName)) { System.out.println("P2 win : Rock crushes Scissors"); bringScorePlayer[2] = 1; bringScorePlayer[3] = 0; }
             else { System.out.println("Fair"); }
 
             return bringScorePlayer;
