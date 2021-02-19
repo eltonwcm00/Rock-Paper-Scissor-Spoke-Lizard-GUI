@@ -58,6 +58,11 @@ public class Score extends JFrame implements ActionListener {
         p3.setLayout(new GridLayout(2,2,1,1));
         button.add(boom1);
         p3.add(button);
+
+        // boom1.addActionListener(actionEvent -> {
+        //     clickCount1++;
+        //     System.out.println("counter1 is "+ clickCount1);
+        // });
         
         ////////// panel 4 //////////
         p4 = new JPanel(); //create panel for player 2 name,button and image
@@ -78,6 +83,11 @@ public class Score extends JFrame implements ActionListener {
         button2.add(boom2);         //adding button for player 2 in Button2 JPanel
         p4.add(empty); p4.add(button2);
         p4.setLayout(new GridLayout(2,2,1,1));
+
+        // boom2.addActionListener(actionEvent -> {
+        //     clickCount2++;
+        //     System.out.println("counter2 is "+ clickCount2);
+        // });
         
         ////////// panel 5 //////////
         p5 = new JPanel();
