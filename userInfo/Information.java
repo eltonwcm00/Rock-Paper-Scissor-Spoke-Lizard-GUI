@@ -13,8 +13,8 @@ public class Information extends JFrame implements ActionListener {
     private JButton btEnter,btEnter1;
     private JPanel p1, p2, p3, p4, addPlayer1Team1, addPlayer1Team2, addPlayer2Team1, addPlayer2Team2, buttonSize1, buttonSize2;
 
-    private String player1nameLabel;
-    private String player2nameLabel;
+    private String player1Team1nameLabel, player1Team2nameLabel;
+    private String player2Team1nameLabel, player2Team2nameLabel;
 
     Score GM = new Score();
   
@@ -134,27 +134,30 @@ public class Information extends JFrame implements ActionListener {
     // call Score.java
     public void actionPerformed(ActionEvent e) {
 		
-		if(e.getSource() == btEnter /*|| e.getSource() == btEnter1*/) {
+		if(e.getSource() == btEnter || e.getSource() == btEnter1) {
 			
             try {
 
-                player1nameLabel = tfPlayer1.getText();
-                player2nameLabel = tfPlayer2.getText();
+                player1Team1nameLabel = tfPlayer1.getText();
+                player2Team1nameLabel = tfPlayer2.getText();
+                player1Team2nameLabel = tfPlayer3.getText();
+                player2Team2nameLabel = tfPlayer4.getText();
 
                 GM.setBounds(100,100,200,500);
                 GM.setTitle("Assignment");
                 GM.setSize(900,600);
                 GM.setVisible(true);
                 GM.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+              
     
                 GM.getScoreP2().setBackground(p2.getBackground()); GM.getScoreP3().setBackground(p2.getBackground()); 
                 GM.getScoreP4().setBackground(p2.getBackground()); GM.getScoreP5().setBackground(p2.getBackground());
                 GM.getButtonPanel().setBackground(p2.getBackground()); GM.getButtonPanel2().setBackground(p2.getBackground());
     
-                GM.getNameLabel().setText(player1nameLabel);
-                GM.getNameLabel2().setText(player2nameLabel);
-                GM.getTablePlayerName().setValueAt("Player 1: "+player1nameLabel, 0, 0);
-                GM.getTablePlayerName().setValueAt("Player 2: "+player2nameLabel, 1, 0);
+                GM.getNameLabel().setText(player1Team1nameLabel);
+                GM.getNameLabel2().setText(player1Team2nameLabel);
+                GM.getTablePlayerName().setValueAt("Team 1: "+player1Team1nameLabel, 0, 0);
+                GM.getTablePlayerName().setValueAt("Team 2: "+player1Team2nameLabel, 1, 0);
 
             } catch(Exception err) {
                  

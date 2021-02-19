@@ -122,7 +122,7 @@ public class Score extends JFrame implements ActionListener {
             if(e.getSource() == boom1) {
                 
                 try {
-
+                    
                     Random rand = new Random();
                     int index = rand.nextInt(image.length);
                     picture1.setIcon(image[index]);
@@ -159,29 +159,25 @@ public class Score extends JFrame implements ActionListener {
             }  
             
             returnMatchPoint();
-            
-            if(e.getSource() == boom1 ||e.getSource() == boom2) {
                 
-                if(clickCount1 >3 || clickCount2 >3) {
+        if(clickCount1 == 3 || clickCount2 == 3) {
 
-                    int nCol = table.getColumnCount()-1;
-                    int score_amountPlayer1, score_amountPlayer2, totalPlayer1=0, totalPlayer2=0;
+            int nCol = table.getColumnCount()-1;
+            int score_amountPlayer1, score_amountPlayer2, totalPlayer1=0, totalPlayer2=0;
 
-                        for (int j = 1; j < nCol; j++) { 
-                            
-                            score_amountPlayer1 = Integer.parseInt(table.getValueAt(0, j).toString());
-                            score_amountPlayer2 = Integer.parseInt(table.getValueAt(1, j).toString());
+                for (int j = 1; j < nCol; j++) { 
+                    
+                    score_amountPlayer1 = Integer.parseInt(table.getValueAt(0, j).toString());
+                    score_amountPlayer2 = Integer.parseInt(table.getValueAt(1, j).toString());
 
-                            totalPlayer1 += score_amountPlayer1;
-                            totalPlayer2 += score_amountPlayer2;
-                        }
+                    totalPlayer1 += score_amountPlayer1;
+                    totalPlayer2 += score_amountPlayer2;
+                }
 
-                        model.setValueAt(totalPlayer1, 0, 4);
-                        model.setValueAt(totalPlayer2, 1, 4);
+             model.setValueAt(totalPlayer1, 0, 4);
+             model.setValueAt(totalPlayer2, 1, 4);
 
-                        
-                }        
-            }
+        }   
     }              
 
     public int returnMatch() {
@@ -199,7 +195,7 @@ public class Score extends JFrame implements ActionListener {
             else if("rock.png".equals(fileName) && "scissors.png".equals(fileName2)) { System.out.println("P1 win : Rock crushes Scissors"); bringScorePlayer = 1;}
 
             //player 2 win condition
-            else if("lizard.png".equals(fileName) && "rock.png".equals(fileName2)) { System.out.println("P2 win : Rock crushes Lizard"); bringScorePlayer = 2;}
+            else if("lizard.png".equals(fileName) && "rock.png".equals(fileName)) { System.out.println("P2 win : Rock crushes Lizard"); bringScorePlayer = 2;}
             else if("lizard.png".equals(fileName) && "scissors.png".equals(fileName2)) { System.out.println("P2 win : Scissors decapitate Lizard"); bringScorePlayer = 2;}
             else if("paper.png".equals(fileName) && "lizard.png".equals(fileName2)) { System.out.println("P2 win : Lizard eats Paper"); bringScorePlayer = 2;}
             else if("paper.png".equals(fileName) && "scissors.png".equals(fileName2)) { System.out.println("P2 win : Scissors cuts Paper"); bringScorePlayer = 2;}
@@ -241,12 +237,13 @@ public class Score extends JFrame implements ActionListener {
                 model.setValueAt(score[0], 1, 1);
              }
 
-           
         } else if(clickCount1 == 2 && clickCount2 == 2) {
                     
             int convertScorePlayer=0;
 
                 System.out.println("Round 2 code logic execute");
+
+                rounds.setText("Round 2");
                 
                 convertScorePlayer = returnMatch();
 
@@ -268,6 +265,8 @@ public class Score extends JFrame implements ActionListener {
             int convertScorePlayer=0;
 
                 System.out.println("Round 3 code logic execute");
+
+                rounds.setText("Round 3");
                 
                 convertScorePlayer = returnMatch();
 
@@ -283,7 +282,13 @@ public class Score extends JFrame implements ActionListener {
                     model.setValueAt(score[0], 0, 3);
                     model.setValueAt(score[0], 1, 3);
                 }
-        } 
+
+        } /*else if(clickCount1 == 4 && clickCount2 == 4) {
+
+            repaint();
+            revalidate();
+
+        }*/
 
     }
     
