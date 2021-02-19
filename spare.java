@@ -514,3 +514,29 @@ public class Score extends JFrame implements ActionListener {
 }
 
             */
+
+            /*if(clickCount1 >3 || clickCount2 >3) {
+
+                    int nRow = table.getRowCount(), nCol = table.getColumnCount()-1;
+                    //Object[][] tableData = new Object[nRow][nCol];
+                
+                    for (int i = 0; i < nRow; i++) {
+
+                        for (int j = 1; j < nCol; j++) { 
+
+                            Object player1Sum;
+                            
+                            player1Sum = model.getValueAt(i, j);
+
+                            if(!player1Sum.equals("")) {
+
+                                System.out.println(player1Sum+"\t");
+
+                            } else {
+                                System.out.println("Rows are empty");
+                            }
+                            
+                        }
+
+                    }
+                }*/

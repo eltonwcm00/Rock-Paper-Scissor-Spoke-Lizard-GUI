@@ -21,8 +21,7 @@ public class Score extends JFrame implements ActionListener {
     private String iconfilename, iconfilename2, fileName, fileName2; 
     private DefaultTableModel model;
     private int bringScorePlayer;
-    private long clickCount1;
-    private long clickCount2;
+    private long clickCount1, clickCount2;
 
     public Score () {
 
@@ -124,7 +123,6 @@ public class Score extends JFrame implements ActionListener {
                 
                 try {
 
-                    //int index = (int) (Math.random() * (image.length));
                     Random rand = new Random();
                     int index = rand.nextInt(image.length);
                     picture1.setIcon(image[index]);
@@ -158,42 +156,33 @@ public class Score extends JFrame implements ActionListener {
                  
                     err.printStackTrace();
                 }
+            }  
+            
+            returnMatchPoint();
+            
+            if(e.getSource() == boom1 ||e.getSource() == boom2) {
+                
+                if(clickCount1 >3 || clickCount2 >3) {
+
+                    int nCol = table.getColumnCount()-1;
+                    int score_amountPlayer1, score_amountPlayer2, totalPlayer1=0, totalPlayer2=0;
+
+                        for (int j = 1; j < nCol; j++) { 
+                            
+                            score_amountPlayer1 = Integer.parseInt(table.getValueAt(0, j).toString());
+                            score_amountPlayer2 = Integer.parseInt(table.getValueAt(1, j).toString());
+
+                            totalPlayer1 += score_amountPlayer1;
+                            totalPlayer2 += score_amountPlayer2;
+                        }
+
+                        model.setValueAt(totalPlayer1, 0, 4);
+                        model.setValueAt(totalPlayer2, 1, 4);
+
+                        
+                }        
             }
-
-            if(clickCount1 == 1 && clickCount2 == 1) {
-                    
-                int convertScorePlayer=0;
-                //int nRow = table.getRowCount(), nCol = table.getColumnCount();
-
-                
-
-                System.out.println("Round 1 code logic execute");
-                
-                convertScorePlayer = returnMatch();
-
-                if(convertScorePlayer == 1) {
-                    model.setValueAt(score[1], 0, 1); //score[1]
-                    model.setValueAt(score[0], 1, 1);
-    
-                }
-                else if(convertScorePlayer == 2) {
-                    model.setValueAt(score[0], 0, 1); //score[1]
-                    model.setValueAt(score[1], 1, 1);
-    
-                }
-                else  
-                {
-                    model.setValueAt(score[0], 0, 1);
-                    model.setValueAt(score[0], 1, 1);
-                }
-                // else if(convertScorePlayer == 0) {
-    
-                //     model.setValueAt(score[1], 1, 1);
-                //     //model.setValueAt(score[0], 0, 1);
-                // }
-               
-        }
-    }
+    }              
 
     public int returnMatch() {
          
@@ -229,6 +218,73 @@ public class Score extends JFrame implements ActionListener {
             else if("spock.png".equals(fileName) && "spock.png".equals(fileName2)) { System.out.println("Tie"); bringScorePlayer = 0;}
 
             return bringScorePlayer;
+    }
+
+    public void returnMatchPoint() {
+
+        if(clickCount1 == 1 && clickCount2 == 1) {
+            
+            int convertScorePlayer=0;
+
+            convertScorePlayer = returnMatch();
+
+            if(convertScorePlayer == 1) {
+                model.setValueAt(score[1], 0, 1);
+                model.setValueAt(score[0], 1, 1);
+        
+            } else if(convertScorePlayer == 2) {
+                model.setValueAt(score[0], 0, 1); 
+                model.setValueAt(score[1], 1, 1);
+        
+             } else  {
+                model.setValueAt(score[0], 0, 1);
+                model.setValueAt(score[0], 1, 1);
+             }
+
+           
+        } else if(clickCount1 == 2 && clickCount2 == 2) {
+                    
+            int convertScorePlayer=0;
+
+                System.out.println("Round 2 code logic execute");
+                
+                convertScorePlayer = returnMatch();
+
+                if(convertScorePlayer == 1) {
+                    model.setValueAt(score[1], 0, 2); 
+                    model.setValueAt(score[0], 1, 2);
+    
+                } else if(convertScorePlayer == 2) {
+                    model.setValueAt(score[0], 0, 2); 
+                    model.setValueAt(score[1], 1, 2);
+    
+                } else  {
+                    model.setValueAt(score[0], 0, 2);
+                    model.setValueAt(score[0], 1, 2);
+                }
+    
+        } else if(clickCount1 == 3 && clickCount2 == 3) {
+                    
+            int convertScorePlayer=0;
+
+                System.out.println("Round 3 code logic execute");
+                
+                convertScorePlayer = returnMatch();
+
+                if(convertScorePlayer == 1) {
+                    model.setValueAt(score[1], 0, 3); 
+                    model.setValueAt(score[0], 1, 3);
+    
+                } else if(convertScorePlayer == 2) {
+                    model.setValueAt(score[0], 0, 3); 
+                    model.setValueAt(score[1], 1, 3);
+    
+                } else  {
+                    model.setValueAt(score[0], 0, 3);
+                    model.setValueAt(score[0], 1, 3);
+                }
+        } 
+
     }
     
 }
