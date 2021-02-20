@@ -4,6 +4,9 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
+import userInfo.Information;
+import userResult.FinalResult;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.Math;
@@ -22,6 +25,9 @@ public class Score extends JFrame implements ActionListener {
     private DefaultTableModel model;
     private int bringScorePlayer;
     private long clickCount1, clickCount2;
+
+    FinalResult fr = new FinalResult();
+    //Information java = new Information();
 
     public Score () {
 
@@ -180,6 +186,9 @@ public class Score extends JFrame implements ActionListener {
         } else if(clickCount1 == 4 ) {
 
             //testing works !
+
+            Information java = new Information();
+            System.out.println(java.getInfoP2());
 
             p2.removeAll();
             p2.invalidate();
