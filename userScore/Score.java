@@ -177,7 +177,23 @@ public class Score extends JFrame implements ActionListener {
              model.setValueAt(totalPlayer1, 0, 4);
              model.setValueAt(totalPlayer2, 1, 4);
 
-        }   
+        } else if(clickCount1 == 4 ) {
+
+            //testing works !
+
+            p2.removeAll();
+            p2.invalidate();
+            p2.repaint();
+
+            rounds.setText("hello");
+            p2.add(rounds);
+
+            p2.revalidate();
+            p2.repaint();
+            
+        }
+        
+        
     }              
 
     public int returnMatch() {

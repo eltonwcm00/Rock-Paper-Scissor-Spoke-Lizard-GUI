@@ -143,6 +143,13 @@ public class Information extends JFrame implements ActionListener {
                 player1Team2nameLabel = tfPlayer3.getText();
                 player2Team2nameLabel = tfPlayer4.getText();
 
+                //JFrame js = new JFrame();
+
+                /*if(2) {
+                    GM.setVisible(false);
+                    js.setVIsible(true);
+                }*/
+
                 GM.setBounds(100,100,200,500);
                 GM.setTitle("Assignment");
                 GM.setSize(900,600);
@@ -158,7 +165,7 @@ public class Information extends JFrame implements ActionListener {
                 GM.getNameLabel2().setText(player1Team2nameLabel);
                 GM.getTablePlayerName().setValueAt("Team 1: "+player1Team1nameLabel, 0, 0);
                 GM.getTablePlayerName().setValueAt("Team 2: "+player1Team2nameLabel, 1, 0);
-
+            
             } catch(Exception err) {
                  
                 err.printStackTrace();
