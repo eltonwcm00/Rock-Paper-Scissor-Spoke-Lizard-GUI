@@ -165,37 +165,49 @@ public class Score extends JFrame implements ActionListener {
             }  
             
             returnMatchPoint();
-                
-        if(clickCount1 == 3 || clickCount2 == 3) {
 
-            int nCol = table.getColumnCount()-1;
-            int score_amountPlayer1, score_amountPlayer2, totalPlayer1=0, totalPlayer2=0;
+            if(clickCount1 == 3 || clickCount2 == 3) {
 
-                for (int j = 1; j < nCol; j++) { 
-                    
-                    score_amountPlayer1 = Integer.parseInt(table.getValueAt(0, j).toString());
-                    score_amountPlayer2 = Integer.parseInt(table.getValueAt(1, j).toString());
+                int nCol = table.getColumnCount()-1;
+                int score_amountPlayer1, score_amountPlayer2, totalPlayer1=0, totalPlayer2=0;
+    
+                    for (int j = 1; j < nCol; j++) { 
+                        
+                        score_amountPlayer1 = Integer.parseInt(table.getValueAt(0, j).toString());
+                        score_amountPlayer2 = Integer.parseInt(table.getValueAt(1, j).toString());
+    
+                        totalPlayer1 += score_amountPlayer1;
+                        totalPlayer2 += score_amountPlayer2;
+                    }
+    
+                 model.setValueAt(totalPlayer1, 0, 4);
+                 model.setValueAt(totalPlayer2, 1, 4);
+    
+                 Information info = new Information();
+                 Score2 sc2 = new Score2();
+    
+                 String player1Team2nameLabel = info.getInfoPlayer2Team1name().getText();
+                 String player2Team2nameLabel = info.getInfoPlayer2Team2name().getText();
 
-                    totalPlayer1 += score_amountPlayer1;
-                    totalPlayer2 += score_amountPlayer2;
-                }
+                 System.out.println(player1Team2nameLabel);
+    
+                 sc2.setBounds(100,100,200,500);
+                 sc2.setTitle("Assignment");
+                 sc2.setSize(900,600);
+                 sc2.setVisible(true);
+                 sc2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                   
+                 sc2.getScoreP2().setBackground(p2.getBackground()); sc2.getScoreP3().setBackground(p2.getBackground()); 
+                 sc2.getScoreP4().setBackground(p2.getBackground()); sc2.getScoreP5().setBackground(p2.getBackground());
+                 sc2.getButtonPanel().setBackground(p2.getBackground()); sc2.getButtonPanel2().setBackground(p2.getBackground());
+    
+                 sc2.getNameLabel().setText(player1Team2nameLabel);
+                 sc2.getNameLabel2().setText(player2Team2nameLabel);
+                 sc2.getTablePlayerName().setValueAt("Team 1: "+player1Team2nameLabel, 0, 0);
+                 sc2.getTablePlayerName().setValueAt("Team 2: "+player2Team2nameLabel, 1, 0);
 
-             model.setValueAt(totalPlayer1, 0, 4);
-             model.setValueAt(totalPlayer2, 1, 4);
-
-             Score2 sc2 = new Score2();
-
-             sc2.setBounds(100,100,200,500);
-             sc2.setTitle("Assignment");
-             sc2.setSize(900,600);
-             sc2.setVisible(true);
-             sc2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-               
-             sc2.getScoreP2().setBackground(p2.getBackground()); sc2.getScoreP3().setBackground(p2.getBackground()); 
-             sc2.getScoreP4().setBackground(p2.getBackground()); sc2.getScoreP5().setBackground(p2.getBackground());
-             sc2.getButtonPanel().setBackground(p2.getBackground()); sc2.getButtonPanel2().setBackground(p2.getBackground());
-
-        }  
+                 //info.actionPerformed(e);
+            }   
     }
 
     public int returnMatch() {
@@ -303,5 +315,4 @@ public class Score extends JFrame implements ActionListener {
 
         } 
     }
-    
 }

@@ -4,10 +4,12 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
+import userInfo.Information;
 import userResult.FinalResult;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.Math;
 import java.util.Random;
 
 public class Score2 extends JFrame implements ActionListener {
@@ -26,6 +28,7 @@ public class Score2 extends JFrame implements ActionListener {
     private long clickCount1, clickCount2;
 
     FinalResult fr = new FinalResult();
+    //Information java = new Information();
 
     public Score2 () {
 

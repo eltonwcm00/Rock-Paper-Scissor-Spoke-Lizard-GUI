@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import userScore.Score;
+import userScore.Score2;
 public class Information extends JFrame implements ActionListener {
     
     private JTextField tfPlayer1,tfPlayer2,tfPlayer3,tfPlayer4;
@@ -167,6 +168,23 @@ public class Information extends JFrame implements ActionListener {
                 GM.getNameLabel2().setText(player1Team2nameLabel);
                 GM.getTablePlayerName().setValueAt("Team 1: "+player1Team1nameLabel, 0, 0);
                 GM.getTablePlayerName().setValueAt("Team 2: "+player1Team2nameLabel, 1, 0);
+
+                /*Score2 sc2 = new Score2();
+
+                sc2.setBounds(100,100,200,500);
+                sc2.setTitle("Assignment");
+                sc2.setSize(900,600);
+                sc2.setVisible(true);
+                sc2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                  
+                sc2.getScoreP2().setBackground(p2.getBackground()); sc2.getScoreP3().setBackground(p2.getBackground()); 
+                sc2.getScoreP4().setBackground(p2.getBackground()); sc2.getScoreP5().setBackground(p2.getBackground());
+                sc2.getButtonPanel().setBackground(p2.getBackground()); sc2.getButtonPanel2().setBackground(p2.getBackground());
+   
+                sc2.getNameLabel().setText(player2Team1nameLabel);
+                sc2.getNameLabel2().setText(player2Team2nameLabel);
+                sc2.getTablePlayerName().setValueAt("Team 1: "+player2Team1nameLabel, 0, 0);
+                sc2.getTablePlayerName().setValueAt("Team 2: "+player2Team2nameLabel, 1, 0);*/
 
             } catch(Exception err) {
                  
