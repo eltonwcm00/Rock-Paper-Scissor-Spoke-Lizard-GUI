@@ -136,11 +136,12 @@ public class Information extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         Score2 sc2 = new Score2();
-		
-		if(e.getSource() == btEnter) {
-			
-            try {
 
+        try {
+
+            if(e.getSource() == btEnter) {
+			
+           
                 player1Team1nameLabel = tfPlayer1.getText();
                 player1Team2nameLabel = tfPlayer3.getText();
 
@@ -161,35 +162,34 @@ public class Information extends JFrame implements ActionListener {
                 GM.getTablePlayerName().setValueAt("Team 1: "+player1Team1nameLabel, 0, 0);
                 GM.getTablePlayerName().setValueAt("Team 2: "+player1Team2nameLabel, 1, 0);
 
-            } catch(Exception err) {
+            } else if(e.getSource() == btEnter1) {
+    
+                player2Team1nameLabel = tfPlayer2.getText();
+                player2Team2nameLabel = tfPlayer4.getText();
+    
+                GM.setVisible(false);
+    
+                sc2.setBounds(100,100,200,500);
+                sc2.setTitle("Assignment");
+                sc2.setSize(900,600);
+                sc2.setVisible(true);
+                sc2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                  
+                sc2.getScoreP2().setBackground(p2.getBackground()); sc2.getScoreP3().setBackground(p2.getBackground()); 
+                sc2.getScoreP4().setBackground(p2.getBackground()); sc2.getScoreP5().setBackground(p2.getBackground());
+                sc2.getButtonPanel().setBackground(p2.getBackground()); sc2.getButtonPanel2().setBackground(p2.getBackground());
+    
+                sc2.getNameLabel().setText(player2Team1nameLabel);
+                sc2.getNameLabel2().setText(player2Team2nameLabel);
+                sc2.getTablePlayerName().setValueAt("Team 1: "+player2Team1nameLabel, 0, 0);
+                sc2.getTablePlayerName().setValueAt("Team 2: "+player2Team2nameLabel, 1, 0);
+            }
+
+        } catch(Exception err) {
                  
-                err.printStackTrace();
-            }  
+            err.printStackTrace();
         }
-
-        if(e.getSource() == btEnter1) {
-
-            player2Team1nameLabel = tfPlayer2.getText();
-            player2Team2nameLabel = tfPlayer4.getText();
-
-            GM.setVisible(false);
-
-            sc2.setBounds(100,100,200,500);
-            sc2.setTitle("Assignment");
-            sc2.setSize(900,600);
-            sc2.setVisible(true);
-            sc2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-              
-            sc2.getScoreP2().setBackground(p2.getBackground()); sc2.getScoreP3().setBackground(p2.getBackground()); 
-            sc2.getScoreP4().setBackground(p2.getBackground()); sc2.getScoreP5().setBackground(p2.getBackground());
-            sc2.getButtonPanel().setBackground(p2.getBackground()); sc2.getButtonPanel2().setBackground(p2.getBackground());
-
-            sc2.getNameLabel().setText(player2Team1nameLabel);
-            sc2.getNameLabel2().setText(player2Team2nameLabel);
-            sc2.getTablePlayerName().setValueAt("Team 1: "+player2Team1nameLabel, 0, 0);
-            sc2.getTablePlayerName().setValueAt("Team 2: "+player2Team2nameLabel, 1, 0);
-        }
-
+          		
 	}  
 }
 

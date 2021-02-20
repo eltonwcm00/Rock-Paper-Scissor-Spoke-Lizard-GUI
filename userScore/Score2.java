@@ -4,12 +4,10 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-import userInfo.Information;
 import userResult.FinalResult;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.Math;
 import java.util.Random;
 
 public class Score2 extends JFrame implements ActionListener {
@@ -184,11 +182,8 @@ public class Score2 extends JFrame implements ActionListener {
              model.setValueAt(totalPlayer1, 0, 4);
              model.setValueAt(totalPlayer2, 1, 4);
 
-        } else if(clickCount1 == 4 ) {
-
-           
-            
         } 
+
     }
 
     public int returnMatch() {
@@ -294,13 +289,7 @@ public class Score2 extends JFrame implements ActionListener {
                     model.setValueAt(score[0], 1, 3);
                 }
 
-        } /*else if(clickCount1 == 4 && clickCount2 == 4) {
-
-            repaint();
-            revalidate();
-
-        }*/
-
+        } 
     }
     
 }
