@@ -131,6 +131,9 @@ public class Information extends JFrame implements ActionListener {
     public JPanel getInfoButtonSize1() { return buttonSize1; };
     public JPanel getInfoButtonSize2() { return buttonSize2; };
 
+    public JTextField getInfoPlayer2Team1name() { return tfPlayer3; }
+    public JTextField getInfoPlayer2Team2name() { return tfPlayer4; }
+    
     // call Score.java
     public void actionPerformed(ActionEvent e) {
 		
@@ -156,7 +159,6 @@ public class Information extends JFrame implements ActionListener {
                 GM.setVisible(true);
                 GM.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
               
-    
                 GM.getScoreP2().setBackground(p2.getBackground()); GM.getScoreP3().setBackground(p2.getBackground()); 
                 GM.getScoreP4().setBackground(p2.getBackground()); GM.getScoreP5().setBackground(p2.getBackground());
                 GM.getButtonPanel().setBackground(p2.getBackground()); GM.getButtonPanel2().setBackground(p2.getBackground());
@@ -165,7 +167,7 @@ public class Information extends JFrame implements ActionListener {
                 GM.getNameLabel2().setText(player1Team2nameLabel);
                 GM.getTablePlayerName().setValueAt("Team 1: "+player1Team1nameLabel, 0, 0);
                 GM.getTablePlayerName().setValueAt("Team 2: "+player1Team2nameLabel, 1, 0);
-            
+
             } catch(Exception err) {
                  
                 err.printStackTrace();

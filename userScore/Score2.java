@@ -4,14 +4,13 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-import userInfo.Information;
 import userResult.FinalResult;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.Math;
 import java.util.Random;
-public class Score extends JFrame implements ActionListener {
+
+public class Score2 extends JFrame implements ActionListener {
     
     private JPanel p1, p2, p3, p4, p5, button, button2;
     private JLabel empty, rounds, picture1, picture2, player1name, player2name;
@@ -27,9 +26,8 @@ public class Score extends JFrame implements ActionListener {
     private long clickCount1, clickCount2;
 
     FinalResult fr = new FinalResult();
-    //Information java = new Information();
 
-    public Score () {
+    public Score2 () {
 
         // panel 1
         p1 = new JPanel(); //create panel for title
@@ -90,7 +88,7 @@ public class Score extends JFrame implements ActionListener {
         //String [][] playername  = { {"Team 1: ",""+score[1],""+score[1],""+score[1],""+score[1]},{"Team 2: ",""+score[0],""+score[0],""+score[0],""+score[0]} };//create row for table
         String [][] playername  = { {"Team 1: ",},{"Team 2: ",} };//create row for table
 
-        String [] column = {"Player 1","Round 1","Round 2","Round 3","Total"}; //create column for table
+        String [] column = {"Player","Round 1","Round 2","Round 3","Total"}; //create column for table
         model = new DefaultTableModel(playername, column);
         table = new JTable(model); //set the table with row and column variables
         table.setRowHeight(60);
@@ -183,19 +181,11 @@ public class Score extends JFrame implements ActionListener {
              model.setValueAt(totalPlayer1, 0, 4);
              model.setValueAt(totalPlayer2, 1, 4);
 
-             Score2 sc2 = new Score2();
+        } else if(clickCount1 == 4 ) {
 
-             sc2.setBounds(100,100,200,500);
-             sc2.setTitle("Assignment");
-             sc2.setSize(900,600);
-             sc2.setVisible(true);
-             sc2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-               
-             sc2.getScoreP2().setBackground(p2.getBackground()); sc2.getScoreP3().setBackground(p2.getBackground()); 
-             sc2.getScoreP4().setBackground(p2.getBackground()); sc2.getScoreP5().setBackground(p2.getBackground());
-             sc2.getButtonPanel().setBackground(p2.getBackground()); sc2.getButtonPanel2().setBackground(p2.getBackground());
-
-        }  
+           
+            
+        } 
     }
 
     public int returnMatch() {
@@ -301,7 +291,13 @@ public class Score extends JFrame implements ActionListener {
                     model.setValueAt(score[0], 1, 3);
                 }
 
-        } 
+        } /*else if(clickCount1 == 4 && clickCount2 == 4) {
+
+            repaint();
+            revalidate();
+
+        }*/
+
     }
     
 }
