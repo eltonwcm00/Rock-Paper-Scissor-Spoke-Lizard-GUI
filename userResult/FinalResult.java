@@ -16,14 +16,15 @@ public class FinalResult extends JFrame {
     private JScrollPane sp1;
     private DefaultTableModel model, model2;
     
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         
         FinalResult as1 = new FinalResult();
         as1.setBounds(100, 100, 1000, 500);
         as1.setTitle("Assignment Sample");
         as1.setVisible(true);
         as1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
+    }*/
+
     public FinalResult() {
 
         p1 = new JPanel ();
@@ -75,7 +76,7 @@ public class FinalResult extends JFrame {
         String [][] playername1  = { {"Team 1: ",},{"Team 2: ",} };//create row for table
         String [] column1 = {"Player 2","Round 1","Round 2","Round 3","Total"}; //create column for table
         model2 = new DefaultTableModel(playername1, column1);
-        table1 = new JTable(model); //set the table with row and column variables
+        table1 = new JTable(model2); //set the table with row and column variables
         table1.setRowHeight(60);
         sp1 = new JScrollPane(table1);
         sp1.setPreferredSize(new Dimension(600,143));
@@ -86,8 +87,8 @@ public class FinalResult extends JFrame {
     }
 
     public JLabel returnCongratsMsg() { return congrat; }
-    public JLabel returnTeam1ScoreLabel() { return team1; }
-    public JLabel returnTeam2ScoreLabel() { return team2; }
+    /*public JLabel returnTeam1ScoreLabel() { return team1; }
+    public JLabel returnTeam2ScoreLabel() { return team2; }*/
     public DefaultTableModel returnTablePlayer1Name() { return model; }
     public DefaultTableModel returnTablePlayer2Name() { return model2; }
             

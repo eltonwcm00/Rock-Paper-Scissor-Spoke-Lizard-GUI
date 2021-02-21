@@ -9,7 +9,6 @@ import userResult.FinalResult;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
-
 public class Score2 extends JFrame implements ActionListener {
     
     private JPanel p1, p2, p3, p4, p5, button, button2;
@@ -24,9 +23,7 @@ public class Score2 extends JFrame implements ActionListener {
     private DefaultTableModel model;
     private int bringScorePlayer;
     private long clickCount1, clickCount2;
-
-    FinalResult fr = new FinalResult();
-
+    
     public Score2 () {
 
         // panel 1
@@ -122,6 +119,8 @@ public class Score2 extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
 
+        FinalResult fr = new FinalResult();
+
             if(e.getSource() == boom1) {
                 
                 try {
@@ -162,27 +161,58 @@ public class Score2 extends JFrame implements ActionListener {
             }  
             
             returnMatchPoint();
+     
+        if(e.getSource() == boom1 || e.getSource() == boom2) {
+
+            if(clickCount1 == 3 || clickCount2 == 3) {
+
+                int nCol = table.getColumnCount()-1;
+                int score_amountPlayer1, score_amountPlayer2, totalPlayer1=0, totalPlayer2=0;
+    
+                    for (int j = 1; j < nCol; j++) { 
+                        
+                        score_amountPlayer1 = Integer.parseInt(table.getValueAt(0, j).toString());
+                        score_amountPlayer2 = Integer.parseInt(table.getValueAt(1, j).toString());
+    
+                        totalPlayer1 += score_amountPlayer1;
+                        totalPlayer2 += score_amountPlayer2;
+                    }
                 
-        if(clickCount1 == 3 || clickCount2 == 3) {
+                model.setValueAt(totalPlayer1, 0, 4);
+                model.setValueAt(totalPlayer2, 1, 4);
+    
+                int nCol2 = table.getColumnCount();
 
-            int nCol = table.getColumnCount()-1;
-            int score_amountPlayer1, score_amountPlayer2, totalPlayer1=0, totalPlayer2=0;
+                String passTeam1Name, passTeam2Name;
+                int passScoreCol1, passScoreCol2;
+                
+                passTeam1Name = table.getValueAt(0,0).toString();
+                passTeam2Name = table.getValueAt(1,0).toString();
 
-                for (int j = 1; j < nCol; j++) { 
+                System.out.println(passTeam1Name);
+                System.out.println(passTeam2Name);
+
+                for(int x=1; x<nCol2; x++) {
                     
-                    score_amountPlayer1 = Integer.parseInt(table.getValueAt(0, j).toString());
-                    score_amountPlayer2 = Integer.parseInt(table.getValueAt(1, j).toString());
+                    passScoreCol1 = Integer.parseInt(table.getValueAt(0, x).toString());
+                    passScoreCol2 = Integer.parseInt(table.getValueAt(1, x).toString());
+    
+                    System.out.println(passScoreCol1);  
+                    System.out.println(passScoreCol2); 
 
-                    totalPlayer1 += score_amountPlayer1;
-                    totalPlayer2 += score_amountPlayer2;
                 }
-            
-            model.setValueAt(totalPlayer1, 0, 4);
-            model.setValueAt(totalPlayer2, 1, 4);
+                
+                fr.setBounds(100, 100, 1000, 500);
+                fr.setTitle("Assignment Sample");
+                fr.setVisible(true);
+                fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-            System.out.println(model.getValueAt(0, 4));
-            System.out.println(model.getValueAt(1, 4));
-        } 
+                fr.returnTablePlayer2Name().setValueAt(passTeam1Name, 0, 0);
+                fr.returnTablePlayer2Name().setValueAt(passTeam2Name, 1, 0);
+            }
+
+        }            
+        
     }
 
     public int returnMatch() {

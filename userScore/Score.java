@@ -25,7 +25,7 @@ public class Score extends JFrame implements ActionListener {
     private long clickCount1, clickCount2;
 
     FinalResult fr = new FinalResult();
-    
+
     public Score () {
 
         // panel 1
@@ -179,6 +179,17 @@ public class Score extends JFrame implements ActionListener {
     
                  model.setValueAt(totalPlayer1, 0, 4);
                  model.setValueAt(totalPlayer2, 1, 4);
+
+                /*fr.setBounds(100, 100, 1000, 500);
+                fr.setTitle("Assignment Sample");
+                fr.setVisible(false);
+                fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);*/
+
+                 /*for(int y=0; y<5; y++) {
+
+                    fr.returnTablePlayer2Name().setValueAt(table.getValueAt(0, y), 0, y);
+                    fr.returnTablePlayer2Name().setValueAt(table.getValueAt(1, y), 1, y);
+                }*/
             }   
     }
 
