@@ -198,10 +198,12 @@ public class Score2 extends JFrame implements ActionListener {
                     passScoreCol2 = Integer.parseInt(table.getValueAt(1, x).toString());
     
                     System.out.println(passScoreCol1);  
-                    System.out.println(passScoreCol2); 
-
+                    System.out.println(passScoreCol2);
+                    
+                    fr.returnTablePlayer2Name().setValueAt(passScoreCol1, 0, x);
+                    fr.returnTablePlayer2Name().setValueAt(passScoreCol2, 1, x);
                 }
-                
+    
                 fr.setBounds(100, 100, 1000, 500);
                 fr.setTitle("Assignment Sample");
                 fr.setVisible(true);
