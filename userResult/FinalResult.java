@@ -6,10 +6,13 @@ import javax.swing.JTable;
 public class FinalResult extends JFrame {
     
     private JButton btExit;
-    private JLabel lb1;
+    private JLabel gametitle, imagelabel, team1, team2, congrat, scoreteam1, scoreteam2;
     private ImageIcon image = new ImageIcon(new ImageIcon("userResult/image/Celebrate.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
     private String score[] = {"0","1"};
     private JTable table, table1;
+    private JPanel p1, p2, p3, p4, p5, tablepanel, tablepanel2;
+    private JScrollPane sp1;
+    
     public static void main(String[] args) {
         
         FinalResult as1 = new FinalResult();
@@ -20,23 +23,23 @@ public class FinalResult extends JFrame {
     }
     public FinalResult() {
 
-        JPanel p1=new JPanel ();
-        JPanel p2=new JPanel ();
-        JPanel p3=new JPanel ();
-        JPanel p4=new JPanel ();
-        JPanel p5=new JPanel ();
-        btExit=new JButton("Exit");
+        p1 = new JPanel ();
+        p2 = new JPanel ();
+        p3 = new JPanel ();
+        p4 = new JPanel ();
+        p5 = new JPanel ();
+        btExit = new JButton("Exit");
         
-        JLabel gametitle = new JLabel("Rock-Paper-Scissors-Lizard-Spock");
-        JLabel imagelabel = new JLabel(image);
-        JLabel team1=new JLabel("Team 1:    4");
-        JLabel team2=new JLabel("Team 2:    2");
+        gametitle = new JLabel("Rock-Paper-Scissors-Lizard-Spock");
+        imagelabel = new JLabel(image);
+        team1 = new JLabel("Team 1:    4");
+        team2 = new JLabel("Team 2:    2");
         team1.setFont(new Font("Verdana",Font.BOLD,19));
         team2.setFont(new Font("Verdana",Font.BOLD,19));
-        JLabel congrat=new JLabel("Congratulation !! Team 1");
+        congrat = new JLabel("Congratulation !! Team 1");
         congrat.setFont(new Font("Verdana",Font.BOLD,19));
-        JLabel scoreteam1=new JLabel("ScoreTeam1:4");
-        JLabel scoreteam2=new JLabel("ScoreTeam2:2");
+        scoreteam1 = new JLabel("ScoreTeam1:4");
+        scoreteam2 = new JLabel("ScoreTeam2:2");
     
         p4.setLayout(new GridLayout(2,5,1,1));
         p4.add(team1);p4.add(new JLabel(""));p4.add(team2);
@@ -53,7 +56,8 @@ public class FinalResult extends JFrame {
         add(p4,BorderLayout.CENTER);
         add(p5,BorderLayout.SOUTH);
         
-        JPanel tablepanel = new JPanel();
+        //PLAYER 1 PANE
+        tablepanel = new JPanel();
         String [][] playername  = {{"Team 1: Syed",""+score[1],"","",""},{"Team 2: Elton",""+score[0],"","",""}};//create row for table
         String [] column = {"Player","Round 1","Round 2","Round 3","Total"}; //create column for table
         table = new JTable(playername,column); //set the table with row and column variables
@@ -64,12 +68,13 @@ public class FinalResult extends JFrame {
         sp.setBounds(21,2,2,2);
         p5.add(tablepanel); //work in progress
         
-        JPanel tablepanel2 = new JPanel();
+        //PLAYER 2 PANE
+        tablepanel2 = new JPanel();
         String [][] playername1  = {{"Team 1: Steven",""+score[1],"","",""},{"Team 2: Elton",""+score[0],"","",""}};//create row for table
         String [] column1 = {"Player","Round 1","Round 2","Round 3","Total"}; //create column for table
         table1 = new JTable(playername1,column1); //set the table with row and column variables
         table1.setRowHeight(60);
-        JScrollPane sp1 = new JScrollPane(table1);
+        sp1 = new JScrollPane(table1);
         sp1.setPreferredSize(new Dimension(600,143));
         tablepanel2.add(sp1);
         sp1.setBounds(21,2,2,2);

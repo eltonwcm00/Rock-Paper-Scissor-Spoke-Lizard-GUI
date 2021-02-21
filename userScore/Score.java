@@ -25,8 +25,7 @@ public class Score extends JFrame implements ActionListener {
     private long clickCount1, clickCount2;
 
     FinalResult fr = new FinalResult();
-    //Information java = new Information();
-
+    
     public Score () {
 
         // panel 1

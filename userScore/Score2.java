@@ -26,7 +26,6 @@ public class Score2 extends JFrame implements ActionListener {
     private long clickCount1, clickCount2;
 
     FinalResult fr = new FinalResult();
-    //Information java = new Information();
 
     public Score2 () {
 
@@ -178,12 +177,13 @@ public class Score2 extends JFrame implements ActionListener {
                     totalPlayer1 += score_amountPlayer1;
                     totalPlayer2 += score_amountPlayer2;
                 }
+            
+            model.setValueAt(totalPlayer1, 0, 4);
+            model.setValueAt(totalPlayer2, 1, 4);
 
-             model.setValueAt(totalPlayer1, 0, 4);
-             model.setValueAt(totalPlayer2, 1, 4);
-
+            System.out.println(model.getValueAt(0, 4));
+            System.out.println(model.getValueAt(1, 4));
         } 
-
     }
 
     public int returnMatch() {
