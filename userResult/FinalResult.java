@@ -2,7 +2,9 @@ package userResult;
 
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.JTable; 
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 public class FinalResult extends JFrame {
     
     private JButton btExit;
@@ -12,6 +14,7 @@ public class FinalResult extends JFrame {
     private JTable table, table1;
     private JPanel p1, p2, p3, p4, p5, tablepanel, tablepanel2;
     private JScrollPane sp1;
+    private DefaultTableModel model, model2;
     
     public static void main(String[] args) {
         
@@ -32,14 +35,12 @@ public class FinalResult extends JFrame {
         
         gametitle = new JLabel("Rock-Paper-Scissors-Lizard-Spock");
         imagelabel = new JLabel(image);
-        team1 = new JLabel("Team 1:    4");
-        team2 = new JLabel("Team 2:    2");
+        team1 = new JLabel(" ");
+        team2 = new JLabel(" ");
         team1.setFont(new Font("Verdana",Font.BOLD,19));
         team2.setFont(new Font("Verdana",Font.BOLD,19));
         congrat = new JLabel("Congratulation !! Team 1");
         congrat.setFont(new Font("Verdana",Font.BOLD,19));
-        scoreteam1 = new JLabel("ScoreTeam1:4");
-        scoreteam2 = new JLabel("ScoreTeam2:2");
     
         p4.setLayout(new GridLayout(2,5,1,1));
         p4.add(team1);p4.add(new JLabel(""));p4.add(team2);
@@ -58,9 +59,10 @@ public class FinalResult extends JFrame {
         
         //PLAYER 1 PANE
         tablepanel = new JPanel();
-        String [][] playername  = {{"Team 1: Syed",""+score[1],"","",""},{"Team 2: Elton",""+score[0],"","",""}};//create row for table
-        String [] column = {"Player","Round 1","Round 2","Round 3","Total"}; //create column for table
-        table = new JTable(playername,column); //set the table with row and column variables
+        String [][] playername  = { {"Team 1: ",},{"Team 2: ",} };//create row for table
+        String [] column = {"Player 1","Round 1","Round 2","Round 3","Total"}; //create column for table
+        model = new DefaultTableModel(playername, column);
+        table = new JTable(model); //set the table with row and column variables
         table.setRowHeight(60);
         JScrollPane sp = new JScrollPane(table);
         sp.setPreferredSize(new Dimension(600,143));
@@ -70,9 +72,10 @@ public class FinalResult extends JFrame {
         
         //PLAYER 2 PANE
         tablepanel2 = new JPanel();
-        String [][] playername1  = {{"Team 1: Steven",""+score[1],"","",""},{"Team 2: Elton",""+score[0],"","",""}};//create row for table
-        String [] column1 = {"Player","Round 1","Round 2","Round 3","Total"}; //create column for table
-        table1 = new JTable(playername1,column1); //set the table with row and column variables
+        String [][] playername1  = { {"Team 1: ",},{"Team 2: ",} };//create row for table
+        String [] column1 = {"Player 2","Round 1","Round 2","Round 3","Total"}; //create column for table
+        model2 = new DefaultTableModel(playername1, column1);
+        table1 = new JTable(model); //set the table with row and column variables
         table1.setRowHeight(60);
         sp1 = new JScrollPane(table1);
         sp1.setPreferredSize(new Dimension(600,143));
@@ -81,6 +84,12 @@ public class FinalResult extends JFrame {
         p5.add(tablepanel2); //work in progress
         p5.setLayout(new GridLayout(2,1,10,10));
     }
+
+    public JLabel returnCongratsMsg() { return congrat; }
+    public JLabel returnTeam1ScoreLabel() { return team1; }
+    public JLabel returnTeam2ScoreLabel() { return team2; }
+    public DefaultTableModel returnTablePlayer1Name() { return model; }
+    public DefaultTableModel returnTablePlayer2Name() { return model2; }
             
 }
 

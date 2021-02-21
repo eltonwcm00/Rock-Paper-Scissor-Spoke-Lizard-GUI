@@ -87,7 +87,6 @@ public class Score2 extends JFrame implements ActionListener {
         JPanel tablepanel = new JPanel();
         //String [][] playername  = { {"Team 1: ",""+score[1],""+score[1],""+score[1],""+score[1]},{"Team 2: ",""+score[0],""+score[0],""+score[0],""+score[0]} };//create row for table
         String [][] playername  = { {"Team 1: ",},{"Team 2: ",} };//create row for table
-
         String [] column = {"Player 2","Round 1","Round 2","Round 3","Total"}; //create column for table
         model = new DefaultTableModel(playername, column);
         table = new JTable(model); //set the table with row and column variables
