@@ -24,8 +24,6 @@ public class Score extends JFrame implements ActionListener {
     private int bringScorePlayer;
     private long clickCount1, clickCount2;
 
-    FinalResult fr = new FinalResult();
-
     public Score () {
 
         // panel 1
@@ -122,6 +120,8 @@ public class Score extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
 
+        FinalResult fr = new FinalResult();
+
             if(e.getSource() == boom1) {
                 
                 try {
@@ -163,34 +163,58 @@ public class Score extends JFrame implements ActionListener {
             
             returnMatchPoint();
 
-            if(clickCount1 == 3 || clickCount2 == 3) {
+            if(e.getSource() == boom1 || e.getSource() == boom2) {
 
-                int nCol = table.getColumnCount()-1;
-                int score_amountPlayer1, score_amountPlayer2, totalPlayer1=0, totalPlayer2=0;
-    
-                    for (int j = 1; j < nCol; j++) { 
+                if(clickCount1 == 3 || clickCount2 == 3) {
+
+                    int nCol = table.getColumnCount()-1;
+                    int score_amountPlayer1, score_amountPlayer2, totalPlayer1=0, totalPlayer2=0;
+        
+                        for (int j = 1; j < nCol; j++) { 
+                            
+                            score_amountPlayer1 = Integer.parseInt(table.getValueAt(0, j).toString());
+                            score_amountPlayer2 = Integer.parseInt(table.getValueAt(1, j).toString());
+        
+                            totalPlayer1 += score_amountPlayer1;
+                            totalPlayer2 += score_amountPlayer2;
+                        }
+        
+                     model.setValueAt(totalPlayer1, 0, 4);
+                     model.setValueAt(totalPlayer2, 1, 4);
+
+                    int nCol2 = table.getColumnCount();
+
+                    String passTeam1Name, passTeam2Name;
+                    int passScoreCol1, passScoreCol2;
+                    
+                    passTeam1Name = table.getValueAt(0,0).toString();
+                    passTeam2Name = table.getValueAt(1,0).toString();
+
+                    System.out.println(passTeam1Name);
+                    System.out.println(passTeam2Name);
+
+                    for(int x=1; x<nCol2; x++) {
                         
-                        score_amountPlayer1 = Integer.parseInt(table.getValueAt(0, j).toString());
-                        score_amountPlayer2 = Integer.parseInt(table.getValueAt(1, j).toString());
-    
-                        totalPlayer1 += score_amountPlayer1;
-                        totalPlayer2 += score_amountPlayer2;
+                        passScoreCol1 = Integer.parseInt(table.getValueAt(0, x).toString());
+                        passScoreCol2 = Integer.parseInt(table.getValueAt(1, x).toString());
+        
+                        System.out.println(passScoreCol1);  
+                        System.out.println(passScoreCol2);
+                        
+                        fr.returnTablePlayer1Name().setValueAt(passScoreCol1, 0, x);
+                        fr.returnTablePlayer1Name().setValueAt(passScoreCol2, 1, x);
                     }
+        
+                    fr.setBounds(100, 100, 1000, 500);
+                    fr.setTitle("Assignment Sample");
+                    fr.setVisible(false);
+                    fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+                    fr.returnTablePlayer1Name().setValueAt(passTeam1Name, 0, 0);
+                    fr.returnTablePlayer1Name().setValueAt(passTeam2Name, 1, 0);
     
-                 model.setValueAt(totalPlayer1, 0, 4);
-                 model.setValueAt(totalPlayer2, 1, 4);
-
-                /*fr.setBounds(100, 100, 1000, 500);
-                fr.setTitle("Assignment Sample");
-                fr.setVisible(false);
-                fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);*/
-
-                 /*for(int y=0; y<5; y++) {
-
-                    fr.returnTablePlayer2Name().setValueAt(table.getValueAt(0, y), 0, y);
-                    fr.returnTablePlayer2Name().setValueAt(table.getValueAt(1, y), 1, y);
-                }*/
-            }   
+                }
+            }      
     }
 
     public int returnMatch() {

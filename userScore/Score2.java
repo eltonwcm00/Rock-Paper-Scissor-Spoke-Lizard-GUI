@@ -212,7 +212,6 @@ public class Score2 extends JFrame implements ActionListener {
                 fr.returnTablePlayer2Name().setValueAt(passTeam1Name, 0, 0);
                 fr.returnTablePlayer2Name().setValueAt(passTeam2Name, 1, 0);
             }
-
         }            
         
     }
