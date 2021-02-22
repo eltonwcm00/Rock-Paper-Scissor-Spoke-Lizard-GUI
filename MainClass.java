@@ -17,7 +17,7 @@ public class MainClass {
         try {
 
           frame.setVisible(true);
-          frame.setTitle("Assignment");
+          frame.setTitle("Main Interface");
 		      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
           frame.setBounds(100, 100, 800, 500);
           

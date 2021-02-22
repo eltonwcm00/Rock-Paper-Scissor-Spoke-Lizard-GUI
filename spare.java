@@ -571,3 +571,81 @@ public class Score extends JFrame implements ActionListener {
      //info.actionPerformed(e); */
 
 
+
+// //call frame Score2.java
+
+                    // String  player2Team1nameLabel, player2Team2nameLabel;
+                    // Score2 sc2 = new Score2();
+                    // Information info = new Information();
+                        
+                    // sc2.setBounds(100,100,200,500);
+                    // sc2.setTitle("Assignment");
+                    // sc2.setSize(900,600);
+                    // sc2.setVisible(true);
+                    // sc2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+                    // sc2.getScoreP2().setBackground(p2.getBackground()); sc2.getScoreP3().setBackground(p2.getBackground()); 
+                    // sc2.getScoreP4().setBackground(p2.getBackground()); sc2.getScoreP5().setBackground(p2.getBackground());
+                    // sc2.getButtonPanel().setBackground(p2.getBackground()); sc2.getButtonPanel2().setBackground(p2.getBackground());
+
+                    // player2Team1nameLabel = info.returntfPlayer2().toString();
+                    // player2Team2nameLabel = info.returntfPlayer4().toString();
+
+                    // System.out.println(player2Team1nameLabel);
+                    // System.out.println(player2Team2nameLabel);
+
+                    // // sc2.getNameLabel().setText(player2Team1nameLabel);
+                    // // sc2.getNameLabel2().setText(player2Team2nameLabel);
+                    // // sc2.getTablePlayerName().setValueAt("Team 1: "+player2Team1nameLabel, 0, 0);
+                    // // sc2.getTablePlayerName().setValueAt("Team 2: "+player2Team2nameLabel, 1, 0);
+             
+
+/*public int[][] tableData ()  {
+
+        int[][] test = new int[3][4];
+
+        test[0][2] = Integer.parseInt(table.getValueAt(0, 2).toString());
+
+        return test;
+                
+    }*/
+
+     /*int he;
+
+                he = test();
+
+                System.out.println(he);*/
+
+                /*int he = scr.test();
+
+                System.out.println(he);*/
+
+
+
+
+     /*public static void main(String[] args) {
+        
+        FinalResult as1 = new FinalResult();
+        as1.setBounds(100, 100, 1000, 500);
+        as1.setTitle("Assignment Sample");
+        as1.setVisible(true);
+        as1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }*/
+
+    /*public int test() {
+
+        int he;
+        
+        he = Integer.parseInt(table.getValueAt(0, 4).toString());
+
+        return he;
+    }*/
+
+    /*Score2 scr = new Score2();
+
+                  System.out.println(scr.test());*/
+    
+
+    
+
+

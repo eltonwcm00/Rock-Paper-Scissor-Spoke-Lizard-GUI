@@ -23,9 +23,20 @@ public class Score extends JFrame implements ActionListener {
     private DefaultTableModel model;
     private int bringScorePlayer;
     private long clickCount1, clickCount2;
+    private String passTeam1Name, passTeam2Name ;
+    private int passScoreCol1, passScoreCol2;
+    private Object DefaultTableModel;
+
+    /*public Score (String passTeam1Name, String passTeam2Name, int passScoreCol1, int passScoreCol2) { 
+
+        this.passTeam1Name = passTeam1Name;
+        this.passTeam2Name = passTeam2Name;
+        this.passScoreCol1 = passScoreCol1;
+        this.passScoreCol2 = passScoreCol2;
+    }*/
 
     public Score () {
-
+       
         // panel 1
         p1 = new JPanel(); //create panel for title
         empty = new JLabel("");
@@ -33,7 +44,7 @@ public class Score extends JFrame implements ActionListener {
         
         p1.add(gametitle);
         gametitle.setFont(new Font("Verdana",Font.BOLD,15));
-        p1.setBackground(Color.orange); //set background for the title to orange
+        p1.setBackground(new Color(255, 105, 0)); //set background for the title to orange
    
         ////////// panel 2 ///////////
         p2 = new JPanel(); //create panel for rounds text
@@ -184,38 +195,42 @@ public class Score extends JFrame implements ActionListener {
 
                     int nCol2 = table.getColumnCount();
 
-                    String passTeam1Name, passTeam2Name;
-                    int passScoreCol1, passScoreCol2;
-                    
                     passTeam1Name = table.getValueAt(0,0).toString();
                     passTeam2Name = table.getValueAt(1,0).toString();
 
-                    System.out.println(passTeam1Name);
-                    System.out.println(passTeam2Name);
+                    // System.out.println(passTeam1Name);
+                    // System.out.println(passTeam2Name);
 
                     for(int x=1; x<nCol2; x++) {
                         
                         passScoreCol1 = Integer.parseInt(table.getValueAt(0, x).toString());
                         passScoreCol2 = Integer.parseInt(table.getValueAt(1, x).toString());
         
-                        System.out.println(passScoreCol1);  
-                        System.out.println(passScoreCol2);
+                        // System.out.println(passScoreCol1);  
+                        // System.out.println(passScoreCol2);
                         
                         fr.returnTablePlayer1Name().setValueAt(passScoreCol1, 0, x);
                         fr.returnTablePlayer1Name().setValueAt(passScoreCol2, 1, x);
                     }
         
-                    fr.setBounds(100, 100, 1000, 500);
-                    fr.setTitle("Assignment Sample");
-                    fr.setVisible(false);
+                    fr.setBounds(100, 100, 1000, 600);
+                    fr.setTitle("Final Result");
+                    fr.setVisible(true);
                     fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
                     fr.returnTablePlayer1Name().setValueAt(passTeam1Name, 0, 0);
                     fr.returnTablePlayer1Name().setValueAt(passTeam2Name, 1, 0);
+
+                    fr.returnColorPanel1().setBackground(p2.getBackground()); fr.returnColorPanel2().setBackground(p2.getBackground());
+                    fr.returnColorPanel3().setBackground(p2.getBackground()); fr.returnColorPanel4().setBackground(p2.getBackground());
+                    fr.returnColorPanel5().setBackground(p2.getBackground()); fr.returnColorTablepanel().setBackground(p2.getBackground());
+                    fr.returnColorTablepanel2().setBackground(p2.getBackground());
     
-                }
-            }      
+                } else if(clickCount1 == 4) {}
+            }        
     }
+
+   
 
     public int returnMatch() {
          
@@ -319,7 +334,6 @@ public class Score extends JFrame implements ActionListener {
                     model.setValueAt(score[0], 0, 3);
                     model.setValueAt(score[0], 1, 3);
                 }
-
         } 
     }
 }

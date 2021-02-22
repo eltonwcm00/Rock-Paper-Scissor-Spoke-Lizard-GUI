@@ -101,7 +101,7 @@ public class Landing extends JFrame implements ActionListener {
         	try {
 				
 				frameInfo.setBounds(100, 100, 757, 500);
-        		frameInfo.setTitle("Assignment");
+        		frameInfo.setTitle("Player Information");
         		frameInfo.setVisible(true);
         		frameInfo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -122,5 +122,4 @@ public class Landing extends JFrame implements ActionListener {
 			}
         }
 	}
-
 }

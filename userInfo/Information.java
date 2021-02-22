@@ -16,7 +16,7 @@ public class Information extends JFrame implements ActionListener {
 
     private String player1Team1nameLabel, player1Team2nameLabel;
     private String player2Team1nameLabel, player2Team2nameLabel;
-
+   
     Score GM = new Score();
   
     public Information() {
@@ -30,7 +30,7 @@ public class Information extends JFrame implements ActionListener {
         JLabel Information = new JLabel("Rock-Paper-Scissors-Lizard-Spock"); 
         p1.add(Information);
         Information.setFont(new Font("Verdana",Font.BOLD,15));
-        p1.setBackground(Color.orange);
+        p1.setBackground(new Color(255, 105, 0));
         
         /////////
         JLabel Team = new JLabel("Team 1"); 
@@ -109,7 +109,6 @@ public class Information extends JFrame implements ActionListener {
         buttonSize1.add(btEnter);
         buttonSize2.add(btEnter1);
         
-        
         p4.add(new JLabel(""));p4.add(buttonSize1);p4.add(buttonSize2);p4.add(new JLabel(""));
 
         setLayout(new BorderLayout());
@@ -129,8 +128,11 @@ public class Information extends JFrame implements ActionListener {
     public JPanel getInfoAddPlayer1Team2() { return addPlayer1Team2; }
     public JPanel getInfoAddPlayer2Team1() { return addPlayer2Team1; }
     public JPanel getInfoAddPlayer2Team2() { return addPlayer2Team2; }
-    public JPanel getInfoButtonSize1() { return buttonSize1; };
-    public JPanel getInfoButtonSize2() { return buttonSize2; };
+    public JPanel getInfoButtonSize1() { return buttonSize1; }
+    public JPanel getInfoButtonSize2() { return buttonSize2; }
+    
+    public String returntfPlayer2() { return tfPlayer2.getText(); }
+    public String returntfPlayer4() { return tfPlayer4.getText(); }
     
     // call Score.java
     public void actionPerformed(ActionEvent e) {
@@ -140,7 +142,6 @@ public class Information extends JFrame implements ActionListener {
         try {
 
             if(e.getSource() == btEnter) {
-			
            
                 player1Team1nameLabel = tfPlayer1.getText();
                 player1Team2nameLabel = tfPlayer3.getText();
@@ -148,7 +149,7 @@ public class Information extends JFrame implements ActionListener {
                 sc2.setVisible(false);
 
                 GM.setBounds(100,100,200,500);
-                GM.setTitle("Assignment");
+                GM.setTitle("Game Rounds");
                 GM.setSize(900,600);
                 GM.setVisible(true);
                 GM.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -167,7 +168,7 @@ public class Information extends JFrame implements ActionListener {
                 player2Team1nameLabel = tfPlayer2.getText();
                 player2Team2nameLabel = tfPlayer4.getText();
     
-                //GM.setVisible(false);
+                GM.setVisible(false);
     
                 sc2.setBounds(100,100,200,500);
                 sc2.setTitle("Assignment");
@@ -189,7 +190,6 @@ public class Information extends JFrame implements ActionListener {
                  
             err.printStackTrace();
         }
-
-	}  
+	} 
 }
 
