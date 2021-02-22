@@ -59,30 +59,30 @@ public class Landing extends JFrame implements ActionListener {
 		 * add these label to the contentPane and set the location of the label
 		 */
 		JLabel lblNewLabel_1 = new JLabel("Welcome!");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(0, 76, 782, 14);
-		contentPane.add(lblNewLabel_1);
+			lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+			lblNewLabel_1.setBounds(0, 76, 782, 14);
+			contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Please select the background color before you proceed:");
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setBounds(0, 94, 783, 14);
-		contentPane.add(lblNewLabel_2);
+			lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+			lblNewLabel_2.setBounds(0, 94, 783, 14);
+			contentPane.add(lblNewLabel_2);
 
 		/**
 		 * Create a JButton named "PROCEED" and add into the contentPane
 		 */
 		btnNewButton = new JButton("PROCEED");
-		btnNewButton.setBounds(337, 374, 122, 23);
-		contentPane.add(btnNewButton);
+			btnNewButton.setBounds(337, 374, 122, 23);
+			contentPane.add(btnNewButton);
 		
 		/**
 		 * Create another JPanel set the default color value to rgb(255, 105, 0) and add the panel to the first JPanel
 		 * that has been created previously
 		 */
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 105, 0));
-		panel.setBounds(0, 0, 784, 33);
-		contentPane.add(panel);
+			panel.setBackground(new Color(255, 105, 0));
+			panel.setBounds(0, 0, 784, 33);
+			contentPane.add(panel);
 
 		/**
 		 * Add a actionListener to the "PROCEED" button
