@@ -1,3 +1,5 @@
+// Main Interface ( Welcome Landing Page )
+
 package homeScreen;
 
 import java.awt.*;
@@ -17,15 +19,26 @@ public class Landing extends JFrame implements ActionListener {
 
 	private Color returnBackground;
 
+	/**
+	 *  Create an object of Information.java class to access the next frame
+	 */
 	Information frameInfo = new Information();
 
 	public Landing()  {
 
+		/**
+		 * Create a JPanel and  an empty border to it sp that it can use later to hold the component 
+		 */
 		contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
-			
+
+		/**
+		 * Create JLabel, set it to the center of the frame and a JComboBox to hold the option of
+		 * the color selection, the JComboBox is then added into the contentPane (a container) that has
+		 * been created
+		 */
 		comboBox = new JComboBox();
 		JLabel lblNewLabel = new JLabel("Rock-Paper-Scissors-Lizard-Spock");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -40,7 +53,11 @@ public class Landing extends JFrame implements ActionListener {
 		comboBox.addItem("Blue");
 		comboBox.addItem("Yellow");
 		comboBox.addItem("Grey");
-		
+
+		/**
+		 * Create two JLable "Welcome!" and "Please select the background color before you proceed:"
+		 * add these label to the contentPane and set the location of the label
+		 */
 		JLabel lblNewLabel_1 = new JLabel("Welcome!");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setBounds(0, 76, 782, 14);
@@ -50,19 +67,35 @@ public class Landing extends JFrame implements ActionListener {
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setBounds(0, 94, 783, 14);
 		contentPane.add(lblNewLabel_2);
-		
+
+		/**
+		 * Create a JButton named "PROCEED" and add into the contentPane
+		 */
 		btnNewButton = new JButton("PROCEED");
 		btnNewButton.setBounds(337, 374, 122, 23);
 		contentPane.add(btnNewButton);
 		
+		/**
+		 * Create another JPanel set the default color value to rgb(255, 105, 0) and add the panel to the first JPanel
+		 * that has been created previously
+		 */
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 105, 0));
 		panel.setBounds(0, 0, 784, 33);
 		contentPane.add(panel);
 
+		/**
+		 * Add a actionListener to the "PROCEED" button
+		 */
 		btnNewButton.addActionListener(this);
-		comboBox.addItemListener(new ItemListener() {
 
+		/**
+		 * Add a actionListener to the JComboBox
+		 */
+		comboBox.addItemListener(new ItemListener() {
+			/**
+			 * Change the background of the JPanel based on the color option that user chosen
+			 */
 			public void itemStateChanged(ItemEvent e) {
 				
 				if(e.getStateChange()==ItemEvent.SELECTED) {
@@ -88,12 +121,18 @@ public class Landing extends JFrame implements ActionListener {
 		});
 	}
 
+	/**
+	 * Return the current background color value of the JPanel to the next frame
+	 */
 	public Color returnBackgroundToNext() {
 		
 		return returnBackground;
 	}
 
-	// call Information.java
+	/**
+	 * Call the next frame (Information.java) when the "PROCEED" button is clicked,
+	 * the JFrame (Information.java) is then created and setup 
+	 */
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource() == btnNewButton) {
@@ -105,6 +144,10 @@ public class Landing extends JFrame implements ActionListener {
         		frameInfo.setVisible(true);
         		frameInfo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+				/**
+				 * Set the following panel that returned back from the next frame
+				 * with the background color that has been selected by the player
+				 */
 				frameInfo.getInfoP2().setBackground(returnBackground); 
 				frameInfo.getInfoP3().setBackground(returnBackground); 
 				frameInfo.getInfoP4().setBackground(returnBackground);
