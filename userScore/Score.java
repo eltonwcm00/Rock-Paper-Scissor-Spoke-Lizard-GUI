@@ -10,6 +10,11 @@ import userResult.FinalResult;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.OutputStreamWriter;
+import java.util.Arrays;
 import java.util.Random;
 public class Score extends JFrame implements ActionListener {
     
@@ -237,19 +242,11 @@ public class Score extends JFrame implements ActionListener {
                     passTeam1Name = table.getValueAt(0,0).toString();
                     passTeam2Name = table.getValueAt(1,0).toString();
 
-                    // System.out.println(passTeam1Name);
-                    // System.out.println(passTeam2Name);
-
                     for(int x=1; x<nCol2; x++) {
                         
                         passScoreCol1 = Integer.parseInt(table.getValueAt(0, x).toString());
                         passScoreCol2 = Integer.parseInt(table.getValueAt(1, x).toString());
-        
-                        // System.out.println(passScoreCol1);  
-                        // System.out.println(passScoreCol2);
-                        
-                        fr.returnTablePlayer1Name().setValueAt(passScoreCol1, 0, x);
-                        fr.returnTablePlayer1Name().setValueAt(passScoreCol2, 1, x);
+
                     }
         
                     fr.setBounds(100, 100, 1000, 600);
@@ -257,19 +254,17 @@ public class Score extends JFrame implements ActionListener {
                     fr.setVisible(true);
                     fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-                    fr.returnTablePlayer1Name().setValueAt(passTeam1Name, 0, 0);
-                    fr.returnTablePlayer1Name().setValueAt(passTeam2Name, 1, 0);
-
                     fr.returnColorPanel1().setBackground(p2.getBackground()); fr.returnColorPanel2().setBackground(p2.getBackground());
                     fr.returnColorPanel3().setBackground(p2.getBackground()); fr.returnColorPanel4().setBackground(p2.getBackground());
                     fr.returnColorPanel5().setBackground(p2.getBackground()); fr.returnColorTablepanel().setBackground(p2.getBackground());
                     fr.returnColorTablepanel2().setBackground(p2.getBackground());
+                     
+                    // write first table
+                    try { saveTableScore(); } catch(Exception b) { b.printStackTrace(); }     
     
-                } else if(clickCount1 == 4) {}
+                } else if(clickCount1 == 4) { }
             }        
     }
-
-   
 
     public int returnMatch() {
          
@@ -375,4 +370,25 @@ public class Score extends JFrame implements ActionListener {
                 }
         } 
     }
+    
+    public void saveTableScore() throws Exception {
+        
+        BufferedWriter bfw = new BufferedWriter(new FileWriter("Data.txt"));
+
+        bfw.write("Player 1 , \tRound 1, \tRound 2, \tRound 3, \tTotal\n");
+        
+        for (int i = 0 ; i < table.getRowCount(); i++) {
+            
+            for(int j = 0 ; j < table.getColumnCount(); j++) {
+                
+                bfw.write(table.getValueAt(i,j).toString() + "/");
+                bfw.write("\t\t");
+            }
+
+            bfw.newLine();
+        }
+
+        bfw.close();
+    }
+
 }

@@ -647,5 +647,89 @@ public class Score extends JFrame implements ActionListener {
     
 
     
+// public Object[][] getTableData(JTable table) {
+
+    //     int rowCount = table.getModel().getRowCount();
+    //     int columnCount = table.getModel().getColumnCount();
+
+    //     Object[][] curTableData = new Object[rowCount][columnCount];
+
+    //     for(int row=0; row<rowCount; row++) {
+            
+    //         for(int column=0; column<columnCount; column++) {
+                
+    //             curTableData[row][column] = table.getModel().getValueAt(row, column);
+
+    //             System.out.println(curTableData[row][column]);
+    //         }
+    //     }
+
+    //     return curTableData;
+    // }
+
+
+
+    // public void writeToDisk(Object[][] aData, String aDatafile)b{
+
+    //     try {
+
+    //         FileOutputStream fout =  new FileOutputStream(aDatafile, false);
+
+    //         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fout));
+
+    //         /*//Headers
+    //         bw.append("Script No., Candidate No., Mark, Grade,Script No., Candidate No., Mark, Grade");
+    //         // End of data row (Jable row) so append new line character in csv file
+    //         bw.append('\n');*/
+
+    //         for (int row = 0; row < aData.length; row++) {
+
+    //         for (int column = 0; column < aData[row].length; column++) {
+
+    //             if(aData[row][column] == null) {
+    //                 bw.append("null");
+    //                 // The comma separated value
+    //                 bw.append(',');
+    //             }
+    //             else {
+    //             /* In my particular example, I am doing some checking on 
+
+    //                 the 2d array for types: 
+    //                 if the data is not of type null (as checked above)
+    //                 then it must be of type Integer.
+    //                 This is because the 2D data array only contains data of either
+    //                 Integer or null
+
+    //                 each of these object types have a method called toString().
+    //                 we need this in order to convert the types to a string prior to wrting them to
+    //                 the file.
+
+    //             */
+    //                 bw.append(aData[row][column].toString());
+    //                 bw.append(',');
+    //             }
+
+    //         }//end column loop (inner loop)
+
+    //             bw.append('\n');
+
+    //         }//end row loop (outer loop)
+
+    //         bw.close();
+
+    //     } catch (Exception e) {
+
+    //         e.getStackTrace();
+    //     }
+    // }  
+
+
+     /* fr.returnTablePlayer1Name().setValueAt(passScoreCol1, 0, x);
+                        fr.returnTablePlayer1Name().setValueAt(passScoreCol2, 1, x); */
+
+
+     // top table
+    /* fr.returnTablePlayer1Name().setValueAt(passTeam1Name, 0, 0);
+     fr.returnTablePlayer1Name().setValueAt(passTeam2Name, 1, 0); */
 
 

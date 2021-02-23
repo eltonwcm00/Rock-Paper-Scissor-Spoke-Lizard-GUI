@@ -8,6 +8,11 @@ import userResult.FinalResult;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.InputStreamReader;
 import java.util.Random;
 public class Score2 extends JFrame implements ActionListener {
     
@@ -120,6 +125,7 @@ public class Score2 extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         FinalResult fr = new FinalResult();
+        Score scr = new Score();
 
             if(e.getSource() == boom1) {
                 
@@ -189,16 +195,10 @@ public class Score2 extends JFrame implements ActionListener {
                 passTeam1Name = table.getValueAt(0,0).toString();
                 passTeam2Name = table.getValueAt(1,0).toString();
 
-                // System.out.println(passTeam1Name);
-                // System.out.println(passTeam2Name);
-
                 for(int x=1; x<nCol2; x++) {
                     
                     passScoreCol1 = Integer.parseInt(table.getValueAt(0, x).toString());
                     passScoreCol2 = Integer.parseInt(table.getValueAt(1, x).toString());
-    
-                    // System.out.println(passScoreCol1);  
-                    // System.out.println(passScoreCol2);
                     
                     fr.returnTablePlayer2Name().setValueAt(passScoreCol1, 0, x);
                     fr.returnTablePlayer2Name().setValueAt(passScoreCol2, 1, x);
@@ -209,6 +209,33 @@ public class Score2 extends JFrame implements ActionListener {
                 fr.setVisible(true);
                 fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+                // print first table
+                try {
+
+                    String filePath ="Data.txt";
+                    File file = new File(filePath);
+    
+                    BufferedReader br = new BufferedReader( new FileReader(file));
+                    
+                    String firstLine = br.readLine().trim();
+                    String[] columnName = firstLine.split(",");
+                    DefaultTableModel model = (DefaultTableModel) fr.returnJTablePlayer1Name().getModel();
+                    model.setColumnIdentifiers(columnName);
+
+                    Object[] tableLines = br.lines().toArray();
+
+                    for(int i=0; i<(tableLines.length); i++) {
+                        String line = tableLines[i].toString().trim(); 
+                        String[] dataRow = line.split("/") ; 
+                        model.addRow(dataRow);
+                    }
+
+                } catch(Exception err) {
+
+                         err.printStackTrace();
+                }
+
+                //second table
                 fr.returnTablePlayer2Name().setValueAt(passTeam1Name, 0, 0);
                 fr.returnTablePlayer2Name().setValueAt(passTeam2Name, 1, 0);
 

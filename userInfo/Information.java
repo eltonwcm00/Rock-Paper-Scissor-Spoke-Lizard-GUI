@@ -188,7 +188,7 @@ public class Information extends JFrame implements ActionListener {
                 player1Team1nameLabel = tfPlayer1.getText();
                 player1Team2nameLabel = tfPlayer3.getText();
 
-                sc2.setVisible(false);
+                //sc2.setVisible(false);
 
                 GM.setBounds(100,100,200,500);
                 GM.setTitle("Game Rounds");
@@ -216,7 +216,7 @@ public class Information extends JFrame implements ActionListener {
                 player2Team1nameLabel = tfPlayer2.getText();
                 player2Team2nameLabel = tfPlayer4.getText();
     
-                GM.setVisible(false);
+                //GM.setVisible(false);
     
                 sc2.setBounds(100,100,200,500);
                 sc2.setTitle("Assignment");

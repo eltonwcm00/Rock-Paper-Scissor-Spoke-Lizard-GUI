@@ -60,15 +60,13 @@ public class FinalResult extends JFrame implements ActionListener {
         
         //PLAYER 1 PANE
         tablepanel = new JPanel();
-        String [][] playername  = { {"Team 1: ",},{"Team 2: ",} };//create row for table
-        String [] column = {"Player 1","Round 1","Round 2","Round 3","Total"}; //create column for table
-        model = new DefaultTableModel(playername, column);
+        /*String [][] playername  = { {"Team 1: ",},{"Team 2: ",} };//create row for table
+        String [] column = {"Player 1","Round 1","Round 2","Round 3","Total"}; //create column for table*/
+        model = new DefaultTableModel();
         table = new JTable(model); //set the table with row and column variables
+
         table.setRowHeight(60);
-        //table.setGridColor(Color.black);
-        //table.setBorder(border);
         sp = new JScrollPane(table);
-        //sp.setBorder(border);
         sp.setPreferredSize(new Dimension(600,143));
         tablepanel.add(sp);
         sp.setBounds(21,2,2,2);
@@ -107,6 +105,7 @@ public class FinalResult extends JFrame implements ActionListener {
     public JPanel returnColorPanel5() { return p5; }
     public JPanel returnColorTablepanel() { return tablepanel; }
     public JPanel returnColorTablepanel2() { return tablepanel2; }
+    public JTable returnJTablePlayer1Name() { return table; }
 
     public void actionPerformed(ActionEvent e) {
 
