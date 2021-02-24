@@ -728,8 +728,20 @@ public class Score extends JFrame implements ActionListener {
                         fr.returnTablePlayer1Name().setValueAt(passScoreCol2, 1, x); */
 
 
-     // top table
-    /* fr.returnTablePlayer1Name().setValueAt(passTeam1Name, 0, 0);
-     fr.returnTablePlayer1Name().setValueAt(passTeam2Name, 1, 0); */
+    //  top table
+    //  fr.returnTablePlayer1Name().setValueAt(passTeam1Name, 0, 0);
+    //  fr.returnTablePlayer1Name().setValueAt(passTeam2Name, 1, 0);
+
+
+
+    // fr.setBounds(100, 100, 1000, 600);
+    // fr.setTitle("Final Result");
+    // fr.setVisible(true);
+    // fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    // fr.returnColorPanel1().setBackground(p2.getBackground()); fr.returnColorPanel2().setBackground(p2.getBackground());
+    // fr.returnColorPanel3().setBackground(p2.getBackground()); fr.returnColorPanel4().setBackground(p2.getBackground());
+    // fr.returnColorPanel5().setBackground(p2.getBackground()); fr.returnColorTablepanel().setBackground(p2.getBackground());
+    // fr.returnColorTablepanel2().setBackground(p2.getBackground());
 
 

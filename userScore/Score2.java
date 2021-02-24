@@ -230,9 +230,11 @@ public class Score2 extends JFrame implements ActionListener {
                         model.addRow(dataRow);
                     }
 
+                    file.delete();
+
                 } catch(Exception err) {
 
-                         err.printStackTrace();
+                    err.printStackTrace();
                 }
 
                 //second table

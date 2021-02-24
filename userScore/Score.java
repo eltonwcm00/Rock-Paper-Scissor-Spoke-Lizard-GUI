@@ -160,110 +160,109 @@ public class Score extends JFrame implements ActionListener {
         /**
          * Create an object fr to access FinalResult.java frame (Final Result)
          */
-        FinalResult fr = new FinalResult();
+        Score2 sc2 = new Score2();
 
-            /**
-             * If the "BOOM" button from team 1 side is clicked, pass the array of image file into Random() to generate
-             * a random image of the game. A variable call iconfilename is then created to detect the random generated image
-             * and pass it into the variabe call fileName to remove the path "/" before the image format. The counter for this 
-             * button will be increased upon the amount of the button click time
-             */
-            if(e.getSource() == boom1) {
+           /**
+            * If the "BOOM" button from team 1 side is clicked, pass the array of image file into Random() to generate
+            * a random image of the game. A variable call iconfilename is then created to detect the random generated image
+            * and pass it into the variabe call fileName to remove the path "/" before the image format. The counter for this 
+            * button will be increased upon the amount of the button click time
+            */
+        if(e.getSource() == boom1) {
+            
+            try {
                 
-                try {
-                    
-                    Random rand = new Random();
-                    int index = rand.nextInt(image.length);
-                    picture1.setIcon(image[index]);
-                    
-                    iconfilename = picture1.getIcon().toString();
-                    fileName = iconfilename.substring(iconfilename.lastIndexOf("/"  ) + 1);
-
-                    clickCount1++;
-
-                } catch(Exception err) {
-                 
-                    err.printStackTrace();
-                }
-
-            /**
-             * If the "BOOM" button from team 2 side is clicked, pass the array of image file into Random() to generate
-             * a random image of the game. A variable call iconfilename2 is then created to detect the random generated image
-             * and pass it into the variabe call fileNam2 to remove the path "/" before the image format. The counter for this 
-             * button will be increased upon the amount of the button click time
-             */
-
-            } else if(e.getSource() == boom2) {
+                Random rand = new Random();
+                int index = rand.nextInt(image.length);
+                picture1.setIcon(image[index]);
                 
-                try {
+                iconfilename = picture1.getIcon().toString();
+                fileName = iconfilename.substring(iconfilename.lastIndexOf("/"  ) + 1);
 
-                    Random rand = new Random();
-                    int index2 = rand.nextInt(image.length);
-                    picture2.setIcon(image[index2]);
+                clickCount1++;
 
-                    iconfilename2 = picture2.getIcon().toString();
-                    fileName2 = iconfilename2.substring(iconfilename2.lastIndexOf("/"  ) + 1);
+            } catch(Exception err) {
+             
+                err.printStackTrace();
+            }
 
-                    clickCount2++;
-                    System.out.println("counter2 is "+ clickCount2);
+        /**
+         * If the "BOOM" button from team 2 side is clicked, pass the array of image file into Random() to generate
+         * a random image of the game. A variable call iconfilename2 is then created to detect the random generated image
+         * and pass it into the variabe call fileNam2 to remove the path "/" before the image format. The counter for this 
+         * button will be increased upon the amount of the button click time
+         */
 
-                } catch(Exception err) {
-                 
-                    err.printStackTrace();
-                }
-            } 
+        } else if(e.getSource() == boom2) {
+            
+            try {
 
-            /**
-             * Return a function that involve the game logic
-             */
-            returnMatchPoint();
+                Random rand = new Random();
+                int index2 = rand.nextInt(image.length);
+                picture2.setIcon(image[index2]);
 
-            if(e.getSource() == boom1 || e.getSource() == boom2) {
+                iconfilename2 = picture2.getIcon().toString();
+                fileName2 = iconfilename2.substring(iconfilename2.lastIndexOf("/"  ) + 1);
 
-                if(clickCount1 == 3 || clickCount2 == 3) {
+                clickCount2++;
+                System.out.println("counter2 is "+ clickCount2);
 
-                    int nCol = table.getColumnCount()-1;
-                    int score_amountPlayer1, score_amountPlayer2, totalPlayer1=0, totalPlayer2=0;
-        
-                        for (int j = 1; j < nCol; j++) { 
-                            
-                            score_amountPlayer1 = Integer.parseInt(table.getValueAt(0, j).toString());
-                            score_amountPlayer2 = Integer.parseInt(table.getValueAt(1, j).toString());
-        
-                            totalPlayer1 += score_amountPlayer1;
-                            totalPlayer2 += score_amountPlayer2;
-                        }
-        
-                     model.setValueAt(totalPlayer1, 0, 4);
-                     model.setValueAt(totalPlayer2, 1, 4);
+            } catch(Exception err) {
+             
+                err.printStackTrace();
+            }
+        } 
 
-                    int nCol2 = table.getColumnCount();
+        /**
+         * Return a function that involve the game logic
+         */
+        returnMatchPoint();
 
-                    passTeam1Name = table.getValueAt(0,0).toString();
-                    passTeam2Name = table.getValueAt(1,0).toString();
+        if(e.getSource() == boom1 || e.getSource() == boom2) {
 
-                    for(int x=1; x<nCol2; x++) {
-                        
-                        passScoreCol1 = Integer.parseInt(table.getValueAt(0, x).toString());
-                        passScoreCol2 = Integer.parseInt(table.getValueAt(1, x).toString());
+            if(clickCount1 == 3 || clickCount2 == 3) {
 
-                    }
-        
-                    fr.setBounds(100, 100, 1000, 600);
-                    fr.setTitle("Final Result");
-                    fr.setVisible(true);
-                    fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-                    fr.returnColorPanel1().setBackground(p2.getBackground()); fr.returnColorPanel2().setBackground(p2.getBackground());
-                    fr.returnColorPanel3().setBackground(p2.getBackground()); fr.returnColorPanel4().setBackground(p2.getBackground());
-                    fr.returnColorPanel5().setBackground(p2.getBackground()); fr.returnColorTablepanel().setBackground(p2.getBackground());
-                    fr.returnColorTablepanel2().setBackground(p2.getBackground());
-                     
-                    // write first table
-                    try { saveTableScore(); } catch(Exception b) { b.printStackTrace(); }     
+                int nCol = table.getColumnCount()-1;
+                int score_amountPlayer1, score_amountPlayer2, totalPlayer1=0, totalPlayer2=0;
     
-                } else if(clickCount1 == 4) { }
-            }        
+                    for (int j = 1; j < nCol; j++) { 
+                        
+                        score_amountPlayer1 = Integer.parseInt(table.getValueAt(0, j).toString());
+                        score_amountPlayer2 = Integer.parseInt(table.getValueAt(1, j).toString());
+    
+                        totalPlayer1 += score_amountPlayer1;
+                        totalPlayer2 += score_amountPlayer2;
+                    }
+    
+                 model.setValueAt(totalPlayer1, 0, 4);
+                 model.setValueAt(totalPlayer2, 1, 4);
+                
+                // write first table
+                try { 
+                    
+                    BufferedWriter bfw = new BufferedWriter(new FileWriter("Data.txt"));
+
+                    bfw.write("Player 1 , \tRound 1, \tRound 2, \tRound 3, \tTotal\n");
+                    
+                    for (int i = 0 ; i < table.getRowCount(); i++) {
+                        
+                        for(int j = 0 ; j < table.getColumnCount(); j++) {
+                            
+                            bfw.write(table.getValueAt(i,j).toString() + "/");
+                            bfw.write("\t\t");
+                        }
+            
+                        bfw.newLine();
+                    }
+            
+                    bfw.close();
+                    
+                } catch(Exception b) { 
+                    b.getCause(); 
+
+                }
+            }
+        }        
     }
 
     public int returnMatch() {
@@ -370,25 +369,4 @@ public class Score extends JFrame implements ActionListener {
                 }
         } 
     }
-    
-    public void saveTableScore() throws Exception {
-        
-        BufferedWriter bfw = new BufferedWriter(new FileWriter("Data.txt"));
-
-        bfw.write("Player 1 , \tRound 1, \tRound 2, \tRound 3, \tTotal\n");
-        
-        for (int i = 0 ; i < table.getRowCount(); i++) {
-            
-            for(int j = 0 ; j < table.getColumnCount(); j++) {
-                
-                bfw.write(table.getValueAt(i,j).toString() + "/");
-                bfw.write("\t\t");
-            }
-
-            bfw.newLine();
-        }
-
-        bfw.close();
-    }
-
 }
