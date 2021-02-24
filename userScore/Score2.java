@@ -11,199 +11,238 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.NoSuchElementException;
 import java.util.Random;
-public class Score2 extends JFrame implements ActionListener {
-    
+import java.util.Scanner;
+
+public class Score2 extends JFrame implements ActionListener  {
+
     private JPanel p1, p2, p3, p4, p5, button, button2;
     private JLabel empty, rounds, picture1, picture2, player1name, player2name;
-    private JButton boom1,boom2;
+    private JButton boom1, boom2;
 
-    private ImageIcon image[] = {new ImageIcon(getClass().getResource("image/scissors.png")), new ImageIcon(this.getClass().getResource("image/paper.png")), new ImageIcon(this.getClass().getResource("image/rock.png")),
-                                 new ImageIcon(this.getClass().getResource("image/spock.png")), new ImageIcon(this.getClass().getResource("image/lizard.png"))};    
+    private ImageIcon image[] = { new ImageIcon(getClass().getResource("image/scissors.png")),
+            new ImageIcon(this.getClass().getResource("image/paper.png")),
+            new ImageIcon(this.getClass().getResource("image/rock.png")),
+            new ImageIcon(this.getClass().getResource("image/spock.png")),
+            new ImageIcon(this.getClass().getResource("image/lizard.png")) };
     private JTable table;
-    private String score[] = {"0","1"};
-    private String iconfilename, iconfilename2, fileName, fileName2; 
+    private String score[] = { "0", "1" };
+    private String iconfilename, iconfilename2, fileName, fileName2;
     private DefaultTableModel model;
     private int bringScorePlayer;
     private long clickCount1, clickCount2;
-    
-    public Score2 () {
+
+    public Score2() {
 
         // panel 1
-        p1 = new JPanel(); //create panel for title
+        p1 = new JPanel(); // create panel for title
         empty = new JLabel("");
-        JLabel gametitle = new JLabel("Rock-Paper-Scissors-Lizard-Spock"); //Title
-        
+        JLabel gametitle = new JLabel("Rock-Paper-Scissors-Lizard-Spock"); // Title
+
         p1.add(gametitle);
-        gametitle.setFont(new Font("Verdana",Font.BOLD,15));
-        p1.setBackground(new Color(255, 105, 0)); //set background for the title to orange
-   
+        gametitle.setFont(new Font("Verdana", Font.BOLD, 15));
+        p1.setBackground(new Color(255, 105, 0)); // set background for the title to orange
+
         ////////// panel 2 ///////////
-        p2 = new JPanel(); //create panel for rounds text
+        p2 = new JPanel(); // create panel for rounds text
         rounds = new JLabel("Round 1"); // text for rounds
         rounds.setHorizontalAlignment(SwingConstants.CENTER);
-        rounds.setFont(new Font("Verdana",Font.BOLD,20));
+        rounds.setFont(new Font("Verdana", Font.BOLD, 20));
         p2.add(rounds);
 
         ////////// panel 3 //////////
-        p3 = new JPanel();//create panel for player 1 name,button and image
-        player1name = new JLabel ("Player 1");//Name for player 1
+        p3 = new JPanel();// create panel for player 1 name,button and image
+        player1name = new JLabel("Player 1");// Name for player 1
         player1name.setHorizontalAlignment(SwingConstants.CENTER);
-        player1name.setFont(new Font("Verdana",Font.BOLD,15));
-        p3.add(empty); p3.add(player1name);
-        picture1 = new JLabel(image[0]); //Image for player 1////////////////////////////////
+        player1name.setFont(new Font("Verdana", Font.BOLD, 15));
+        p3.add(empty);
+        p3.add(player1name);
+        picture1 = new JLabel(image[0]); // Image for player 1////////////////////////////////
         p3.add(picture1);
-        
+
         button = new JPanel();
-        boom1 = new JButton("BOOM!"); //Boom Button for player 1
+        boom1 = new JButton("BOOM!"); // Boom Button for player 1
         boom1.setLayout(new FlowLayout());
-        boom1.setPreferredSize(new Dimension(80,30));
-        p3.setLayout(new GridLayout(2,2,1,1));
+        boom1.setPreferredSize(new Dimension(80, 30));
+        p3.setLayout(new GridLayout(2, 2, 1, 1));
         button.add(boom1);
         p3.add(button);
-        
+
         ////////// panel 4 //////////
-        p4 = new JPanel(); //create panel for player 2 name,button and image
-        picture2 = new JLabel(image[4]);//Image for player 2
+        p4 = new JPanel(); // create panel for player 2 name,button and image
+        picture2 = new JLabel(image[4]);// Image for player 2
         picture2.setHorizontalAlignment(SwingConstants.CENTER);
-        picture2.setBounds(400,250,400,200);
-        p4.add(empty); p4.add(empty); p4.add(picture2);
-        
-        player2name = new JLabel ("Player 2");// Name for player2
+        picture2.setBounds(400, 250, 400, 200);
+        p4.add(empty);
+        p4.add(empty);
+        p4.add(picture2);
+
+        player2name = new JLabel("Player 2");// Name for player2
         player2name.setHorizontalAlignment(SwingConstants.CENTER);
-        player2name.setFont(new Font("Verdana",Font.BOLD,15));
+        player2name.setFont(new Font("Verdana", Font.BOLD, 15));
         p4.add(player2name);
-        
+
         button2 = new JPanel();
-        boom2 = new JButton("BOOM!"); //boom button for player 2
+        boom2 = new JButton("BOOM!"); // boom button for player 2
         boom2.setLayout(new FlowLayout());
-        boom2.setPreferredSize(new Dimension(80,30));
-        button2.add(boom2);         //adding button for player 2 in Button2 JPanel
-        p4.add(empty); p4.add(button2);
-        p4.setLayout(new GridLayout(2,2,1,1));
-        
+        boom2.setPreferredSize(new Dimension(80, 30));
+        button2.add(boom2); // adding button for player 2 in Button2 JPanel
+        p4.add(empty);
+        p4.add(button2);
+        p4.setLayout(new GridLayout(2, 2, 1, 1));
+
         ////////// panel 5 //////////
         p5 = new JPanel();
         JPanel tablepanel = new JPanel();
-        //String [][] playername  = { {"Team 1: ",""+score[1],""+score[1],""+score[1],""+score[1]},{"Team 2: ",""+score[0],""+score[0],""+score[0],""+score[0]} };//create row for table
-        String [][] playername  = { {"Team 1: ",},{"Team 2: ",} };//create row for table
-        String [] column = {"Player 2","Round 1","Round 2","Round 3","Total"}; //create column for table
+        // String [][] playername = { {"Team 1:
+        // ",""+score[1],""+score[1],""+score[1],""+score[1]},{"Team 2:
+        // ",""+score[0],""+score[0],""+score[0],""+score[0]} };//create row for table
+        String[][] playername = { { "Team 1: ", }, { "Team 2: ", } };// create row for table
+        String[] column = { "Player 2", "Round 1", "Round 2", "Round 3", "Total" }; // create column for table
         model = new DefaultTableModel(playername, column);
-        table = new JTable(model); //set the table with row and column variables
+        table = new JTable(model); // set the table with row and column variables
         table.setRowHeight(60);
         JScrollPane sp = new JScrollPane(table);
-        sp.setPreferredSize(new Dimension(600,143));
+        sp.setPreferredSize(new Dimension(600, 143));
         tablepanel.add(sp);
-        sp.setBounds(21,2,2,2);
-        p5.add(tablepanel); //work in progress 
-        
+        sp.setBounds(21, 2, 2, 2);
+        p5.add(tablepanel); // work in progress
+
         setLayout(new BorderLayout());
-        add(p1,BorderLayout.NORTH);
-        add(p2,BorderLayout.CENTER);
-        add(p3,BorderLayout.WEST);
-        add(p4,BorderLayout.EAST);
-        add(p5,BorderLayout.SOUTH);
+        add(p1, BorderLayout.NORTH);
+        add(p2, BorderLayout.CENTER);
+        add(p3, BorderLayout.WEST);
+        add(p4, BorderLayout.EAST);
+        add(p5, BorderLayout.SOUTH);
 
         boom1.addActionListener(this);
         boom2.addActionListener(this);
     }
 
-    public JPanel getScoreP2() { return p2; }
-    public JPanel getScoreP3() { return p3; }
-    public JPanel getScoreP4() { return p4; }
-    public JPanel getScoreP5() { return p5; }
-    public JPanel getButtonPanel() { return button; }
-    public JPanel getButtonPanel2() { return button2; }
+    public JPanel getScoreP2() {
+        return p2;
+    }
 
-    public JLabel getNameLabel() { return player1name; }
-    public JLabel getNameLabel2() { return player2name; }
+    public JPanel getScoreP3() {
+        return p3;
+    }
 
-    public DefaultTableModel getTablePlayerName() { return model; }
+    public JPanel getScoreP4() {
+        return p4;
+    }
+
+    public JPanel getScoreP5() {
+        return p5;
+    }
+
+    public JPanel getButtonPanel() {
+        return button;
+    }
+
+    public JPanel getButtonPanel2() {
+        return button2;
+    }
+
+    public JLabel getNameLabel() {
+        return player1name;
+    }
+
+    public JLabel getNameLabel2() {
+        return player2name;
+    }
+
+    public DefaultTableModel getTablePlayerName() {
+        return model;
+    }
 
     public void actionPerformed(ActionEvent e) {
 
         FinalResult fr = new FinalResult();
         Score scr = new Score();
 
-            if(e.getSource() == boom1) {
-                
-                try {
-                    
-                    Random rand = new Random();
-                    int index = rand.nextInt(image.length);
-                    picture1.setIcon(image[index]);
-                    
-                    iconfilename = picture1.getIcon().toString();
-                    fileName = iconfilename.substring(iconfilename.lastIndexOf("/"  ) + 1);
+        if (e.getSource() == boom1) {
 
-                    clickCount1++;
-                    System.out.println("counter1 is "+ clickCount1);
+            try {
 
-                } catch(Exception err) {
-                 
-                    err.printStackTrace();
+                Random rand = new Random();
+                int index = rand.nextInt(image.length);
+                picture1.setIcon(image[index]);
+
+                iconfilename = picture1.getIcon().toString();
+                fileName = iconfilename.substring(iconfilename.lastIndexOf("/") + 1);
+
+                clickCount1++;
+                System.out.println("counter1 is " + clickCount1);
+
+            } catch (Exception err) {
+
+                err.printStackTrace();
+            }
+
+        } else if (e.getSource() == boom2) {
+
+            try {
+
+                Random rand = new Random();
+                int index2 = rand.nextInt(image.length);
+                picture2.setIcon(image[index2]);
+
+                iconfilename2 = picture2.getIcon().toString();
+                fileName2 = iconfilename2.substring(iconfilename2.lastIndexOf("/") + 1);
+
+                clickCount2++;
+                System.out.println("counter2 is " + clickCount2);
+
+            } catch (Exception err) {
+
+                err.printStackTrace();
+            }
+        }
+
+        returnMatchPoint();
+
+        if (e.getSource() == boom1 || e.getSource() == boom2) {
+
+            if (clickCount1 == 3 || clickCount2 == 3) {
+
+                int nCol = table.getColumnCount() - 1;
+                int score_amountPlayer1, score_amountPlayer2, totalPlayer1 = 0, totalPlayer2 = 0;
+
+                for (int j = 1; j < nCol; j++) {
+
+                    score_amountPlayer1 = Integer.parseInt(table.getValueAt(0, j).toString());
+                    score_amountPlayer2 = Integer.parseInt(table.getValueAt(1, j).toString());
+
+                    totalPlayer1 += score_amountPlayer1;
+                    totalPlayer2 += score_amountPlayer2;
                 }
 
-            } else if(e.getSource() == boom2) {
-                
-                try {
-
-                    Random rand = new Random();
-                    int index2 = rand.nextInt(image.length);
-                    picture2.setIcon(image[index2]);
-
-                    iconfilename2 = picture2.getIcon().toString();
-                    fileName2 = iconfilename2.substring(iconfilename2.lastIndexOf("/"  ) + 1);
-
-                    clickCount2++;
-                    System.out.println("counter2 is "+ clickCount2);
-
-                } catch(Exception err) {
-                 
-                    err.printStackTrace();
-                }
-            }  
-            
-            returnMatchPoint();
-     
-        if(e.getSource() == boom1 || e.getSource() == boom2) {
-
-            if(clickCount1 == 3 || clickCount2 == 3) {
-
-                int nCol = table.getColumnCount()-1;
-                int score_amountPlayer1, score_amountPlayer2, totalPlayer1=0, totalPlayer2=0;
-    
-                    for (int j = 1; j < nCol; j++) { 
-                        
-                        score_amountPlayer1 = Integer.parseInt(table.getValueAt(0, j).toString());
-                        score_amountPlayer2 = Integer.parseInt(table.getValueAt(1, j).toString());
-    
-                        totalPlayer1 += score_amountPlayer1;
-                        totalPlayer2 += score_amountPlayer2;
-                    }
-                
                 model.setValueAt(totalPlayer1, 0, 4);
                 model.setValueAt(totalPlayer2, 1, 4);
-    
+
                 int nCol2 = table.getColumnCount();
 
                 String passTeam1Name, passTeam2Name;
                 int passScoreCol1, passScoreCol2;
-                
-                passTeam1Name = table.getValueAt(0,0).toString();
-                passTeam2Name = table.getValueAt(1,0).toString();
 
-                for(int x=1; x<nCol2; x++) {
-                    
+                passTeam1Name = table.getValueAt(0, 0).toString();
+                passTeam2Name = table.getValueAt(1, 0).toString();
+
+                for (int x = 1; x < nCol2; x++) {
+
                     passScoreCol1 = Integer.parseInt(table.getValueAt(0, x).toString());
                     passScoreCol2 = Integer.parseInt(table.getValueAt(1, x).toString());
-                    
+
                     fr.returnTablePlayer2Name().setValueAt(passScoreCol1, 0, x);
                     fr.returnTablePlayer2Name().setValueAt(passScoreCol2, 1, x);
                 }
-    
+
                 fr.setBounds(100, 100, 1000, 600);
                 fr.setTitle("Final Result");
                 fr.setVisible(true);
@@ -212,11 +251,11 @@ public class Score2 extends JFrame implements ActionListener {
                 // print first table
                 try {
 
-                    String filePath ="Data.txt";
+                    String filePath = "Data.txt";
                     File file = new File(filePath);
-    
-                    BufferedReader br = new BufferedReader( new FileReader(file));
-                    
+
+                    BufferedReader br = new BufferedReader(new FileReader(file));
+
                     String firstLine = br.readLine().trim();
                     String[] columnName = firstLine.split(",");
                     DefaultTableModel model = (DefaultTableModel) fr.returnJTablePlayer1Name().getModel();
@@ -224,23 +263,51 @@ public class Score2 extends JFrame implements ActionListener {
 
                     Object[] tableLines = br.lines().toArray();
 
-                    for(int i=0; i<(tableLines.length); i++) {
-                        String line = tableLines[i].toString().trim(); 
-                        String[] dataRow = line.split("/") ; 
+                    for (int i = 0; i < (tableLines.length); i++) {
+                        String line = tableLines[i].toString().trim();
+                        String[] dataRow = line.split("/");
                         model.addRow(dataRow);
                     }
 
                     file.delete();
 
-                } catch(Exception err) {
+                } catch (FileNotFoundException | NoSuchElementException err) {
 
                     err.printStackTrace();
+
+                } catch (IOException e1) {
+                    e1.printStackTrace();
                 }
 
-                //second table
+                String total_score_player1_team1, total_score_player1_team2;
+                int total_score_player2_team1 = 0, total_score_player2_team2 = 0;
+                int total_score_player1 = 0, total_score_player2 = 0;
+
+                // player 1 finl score
+                total_score_player1_team1 = fr.returnJTablePlayer1Name().getValueAt(0, 4).toString().trim();
+                total_score_player1_team2 = fr.returnJTablePlayer1Name().getValueAt(1, 4).toString().trim();
+
+                // player 2 final score
+                total_score_player2_team1 = Integer.parseInt(table.getValueAt(0, 4).toString());
+                total_score_player2_team2 = Integer.parseInt(table.getValueAt(1, 4).toString());
+               
+                total_score_player1 = Integer.parseInt(total_score_player1_team1) + total_score_player2_team1;
+                total_score_player2 = Integer.parseInt(total_score_player1_team2) + total_score_player2_team2;
+
+                if(total_score_player1 > total_score_player2) {
+                    fr.returnCongratsMsg().setText("Congratulation !! Team 1");
+
+                } else {
+                    fr.returnCongratsMsg().setText("Congratulation !! Team 2");
+                }
+             
+                // second table
                 fr.returnTablePlayer2Name().setValueAt(passTeam1Name, 0, 0);
                 fr.returnTablePlayer2Name().setValueAt(passTeam2Name, 1, 0);
 
+                // set total score for perspective player
+                fr.returnTeam1ScoreLabel().setText("Team 1: " + total_score_player1);
+                fr.returnTeam2ScoreLabel().setText("Team 2: " + total_score_player2);
                 fr.returnColorPanel1().setBackground(p2.getBackground()); fr.returnColorPanel2().setBackground(p2.getBackground());
                 fr.returnColorPanel3().setBackground(p2.getBackground()); fr.returnColorPanel4().setBackground(p2.getBackground());
                 fr.returnColorPanel5().setBackground(p2.getBackground()); fr.returnColorTablepanel().setBackground(p2.getBackground());
@@ -253,7 +320,7 @@ public class Score2 extends JFrame implements ActionListener {
  
     public int returnMatch() {
          
-        //player 1 win condition
+        // player 1 win condition
         if("scissors.png".equals(fileName) && "paper.png".equals(fileName2)) { System.out.println("P1 win : Scissors cuts Paper");  bringScorePlayer = 1;}
             else if("paper.png".equals(fileName) && "rock.png".equals(fileName2)) { System.out.println("P1 win : Paper covers Rock"); bringScorePlayer = 1;} 
             else if("rock.png".equals(fileName) && "lizard.png".equals(fileName2)) { System.out.println("P1 win : Rock crushes Lizard"); bringScorePlayer = 1;} 
@@ -265,7 +332,7 @@ public class Score2 extends JFrame implements ActionListener {
             else if("spock.png".equals(fileName) && "rock.png".equals(fileName2)) { System.out.println("P1 win : Spock vaporizes Rock"); bringScorePlayer = 1;}
             else if("rock.png".equals(fileName) && "scissors.png".equals(fileName2)) { System.out.println("P1 win : Rock crushes Scissors"); bringScorePlayer = 1;}
 
-            //player 2 win condition
+            // player 2 win condition
             else if("lizard.png".equals(fileName) && "rock.png".equals(fileName)) { System.out.println("P2 win : Rock crushes Lizard"); bringScorePlayer = 2;}
             else if("lizard.png".equals(fileName) && "scissors.png".equals(fileName2)) { System.out.println("P2 win : Scissors decapitate Lizard"); bringScorePlayer = 2;}
             else if("paper.png".equals(fileName) && "lizard.png".equals(fileName2)) { System.out.println("P2 win : Lizard eats Paper"); bringScorePlayer = 2;}

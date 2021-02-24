@@ -13,8 +13,6 @@ import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
-import java.io.OutputStreamWriter;
-import java.util.Arrays;
 import java.util.Random;
 public class Score extends JFrame implements ActionListener {
     
@@ -162,12 +160,12 @@ public class Score extends JFrame implements ActionListener {
          */
         Score2 sc2 = new Score2();
 
-           /**
-            * If the "BOOM" button from team 1 side is clicked, pass the array of image file into Random() to generate
-            * a random image of the game. A variable call iconfilename is then created to detect the random generated image
-            * and pass it into the variabe call fileName to remove the path "/" before the image format. The counter for this 
-            * button will be increased upon the amount of the button click time
-            */
+       /**
+        * If the "BOOM" button from team 1 side is clicked, pass the array of image file into Random() to generate
+        * a random image of the game. A variable call iconfilename is then created to detect the random generated image
+        * and pass it into the variabe call fileName to remove the path "/" before the image format. The counter for this 
+        * button will be increased upon the amount of the button click time
+        */
         if(e.getSource() == boom1) {
             
             try {
@@ -263,6 +261,11 @@ public class Score extends JFrame implements ActionListener {
                 }
             }
         }        
+    }
+
+    public JTable returnScoreTable() {
+
+        return table;
     }
 
     public int returnMatch() {
