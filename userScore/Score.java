@@ -216,6 +216,12 @@ public class Score extends JFrame implements ActionListener {
          */
         returnMatchPoint();
 
+        /**
+         * When player either click on the left or right hand side BOOM button, the condition will check if the buttons were clicked
+         * for 3 times already. If it is true, will need to create a variable called nCol to get the column count of the table but 
+         * minus by one due to the fact that we need to extract points data starting from column 1. The for-loop will loop through the table 
+         * to extract the point data and sum up the data row by row and set the final to the table row 0 column 4 and table row 1 column 4
+         */
         if(e.getSource() == boom1 || e.getSource() == boom2) {
 
             if(clickCount1 == 3 || clickCount2 == 3) {
@@ -235,7 +241,11 @@ public class Score extends JFrame implements ActionListener {
                  model.setValueAt(totalPlayer1, 0, 4);
                  model.setValueAt(totalPlayer2, 1, 4);
                 
-                // write first table
+                /**
+                 * Create and write the data to the text file. First step is to write the table header with the data : "Player 1 , \tRound 1, \tRound 2, \tRound 3, \tTotal\n"
+                 * into the file. 2D array is then use to loop through the whole table and extract the data and write into the text file and write a "/" at the end of every 
+                 * data
+                 */
                 try { 
                     
                     BufferedWriter bfw = new BufferedWriter(new FileWriter("Data.txt"));
@@ -263,11 +273,22 @@ public class Score extends JFrame implements ActionListener {
         }        
     }
 
+    /**
+     * Return back the table of the class to other class to access
+     */
     public JTable returnScoreTable() {
 
         return table;
     }
 
+    /**
+     * Game logic part, where this function use to compare the random generated image file with the image files that contained inside this project. 
+     * The comparison compare between team 1 player 1 and team 1 player 2. 
+     * For example, if the image file that was random generated at the player 1 side
+     * is scissors.png and paper.png for player 2 side, the player 1 will win the current round and will be assigned a value 1,
+     * value 2 : if player 2 won the current round
+     * value 3 : if it is a tie
+     */
     public int returnMatch() {
          
         //player 1 win condition
@@ -304,6 +325,12 @@ public class Score extends JFrame implements ActionListener {
             return bringScorePlayer;
     }
 
+    /**
+     * This function is a allocate the point either 0 or 1 to the player 1 or player 2 based on the value (1 || 2 || 3) the function returnMatch() returns back to
+     * this function. Before the allocation of game points to the player, the condition will need to check if the click count of the "BOOM" button is equalavent to
+     * either 1, 2 or 3. If the condition is met, this function will call the returnMatch() function. The value is returned from returnMatch() if it is = 1, the table
+     * row 0, column 1 will be set with score[1] = 1 and row 1, column 1 will be set with score[0] = 0.
+     */
     public void returnMatchPoint() {
 
         if(clickCount1 == 1 && clickCount2 == 1) {
@@ -325,6 +352,10 @@ public class Score extends JFrame implements ActionListener {
                 model.setValueAt(score[0], 1, 1);
              }
 
+        /**
+         * If the counter of the "BOOM" button is 2,3 the same logic that equalavent clickCount == 1 will be executed. Points will be set to the different column and row
+         * based on the round.
+         */
         } else if(clickCount1 == 2 && clickCount2 == 2) {
                     
             int convertScorePlayer=0;

@@ -40,132 +40,141 @@ public class Score2 extends JFrame implements ActionListener  {
 
     public Score2() {
 
-        // panel 1
-        p1 = new JPanel(); // create panel for title
-        empty = new JLabel("");
-        JLabel gametitle = new JLabel("Rock-Paper-Scissors-Lizard-Spock"); // Title
+        /**
+         * Create a panel p1 to store a JLabel with title "Rock-Paper-Scissors-Lizard-Spock", and set the 
+         * background color of this panel to the orange
+         */
+        p1 = new JPanel(); 
+            empty = new JLabel("");
+            JLabel gametitle = new JLabel("Rock-Paper-Scissors-Lizard-Spock"); 
+            p1.add(gametitle);
+                gametitle.setFont(new Font("Verdana", Font.BOLD, 15));
+            p1.setBackground(new Color(255, 105, 0));
 
-        p1.add(gametitle);
-        gametitle.setFont(new Font("Verdana", Font.BOLD, 15));
-        p1.setBackground(new Color(255, 105, 0)); // set background for the title to orange
-
-        ////////// panel 2 ///////////
+        /**
+         * Crete a panel p2 to store a JLabel that use to display matches round
+         */
         p2 = new JPanel(); // create panel for rounds text
-        rounds = new JLabel("Round 1"); // text for rounds
-        rounds.setHorizontalAlignment(SwingConstants.CENTER);
-        rounds.setFont(new Font("Verdana", Font.BOLD, 20));
+            rounds = new JLabel("Round 1"); // text for rounds
+                rounds.setHorizontalAlignment(SwingConstants.CENTER);
+                rounds.setFont(new Font("Verdana", Font.BOLD, 20));
         p2.add(rounds);
 
-        ////////// panel 3 //////////
-        p3 = new JPanel();// create panel for player 1 name,button and image
-        player1name = new JLabel("Player 1");// Name for player 1
-        player1name.setHorizontalAlignment(SwingConstants.CENTER);
-        player1name.setFont(new Font("Verdana", Font.BOLD, 15));
-        p3.add(empty);
-        p3.add(player1name);
-        picture1 = new JLabel(image[0]); // Image for player 1////////////////////////////////
-        p3.add(picture1);
+        /**
+         * Create a panel p3 that add the JLabel that contains name of player 1 from team 1,
+         * a default image of the game
+         */
+        p3 = new JPanel();
+            player1name = new JLabel("Player 1");
+                player1name.setHorizontalAlignment(SwingConstants.CENTER);
+                player1name.setFont(new Font("Verdana", Font.BOLD, 15));
+            p3.add(empty); p3.add(player1name);
+        picture1 = new JLabel(image[0]); 
+            p3.add(picture1);
 
+        /**
+         * Create a panel with GridLayout to store a JButton - "BOOM" that start the game, and place to the left side
+         * of the panel next to the image. The button is clickable for player 1 from team 1.
+         */
         button = new JPanel();
-        boom1 = new JButton("BOOM!"); // Boom Button for player 1
-        boom1.setLayout(new FlowLayout());
-        boom1.setPreferredSize(new Dimension(80, 30));
+            boom1 = new JButton("BOOM!"); // Boom Button for player 1
+                boom1.setLayout(new FlowLayout());
+                boom1.setPreferredSize(new Dimension(80, 30));
         p3.setLayout(new GridLayout(2, 2, 1, 1));
         button.add(boom1);
         p3.add(button);
-
-        ////////// panel 4 //////////
-        p4 = new JPanel(); // create panel for player 2 name,button and image
-        picture2 = new JLabel(image[4]);// Image for player 2
-        picture2.setHorizontalAlignment(SwingConstants.CENTER);
-        picture2.setBounds(400, 250, 400, 200);
-        p4.add(empty);
-        p4.add(empty);
+        
+        /**
+         * Create a panel p4 that add the JLabel that contains name of player 1 from team 2,
+         * a default image of the game
+         */
+        p4 = new JPanel(); 
+            picture2 = new JLabel(image[4]);
+                picture2.setHorizontalAlignment(SwingConstants.CENTER);
+                picture2.setBounds(400, 250, 400, 200);
+        p4.add(empty); p4.add(empty);
         p4.add(picture2);
-
         player2name = new JLabel("Player 2");// Name for player2
-        player2name.setHorizontalAlignment(SwingConstants.CENTER);
-        player2name.setFont(new Font("Verdana", Font.BOLD, 15));
+            player2name.setHorizontalAlignment(SwingConstants.CENTER);
+            player2name.setFont(new Font("Verdana", Font.BOLD, 15));
         p4.add(player2name);
 
+        /**
+         * Create a panel with GridLayout to store a JButton - "BOOM" that start the game, and place to the right side
+         * of the panel next to the image. The button is clickable for player 1 from team 2.
+         */
         button2 = new JPanel();
-        boom2 = new JButton("BOOM!"); // boom button for player 2
-        boom2.setLayout(new FlowLayout());
-        boom2.setPreferredSize(new Dimension(80, 30));
+            boom2 = new JButton("BOOM!"); // boom button for player 2
+                boom2.setLayout(new FlowLayout());
+                boom2.setPreferredSize(new Dimension(80, 30));
         button2.add(boom2); // adding button for player 2 in Button2 JPanel
-        p4.add(empty);
-        p4.add(button2);
+        p4.add(empty); p4.add(button2);
         p4.setLayout(new GridLayout(2, 2, 1, 1));
 
-        ////////// panel 5 //////////
+        /**
+         * Create a panel to store the result table for player 1 from team 1 and team 2
+         */
         p5 = new JPanel();
-        JPanel tablepanel = new JPanel();
-        // String [][] playername = { {"Team 1:
-        // ",""+score[1],""+score[1],""+score[1],""+score[1]},{"Team 2:
-        // ",""+score[0],""+score[0],""+score[0],""+score[0]} };//create row for table
-        String[][] playername = { { "Team 1: ", }, { "Team 2: ", } };// create row for table
-        String[] column = { "Player 2", "Round 1", "Round 2", "Round 3", "Total" }; // create column for table
+            JPanel tablepanel = new JPanel();
+                String[][] playername = { { "Team 1: ", }, { "Team 2: ", } };               // Create row for table
+                String[] column = { "Player 2", "Round 1", "Round 2", "Round 3", "Total" }; // Create column for table 
         model = new DefaultTableModel(playername, column);
-        table = new JTable(model); // set the table with row and column variables
-        table.setRowHeight(60);
-        JScrollPane sp = new JScrollPane(table);
-        sp.setPreferredSize(new Dimension(600, 143));
-        tablepanel.add(sp);
-        sp.setBounds(21, 2, 2, 2);
-        p5.add(tablepanel); // work in progress
+        table = new JTable(model);                                                          // Set the table with row and column with the variable 
+            table.setRowHeight(60);
+        JScrollPane sp = new JScrollPane(table);                                            // Create a scroll pane for the table
+            sp.setPreferredSize(new Dimension(600, 143));
+        tablepanel.add(sp);                                                                 // Add in the scroll pane into the panel that has been created
+            sp.setBounds(21, 2, 2, 2);
+        p5.add(tablepanel);                                                                 // Add the panel into the p5 panel 
 
+        /**
+         * Create a BorderLayout to store all the created panel into inside, so that the location
+         * of the paenl can be specified
+         */
         setLayout(new BorderLayout());
-        add(p1, BorderLayout.NORTH);
-        add(p2, BorderLayout.CENTER);
-        add(p3, BorderLayout.WEST);
-        add(p4, BorderLayout.EAST);
-        add(p5, BorderLayout.SOUTH);
+            add(p1, BorderLayout.NORTH);
+            add(p2, BorderLayout.CENTER);
+            add(p3, BorderLayout.WEST);
+            add(p4, BorderLayout.EAST);
+            add(p5, BorderLayout.SOUTH);
 
+        /**
+         * Add an actionListener to the button of player 1 from team 1 and team 2
+         */
         boom1.addActionListener(this);
         boom2.addActionListener(this);
     }
 
-    public JPanel getScoreP2() {
-        return p2;
-    }
+    /**
+     * Return these JPanel back to Landing.java, so that the background color of these panel can be overwritten.
+     * Return these JLabel back to Information.java, so that the label can be set with the player name that has 
+     * been key-in by the player before this in the previous frame. Return DefaultTableModel back to Information.java,
+     * so that
+     */
+    public JPanel getScoreP2() {return p2;}
+    public JPanel getScoreP3() {return p3;}
+    public JPanel getScoreP4() {return p4;}
+    public JPanel getScoreP5() {return p5;}
+    public JPanel getButtonPanel() {return button;}
+    public JPanel getButtonPanel2() {return button2;}
+    public JLabel getNameLabel() {return player1name;}
+    public JLabel getNameLabel2() {return player2name;}
+    public DefaultTableModel getTablePlayerName() {return model;}
 
-    public JPanel getScoreP3() {
-        return p3;
-    }
-
-    public JPanel getScoreP4() {
-        return p4;
-    }
-
-    public JPanel getScoreP5() {
-        return p5;
-    }
-
-    public JPanel getButtonPanel() {
-        return button;
-    }
-
-    public JPanel getButtonPanel2() {
-        return button2;
-    }
-
-    public JLabel getNameLabel() {
-        return player1name;
-    }
-
-    public JLabel getNameLabel2() {
-        return player2name;
-    }
-
-    public DefaultTableModel getTablePlayerName() {
-        return model;
-    }
 
     public void actionPerformed(ActionEvent e) {
-
+        
+        /**
+         * Create an object fr to access FinalResult.java frame (Final Result) 
+         */
         FinalResult fr = new FinalResult();
-        Score scr = new Score();
-
+        
+        /**
+        * If the "BOOM" button from team 1 side is clicked, pass the array of image file into Random() to generate
+        * a random image of the game. A variable call iconfilename is then created to detect the random generated image
+        * and pass it into the variabe call fileName to remove the path "/" before the image format. The counter for this 
+        * button will be increased upon the amount of the button click time
+        */
         if (e.getSource() == boom1) {
 
             try {
@@ -184,6 +193,13 @@ public class Score2 extends JFrame implements ActionListener  {
 
                 err.printStackTrace();
             }
+
+        /**
+         * If the "BOOM" button from team 2 side is clicked, pass the array of image file into Random() to generate
+         * a random image of the game. A variable call iconfilename2 is then created to detect the random generated image
+         * and pass it into the variabe call fileNam2 to remove the path "/" before the image format. The counter for this 
+         * button will be increased upon the amount of the button click time
+         */    
 
         } else if (e.getSource() == boom2) {
 
@@ -205,8 +221,17 @@ public class Score2 extends JFrame implements ActionListener  {
             }
         }
 
+        /**
+         * Return a function that involve the game logic
+         */
         returnMatchPoint();
 
+        /**
+         * When player either click on the left or right hand side BOOM button, the condition will check if the buttons were clicked
+         * for 3 times already. If it is true, will need to create a variable called nCol to get the column count of the table but 
+         * minus by one due to the fact that we need to extract points data starting from column 1. The for-loop will loop through the table 
+         * to extract the point data and sum up the data row by row and set the final to the table row 0 column 4 and table row 1 column 4
+         */
         if (e.getSource() == boom1 || e.getSource() == boom2) {
 
             if (clickCount1 == 3 || clickCount2 == 3) {
@@ -226,6 +251,12 @@ public class Score2 extends JFrame implements ActionListener  {
                 model.setValueAt(totalPlayer1, 0, 4);
                 model.setValueAt(totalPlayer2, 1, 4);
 
+                /**
+                 * Create a variable to detect the numbe of column the table, variable : String passTeam1Name, passTeam2Name;int passScoreCol1, passScoreCol2
+                 * The passTeam1Name variable is to get the row of 0,1 and column of 0,0 of the table in order to extract the name of player 1 and player 2.
+                 * A for loop is then use loop through the table to get the game score from the table, the loop is initialized at x=1, is because to start extracting
+                 * the score data only after the player 1 and player 2. After gotten the score data, the score data will then set to the 2nd table inside the FinalResult.java
+                 */
                 int nCol2 = table.getColumnCount();
 
                 String passTeam1Name, passTeam2Name;
@@ -243,12 +274,25 @@ public class Score2 extends JFrame implements ActionListener  {
                     fr.returnTablePlayer2Name().setValueAt(passScoreCol2, 1, x);
                 }
 
+                /**
+                 * FinalResult.java frame will be created and initialised when clickCount of "BOOM" button has reached 3
+                 */
                 fr.setBounds(100, 100, 1000, 600);
                 fr.setTitle("Final Result");
                 fr.setVisible(true);
                 fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-                // print first table
+                /**
+                 * This section is to put the data of Team 1 that extract from the previous txt, into the FinalResult.java
+                 * first table. 
+                 * First at all, will create an object br, to read the file, 
+                 * String firstLine to trim() all the white spaces within the texfile
+                 * String[] columnName is to take the variable firstLine that has trimmed the spaces and split(","), so that it will ignore the "," isnide the file
+                 * DefaultTableModel is to get the table model of first table from FinalResul.java
+                 * Object[] tableLines is to read the txt file line by line, pass to toArray() method and extract the data as Object type
+                 * model.setColumnIdentifiers(columnName) will then set the JTable header data with the trimmed data, which is "Player 1 , 	Round 1, 	Round 2, 	Round 3, 	Total"
+                 * Next, the for-loop will loop through the FinalResult.java table and add table row with the extracted data, after the first line data "Player 1 , 	Round 1, 	Round 2, 	Round 3, 	Total"
+                 */ 
                 try {
 
                     String filePath = "Data.txt";
