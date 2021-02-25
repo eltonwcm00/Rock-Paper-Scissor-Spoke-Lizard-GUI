@@ -159,6 +159,9 @@ public class Landing extends JFrame implements ActionListener {
 				frameInfo.getInfoButtonSize1().setBackground(returnBackground); 
 				frameInfo.getInfoButtonSize2().setBackground(returnBackground);
 
+                String info_text = "'Enter' button on the left hand side is to start the match for Player 1 game\n 'Enter' button on the right hand side is to start the match for Player 2 game";
+                JOptionPane.showMessageDialog(null, info_text, "Warning!", 1);
+
 			} catch(Exception err) {
 
 				err.printStackTrace();

@@ -17,6 +17,8 @@ public class MainClass {
      * setup the Landing.java JFrame
      */
     callLanding();
+    String info_text = "Welcome to Elton Group's ROCK PAPER SCISSORS LIZARD SPOCK Mini Game";
+    JOptionPane.showMessageDialog(null, info_text, "Welcome!", 1);
   }
 
   public static void callLanding() {

@@ -253,7 +253,7 @@ public class Score2 extends JFrame implements ActionListener  {
 
                 /**
                  * Create a variable to detect the numbe of column the table, variable : String passTeam1Name, passTeam2Name;int passScoreCol1, passScoreCol2
-                 * The passTeam1Name variable is to get the row of 0,1 and column of 0,0 of the table in order to extract the name of player 1 and player 2.
+                 * The passTeam1Name variable is to get the row of 0,0 and column of 1,0 of the table in order to extract the name of player 1 and player 2.
                  * A for loop is then use loop through the table to get the game score from the table, the loop is initialized at x=1, is because to start extracting
                  * the score data only after the player 1 and player 2. After gotten the score data, the score data will then set to the 2nd table inside the FinalResult.java
                  */
@@ -265,6 +265,9 @@ public class Score2 extends JFrame implements ActionListener  {
                 passTeam1Name = table.getValueAt(0, 0).toString();
                 passTeam2Name = table.getValueAt(1, 0).toString();
 
+                fr.returnTablePlayer2Name().setValueAt(passTeam1Name, 0, 0);
+                fr.returnTablePlayer2Name().setValueAt(passTeam2Name, 1, 0);
+
                 for (int x = 1; x < nCol2; x++) {
 
                     passScoreCol1 = Integer.parseInt(table.getValueAt(0, x).toString());
@@ -273,7 +276,7 @@ public class Score2 extends JFrame implements ActionListener  {
                     fr.returnTablePlayer2Name().setValueAt(passScoreCol1, 0, x);
                     fr.returnTablePlayer2Name().setValueAt(passScoreCol2, 1, x);
                 }
-
+                
                 /**
                  * FinalResult.java frame will be created and initialised when clickCount of "BOOM" button has reached 3
                  */
@@ -323,35 +326,45 @@ public class Score2 extends JFrame implements ActionListener  {
                     e1.printStackTrace();
                 }
 
+                /**
+                 * This section is to sum up the total score of player 1 from team 1 and team 2. Sum up the total score of player 2 
+                 * from team 1 and team 2. total_score_player1_team1, total_score_player1_team2 are the variables to get the score data from FinalResult.java
+                 * table
+                 */
                 String total_score_player1_team1, total_score_player1_team2;
                 int total_score_player2_team1 = 0, total_score_player2_team2 = 0;
                 int total_score_player1 = 0, total_score_player2 = 0;
 
-                // player 1 finl score
+                // player 1 final score
                 total_score_player1_team1 = fr.returnJTablePlayer1Name().getValueAt(0, 4).toString().trim();
                 total_score_player1_team2 = fr.returnJTablePlayer1Name().getValueAt(1, 4).toString().trim();
 
                 // player 2 final score
                 total_score_player2_team1 = Integer.parseInt(table.getValueAt(0, 4).toString());
                 total_score_player2_team2 = Integer.parseInt(table.getValueAt(1, 4).toString());
-               
+                
+                // team 1 and team 2 final score
                 total_score_player1 = Integer.parseInt(total_score_player1_team1) + total_score_player2_team1;
                 total_score_player2 = Integer.parseInt(total_score_player1_team2) + total_score_player2_team2;
 
+                /**
+                 * Show the message "Congrawtulation..." to the winning team. If the total score of team 1 is greater than team 2, set a text "Congratulation !! Team 1"
+                 * to the JLabel that return back from FinalResult.java
+                 */
                 if(total_score_player1 > total_score_player2) {
                     fr.returnCongratsMsg().setText("Congratulation !! Team 1");
 
                 } else {
                     fr.returnCongratsMsg().setText("Congratulation !! Team 2");
                 }
-             
-                // second table
-                fr.returnTablePlayer2Name().setValueAt(passTeam1Name, 0, 0);
-                fr.returnTablePlayer2Name().setValueAt(passTeam2Name, 1, 0);
-
-                // set total score for perspective player
+           
+                // set total score for perspective team at the returned JLabel of FinalResult.java 
                 fr.returnTeam1ScoreLabel().setText("Team 1: " + total_score_player1);
                 fr.returnTeam2ScoreLabel().setText("Team 2: " + total_score_player2);
+
+                /**
+                 * Set the background color of the panels from FinalResult.java
+                 */
                 fr.returnColorPanel1().setBackground(p2.getBackground()); fr.returnColorPanel2().setBackground(p2.getBackground());
                 fr.returnColorPanel3().setBackground(p2.getBackground()); fr.returnColorPanel4().setBackground(p2.getBackground());
                 fr.returnColorPanel5().setBackground(p2.getBackground()); fr.returnColorTablepanel().setBackground(p2.getBackground());
@@ -361,7 +374,15 @@ public class Score2 extends JFrame implements ActionListener  {
         }            
         
     }
- 
+
+    /**
+     * Game logic part, where this function use to compare the random generated image file with the image files that contained inside this project. 
+     * The comparison compare between team 1 player 1 and team 1 player 2. 
+     * For example, if the image file that was random generated at the player 1 side
+     * is scissors.png and paper.png for player 2 side, the player 1 will win the current round and will be assigned a value 1,
+     * value 2 : if player 2 won the current round
+     * value 3 : if it is a tie
+     */ 
     public int returnMatch() {
          
         // player 1 win condition
@@ -398,6 +419,12 @@ public class Score2 extends JFrame implements ActionListener  {
             return bringScorePlayer;
     }
 
+    /**
+     * This function is a allocate the point either 0 or 1 to the player 1 or player 2 based on the value (1 || 2 || 3) the function returnMatch() returns back to
+     * this function. Before the allocation of game points to the player, the condition will need to check if the click count of the "BOOM" button is equalavent to
+     * either 1, 2 or 3. If the condition is met, this function will call the returnMatch() function. The value is returned from returnMatch() if it is = 1, the table
+     * row 0, column 1 will be set with score[1] = 1 and row 1, column 1 will be set with score[0] = 0.
+     */
     public void returnMatchPoint() {
 
         if(clickCount1 == 1 && clickCount2 == 1) {

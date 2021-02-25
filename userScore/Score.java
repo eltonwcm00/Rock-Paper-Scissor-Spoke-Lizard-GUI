@@ -269,8 +269,16 @@ public class Score extends JFrame implements ActionListener {
                     b.getCause(); 
 
                 }
+
+                /**
+                 * Return the dialogs when user has finished all 3 rounds
+                 */
+                String info_text = "Game for Player 1 has ended !";
+                String info_text2 = "Please go back to the previous page and click on \nthe right hand side 'Enter' button to proceed with Player 2 game";
+		        JOptionPane.showMessageDialog(null, info_text, "Warning!", 1);
+                JOptionPane.showMessageDialog(null, info_text2, "Warning!", 1);
             }
-        }        
+        }       
     }
 
     /**
