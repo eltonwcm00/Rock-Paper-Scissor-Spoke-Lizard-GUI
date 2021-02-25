@@ -1,3 +1,5 @@
+// Player 2 Game Interface
+
 package userScore;
 
 import java.awt.*;
@@ -17,6 +19,8 @@ import java.util.NoSuchElementException;
 import java.util.Random;
 public class Score2 extends JFrame implements ActionListener  {
 
+    private JFrame jf;
+    private JDialog jd;
     private JPanel p1, p2, p3, p4, p5, button, button2;
     private JLabel empty, rounds, picture1, picture2, player1name, player2name;
     private JButton boom1, boom2;
@@ -34,6 +38,8 @@ public class Score2 extends JFrame implements ActionListener  {
     private long clickCount1, clickCount2;
 
     public Score2() {
+
+        jf = new JFrame("frame");
 
         /**
          * Create a panel p1 to store a JLabel with title "Rock-Paper-Scissors-Lizard-Spock", and set the 
@@ -279,6 +285,9 @@ public class Score2 extends JFrame implements ActionListener  {
                 fr.setTitle("Final Result");
                 fr.setVisible(true);
                 fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+                jd = new JDialog(jf, "dialog Box"); 
+                System.out.print(jd);
 
                 /**
                  * This section is to put the data of Team 1 that extract from the previous txt, into the FinalResult.java

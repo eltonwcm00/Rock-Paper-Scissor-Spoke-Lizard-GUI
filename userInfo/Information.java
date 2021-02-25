@@ -1,4 +1,5 @@
 // Player Details Interface 
+
 package userInfo;
 
 import javax.swing.*;
