@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import userInfo.Information;
 
+
 public class Landing extends JFrame implements ActionListener {
 
 	private JPanel contentPane;

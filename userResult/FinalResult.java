@@ -9,6 +9,7 @@ import javax.swing.table.DefaultTableModel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 public class FinalResult extends JFrame implements ActionListener {
     
     private JButton btExit;

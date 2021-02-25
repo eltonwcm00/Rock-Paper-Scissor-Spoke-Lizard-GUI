@@ -17,6 +17,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.NoSuchElementException;
 import java.util.Random;
+
 public class Score2 extends JFrame implements ActionListener  {
 
     private JFrame jf;
