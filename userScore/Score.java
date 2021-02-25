@@ -6,14 +6,12 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-import userResult.FinalResult;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.util.Random;
+
 public class Score extends JFrame implements ActionListener {
     
     private JPanel p1, p2, p3, p4, p5, button, button2;

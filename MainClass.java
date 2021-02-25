@@ -32,7 +32,6 @@ public class MainClass {
 		      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
           frame.setBounds(100, 100, 800, 500);
           
-
         } catch (Exception e) {
           
           e.printStackTrace();

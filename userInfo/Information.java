@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 
 import userScore.Score;
 import userScore.Score2;
+
 public class Information extends JFrame implements ActionListener {
     
     private JTextField tfPlayer1,tfPlayer2,tfPlayer3,tfPlayer4;

@@ -17,7 +17,7 @@ public class FinalResult extends JFrame implements ActionListener {
     private JButton btExit;
     private JLabel gametitle, imagelabel, team1, team2, congrat;
     private ImageIcon image = new ImageIcon(new ImageIcon("userResult/image/Celebrate.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
-    // private String score[] = {"0","1"};
+
     private JTable table, table1;
     private JPanel p1, p2, p3, p4, p5, tablepanel, tablepanel2;
     private JScrollPane sp, sp1;
